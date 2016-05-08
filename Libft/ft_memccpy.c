@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 20:39:21 by alex              #+#    #+#             */
-/*   Updated: 2016/05/06 22:55:54 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:26:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    *ft_memccpy (void *dest, const void *src, int c, size_t n)
 	dest0 = (char *)dest;
 	src0  = (char *)src;
 	count = 0;
-	if (n == 0 || dest == src)
+	if (n == 0 || dest == src || !src)
 		return (dest);
 	while (count < n)
 	{

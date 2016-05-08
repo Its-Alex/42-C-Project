@@ -6,18 +6,18 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 13:35:28 by alex              #+#    #+#             */
-/*   Updated: 2016/05/07 13:44:38 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:44:02 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_striter(char *s, void (*f)(char *))
+void    ft_striter(char *s, void (*f)(char *))
 {
-	size_t	count;
+	size_t count;
 
 	count = 0;
-	if (s && f)
+	if (!s || !f)
 	{
 		while (s[count])
 			f(&s[count++]);

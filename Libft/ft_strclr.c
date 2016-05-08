@@ -6,16 +6,16 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 13:18:33 by alex              #+#    #+#             */
-/*   Updated: 2016/05/07 14:13:11 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:30:56 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_strclr(char *s)
+void    ft_strclr(char *s)
 {
-	size_t	count;
-	size_t	size;
+	size_t count;
+	size_t size;
 
 	count = 0;
 	if (s)

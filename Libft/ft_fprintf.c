@@ -6,18 +6,14 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 22:55:31 by alex              #+#    #+#             */
-/*   Updated: 2016/05/06 22:55:56 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:45:34 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-void        ft_putchar(char c, int output);
-void        ft_putstr(char *str, int output);
-void        ft_putnbr(int nb, int output);
-
-static int  putcase(va_list args, int output, char letter /*, char secondletter*/)
+static int  putcase(va_list args, char letter /*, char secondletter*/)
 {
 	int countletter;
 
@@ -25,16 +21,16 @@ static int  putcase(va_list args, int output, char letter /*, char secondletter*
 	switch (letter)
 	{
 		case 'D': case 'd':
-			ft_putnbr(va_arg(args, int), output);
+			ft_putnbr(va_arg(args, int));
 			break;
 		case 'C': case 'c':
-			ft_putchar(va_arg(args, int), output);
+			ft_putchar(va_arg(args, int));
 			break;
 		case 'S': case 's':
-			ft_putstr(va_arg(args, char*), output);
+			ft_putstr(va_arg(args, char*));
 			break;
 		case '%':
-			ft_putchar('%', output);
+			ft_putchar('%');
 			break;
 	}
 	/*case 'L': case 'l':
@@ -56,7 +52,7 @@ static int  putcase(va_list args, int output, char letter /*, char secondletter*
 	return (countletter);
 }
 
-void        ft_fprintf(int output, const char *str, ...)
+void        ft_fprintf(const char *str, ...)
 {
 	va_list args;
 	int     i;
@@ -69,13 +65,13 @@ void        ft_fprintf(int output, const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			countletter = putcase(args, output, str[i + 1] /*, str[i + 2]*/);
+			countletter = putcase(args, str[i + 1] /*, str[i + 2]*/);
 			if (countletter == 2)
 				i++;
 			i++;
 		}
 		else
-			ft_putchar(str[i], output);
+			ft_putchar(str[i]);
 		i++;
 	}
 	va_end(args);

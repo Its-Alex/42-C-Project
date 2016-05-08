@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/10 23:51:50 by malexand          #+#    #+#             */
-/*   Updated: 2016/05/07 14:14:32 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:43:13 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char *ft_strrev(char *str)
 
 	i    = 0;
 	size = 0;
+	if (!str)
+		return (NULL);
 	while (str[size] != '\0')
-	{
 		size++;
-	}
 	while (i < size / 2)
 	{
 		tmp               = str[i];

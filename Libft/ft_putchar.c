@@ -6,14 +6,14 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/13 08:46:01 by malexand          #+#    #+#             */
-/*   Updated: 2016/05/07 14:11:46 by alex             ###   ########.fr       */
+/*   Updated: 2016/05/07 21:29:44 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar(char c, int output)
+void ft_putchar(char c)
 {
-	if (!write(output, &c, 1))
-		ft_putchar(c, output);
+	if (!write(1, &c, 1))
+		ft_putchar(c);
 }

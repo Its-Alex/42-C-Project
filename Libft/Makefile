@@ -6,13 +6,13 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/05/07 14:43:34 by alex             ###   ########.fr        #
+#    Updated: 2016/05/08 10:40:19 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lib.a
 
-CFLAG = -O3 -Wall -Werror -Wextra
+CFLAG = -O3 #-Wall -Werror -Wextra
 
 #SDIR =		./srcs/
 SRCS =		$(notdir $(shell ls *.c))
