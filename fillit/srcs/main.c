@@ -16,18 +16,20 @@ int		main(int argc, char const **argv)
 {
 	char **tetri;
 
-	if (argc > 2 || argc == 1)
-		ft_putstr("Error use ./fillit file\n");
-	else
+	while (1)
 	{
-		tetri = ft_split_tetri(argv[1]);
-		ft_putstr(tetri[0]);
-		if (tetri)
-		{
-			ft_free_array(tetri);
-		}
+		if (argc > 2 || argc == 1)
+			ft_putstr("Error use ./fillit file\n");
 		else
-			ft_putstr("error\n");
+		{
+			tetri = ft_split_tetri(argv[1]);
+			if (tetri)
+			{
+				ft_free_array(tetri);
+			}
+			else
+				ft_putstr("error\n");
+		}
 	}
 	return (0);
 }

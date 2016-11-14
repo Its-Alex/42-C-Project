@@ -19,6 +19,8 @@ static	int		*get_pos_tetri(char *str)
 	int		*tab;
 
 	tab = (int *)malloc(sizeof(int) * 4);
+	if (tab == NULL)
+		return (NULL);
 	count = 0;
 	occu = 0;
 	while (str[count] != '\0')
@@ -37,7 +39,7 @@ static	int		get_width(char *str, int *tab)
 {
 	int		count;
 	int		left;
-	int 	right;
+	int		right;
 
 	count = 0;
 	left = tab[0] % 5;
@@ -45,17 +47,17 @@ static	int		get_width(char *str, int *tab)
 	while (count < 4)
 	{
 		if (tab[count] % 5 < left)
-			left = (tab[count] % 5) + 1;
+			left = tab[count] % 5;
 		count++;
 	}
 	count = 0;
 	while (count < 4)
 	{
 		if (tab[count] % 5 > right)
-			right = (tab[count] % 5 + 1);
+			right = tab[count] % 5;
 		count++;
 	}
-	return (right - left);
+	return ((right - left) + 1);
 }
 
 static	int		find_start(char *str)
@@ -87,10 +89,10 @@ static	char	*create_pattern(char *str, int width, int heigth, int count)
 
 	j = 0;
 	i = 0;
-	if ((strnew = (char *)malloc(sizeof(*strnew) * ((width + 1) * (heigth + 1))
-			+ 1)) == NULL)
+	if ((strnew = (char *)malloc(sizeof(*strnew) * ((width + 1) * (heigth
+			+ 1)))) == NULL)
 		return (NULL);
-	while (i < (width + 1) * (heigth + 1))
+	while (i < (width + 1) * heigth)
 	{
 		strnew[i] = str[count + j];
 		i++;
@@ -115,12 +117,11 @@ char			*ft_form_tetri(char *str)
 	char	*strnew;
 
 	tab = get_pos_tetri(str);
-	width = 0;
-	heigth = ((tab[3] / 5) + 1) - ((tab[0] / 5) + 1);
+	if (tab == NULL)
+		return (NULL);
+	heigth = ((tab[3] / 5) + 1) - ((tab[0] / 5) + 1) + 1;
 	width = get_width(str, tab);
 	strnew = create_pattern(str, width, heigth, find_start(str));
 	free(tab);
-	ft_putstr(strnew);
-	ft_putendl("");
 	return (strnew);
 }

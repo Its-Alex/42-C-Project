@@ -29,10 +29,7 @@ static	char	*ft_readfile(int fd)
 		count_read += ret;
 		str[count_read] = '\0';
 		if (count_read > 21 * 26 + 1)
-		{
-			free(str);
-			return (NULL);
-		}
+			ret = -1;
 	}
 	if (ret == -1)
 	{
@@ -87,14 +84,14 @@ char			**ft_split_tetri(const char *name_file)
 		return (NULL);
 	while (count < nb_tetri)
 	{
-		if (ft_form_tetri((tetri[count] = ft_strsub(str, count * 21,
+		if ((tetri[count] = ft_form_tetri(ft_strsub(str, count * 21,
 				20))) == NULL)
 			ft_free_array(tetri);
 		count++;
 	}
 	tetri[count] = NULL;
 	free(str);
-	if(tetri == NULL)
+	if (tetri == NULL)
 		return (NULL);
 	return (tetri);
 }
