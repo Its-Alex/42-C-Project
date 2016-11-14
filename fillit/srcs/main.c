@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 16:02:09 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/10 16:02:11 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/10 15:25:25 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/11 14:59:03 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/lib.h"
 
-int		ft_nbtetra(char *str)
+int		main(int argc, char const **argv)
 {
-	int		count_height;
-	int		count_width;
+	char **tetri;
 
-	count_width = 0;
-	count_height = 0;
-	while (str)
+	if (argc > 2 || argc == 1)
+		ft_putstr("Error use ./fillit file\n");
+	else
 	{
-		if ()
-		str++;
+		tetri = ft_split_tetri(argv[1]);
+		ft_putstr(tetri[0]);
+		if (tetri)
+		{
+			ft_free_array(tetri);
+		}
+		else
+			ft_putstr("error\n");
 	}
-}
-
-int		ft_check_tetraminos(char *str)
-{
-	ft_nbtetra(str);
-	ft_validtetra(str);
+	return (0);
 }

@@ -38,6 +38,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBCC)
+	@echo "Generation de la lib..."
 	@make -C ./Libft
 	@echo "Génération du programme..."
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) ./Libft/libft.a
@@ -48,18 +49,19 @@ $(ODIR)%.o: $(SDIR)%.c
 
 clean:
 	@echo "Suppression des fichiers objets et des fichiers résiduels du programme..."
-	@make -C ./Libft clean
 	@rm -f $(OBCC)
 
 fclean: clean
 	@echo "Suppression de l'exécutable..."
-	@make -C ./Libft fclean
 	@rm -f $(NAME)
 
 re: fclean all
 
+cleanlib:
+	@make -C ./Libft fclean
+
 run: re
-	@./$(NAME)
+	@./$(NAME) extern_file.txt
 
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run cleanlib

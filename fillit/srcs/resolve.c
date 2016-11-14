@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   resolve.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 15:25:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/10 15:25:27 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/11 14:58:52 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/11 14:58:54 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/lib.h"
 
-int 	main(int argc, char const **argv)
+int     ft_resolve(char **tetri, char c)
 {
-	if (argc > 2	 || argc == 1)
-		ft_putstr("Error you must use only one arguments.\n");
-	else
-	{
-		ft_check_tetraminos(argv[1]);
-	}
-	return (0);
+    //ft_create_pattern(4);
 }
