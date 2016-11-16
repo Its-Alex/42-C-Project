@@ -14,13 +14,16 @@ NAME = fillit
 DEBUG = no
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+MKDIR_P = mkdir -p
+
+OUT_DIR = objs
 
 SDIR =		./srcs/
-SRCS =		$(shell ls srcs/)
+SRCS =		checks.c create_tetri.c define_result.c ft_putchar.c ft_putstr.c ft_strjoin_free.c ft_strlen.c ft_strsub.c main.c resolve.c
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 IDIR =		./incs/
-INCS =		$(shell ls incs/)
+INCS =		fillit.h
 INCC =		$(addprefix $(IDIR),$(INCS))
 
 INCLUDE = -I./incs/
@@ -35,17 +38,20 @@ else
 	OBCC =		$(addprefix $(ODIR),$(OBJS))
 endif
 
-all: $(NAME)
+all: directories $(NAME)
 
 $(NAME): $(OBCC)
-	@echo "Generation de la lib..."
-	@make -C ./Libft
 	@echo "Génération du programme..."
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) ./Libft/libft.a
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE)
 
 $(ODIR)%.o: $(SDIR)%.c
 	@echo "Génération du fichier objet $@..."
 	@$(CC) $^ $(CFLAG) -c -o $@
+
+directories: ${OUT_DIR}
+
+${OUT_DIR}:
+	@${MKDIR_P} ${OUT_DIR}
 
 clean:
 	@echo "Suppression des fichiers objets et des fichiers résiduels du programme..."
@@ -57,11 +63,8 @@ fclean: clean
 
 re: fclean all
 
-cleanlib:
-	@make -C ./Libft fclean
-
 run: re
 	@./$(NAME) extern_file.txt
 
 
-.PHONY: all clean fclean re run cleanlib
+.PHONY: all clean fclean re run directories

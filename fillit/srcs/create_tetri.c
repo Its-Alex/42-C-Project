@@ -10,7 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/lib.h"
+#include "../incs/fillit.h"
+
+void			ft_free_array(char **tab)
+{
+	while (*tab)
+	{
+		free(*tab);
+		*tab = NULL;
+	}
+	free(tab);
+	tab = NULL;
+}
 
 static	char	*ft_readfile(int fd)
 {
@@ -40,7 +51,7 @@ static	char	*ft_readfile(int fd)
 	return (str);
 }
 
-static	char	*ft_create_str(const char *name_file)
+char			*ft_create_str(const char *name_file)
 {
 	int		fd;
 	char	*str;
@@ -55,43 +66,4 @@ static	char	*ft_create_str(const char *name_file)
 		return (NULL);
 	}
 	return (str);
-}
-
-void			ft_free_array(char **tab)
-{
-	while (*tab)
-	{
-		free(*tab);
-		*tab = NULL;
-	}
-	free(tab);
-	tab = NULL;
-}
-
-char			**ft_split_tetri(const char *name_file)
-{
-	char	**tetri;
-	char	*str;
-	int		nb_tetri;
-	int		count;
-
-	count = 0;
-	if ((str = ft_create_str(name_file)) == NULL)
-		return (NULL);
-	if ((nb_tetri = ft_check_tetriminos(str)) <= 0)
-		return (NULL);
-	if ((tetri = (char **)malloc(sizeof(*tetri) * nb_tetri + 1)) == NULL)
-		return (NULL);
-	while (count < nb_tetri)
-	{
-		if ((tetri[count] = ft_form_tetri(ft_strsub(str, count * 21,
-				20))) == NULL)
-			ft_free_array(tetri);
-		count++;
-	}
-	tetri[count] = NULL;
-	free(str);
-	if (tetri == NULL)
-		return (NULL);
-	return (tetri);
 }

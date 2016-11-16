@@ -6,88 +6,90 @@
 /*   By: malexand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 16:02:09 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/11 18:30:12 by tglandai         ###   ########.fr       */
+/*   Updated: 2016/11/16 13:15:30 by tglandai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/lib.h"
+#include "../incs/fillit.h"
 
-static	int		ft_formfile(const char *str)
+static	int		ft_formfile(const char *str, int i)
 {
-	int		i;
-	int		j;
+	int		line;
 
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		j = 0;
-		while (j < 4)
+		line = 0;
+		while (line++ < 4)
 		{
-			if (str[i] != '.' && str[i] != '#')
+			i = 0;
+			while (i++ < 4)
+			{
+				if (*str != '.' && *str != '#')
+					return (-1);
+				str++;
+			}
+			if (*str != '\n')
 				return (-1);
-			j++;
-			i++;
+			str++;
 		}
-		if (str[i] != '\n' && str[i] != '0')
+		if (*str != '\n' && *str != '\0')
 			return (-1);
-		i++;
-		if (str[i] == '\n')
-			i++;
-		if (str[i + 1] == '\0')
+		if (*str == '\0')
 			return (1);
+		str++;
 	}
-	return (1);
+	return (-1);
 }
 
 static	int		ft_nbtetri(const char *str)
 {
 	int		nb_tetri;
 
-	nb_tetri = 0;
-	while (*str)
-	{
-		str = str + 21;
-		nb_tetri++;
-	}
-	if (nb_tetri - 1 > 26)
+	nb_tetri = ft_strlen(str) / 21;
+	if (nb_tetri + 1 > 26)
 		return (-1);
-	return (nb_tetri - 1);
+	return (nb_tetri + 1);
 }
 
-static	int		ft_search(const char *str, int index)
+static	int		ft_search(const char *str, int index, int *check)
 {
-	if ((index - 1) > 0)
+	int		count;
+
+	count = 0;
+	if ((index - 1) >= 0)
 		if (str[index - 1] == '#')
-			return (1);
-	if ((index - 5) > 0)
+			count++;
+	if ((index - 5) >= 0)
 		if (str[index - 5] == '#')
-			return (1);
+			count++;
 	if (str[index + 1] == '#')
-		return (1);
+		count++;
 	if (str[index + 5] == '#')
-		return (1);
-	return (-1);
+		count++;
+	if (count > 1)
+		*check = 1;
+	return (count);
 }
 
 static	int		ft_validtetri(const char *str)
 {
 	int		index;
-	int		count;
+	int		nb_sym;
+	int		check;
 
 	index = 0;
-	count = 0;
+	nb_sym = 0;
+	check = 0;
 	while (str[index] != '\0')
 	{
 		if (str[index] == '#')
 		{
-			count++;
-			if ((ft_search(str, index)) == -1)
+			nb_sym++;
+			if (ft_search(str, index, &check) <= 0)
 				return (-1);
 		}
-		if (count > 4)
+		if (check_nbsynb((char *)str, index, &nb_sym, &check) == -1)
 			return (-1);
-		if (str[index] == '\n' && str[index + 1] == '\n')
-			count = 0;
 		index++;
 	}
 	return (1);
@@ -95,9 +97,12 @@ static	int		ft_validtetri(const char *str)
 
 int				ft_check_tetriminos(const char *str)
 {
+	int		i;
+
+	i = 0;
 	if (ft_strlen(str) > 21 * 27)
 		return (-1);
-	if (ft_formfile(str) < 0)
+	if (ft_formfile(str, i) < 0)
 		return (-1);
 	if (ft_validtetri(str) < 0)
 		return (-1);
