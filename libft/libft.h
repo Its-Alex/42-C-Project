@@ -42,6 +42,7 @@ void				ft_putendl(const char *s);
 void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_freetab(char **tab);
 
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp (const char *s1, const char *s2, size_t num);

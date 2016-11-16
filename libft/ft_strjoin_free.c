@@ -6,11 +6,11 @@
 /*   By: malexand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:32:41 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/14 10:32:43 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/16 15:46:44 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/fillit.h"
+#include "libft.h"
 
 char	*ft_strjoin_free(char *s1, const char *s2)
 {
