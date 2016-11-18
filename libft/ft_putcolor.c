@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putcolor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/01 19:00:15 by alex              #+#    #+#             */
-/*   Updated: 2016/11/18 16:16:25 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/18 16:16:54 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/18 16:21:47 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putcolor(char *str, char *color)
 {
-	ft_memset(s, 0, n);
+	ft_putstr(color);
+	ft_putstr(str);
+	ft_putstr(RESET);
 }

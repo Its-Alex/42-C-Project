@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/09 11:56:18 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/18 16:22:25 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+
+#	define RED   "\x1B[31m"
+#	define GRN   "\x1B[32m"
+#	define YEL   "\x1B[33m"
+#	define BLU   "\x1B[34m"
+#	define MAG   "\x1B[35m"
+#	define CYN   "\x1B[36m"
+#	define WHT   "\x1B[37m"
+#	define RESET "\x1B[0m"
 
 typedef struct		s_list
 {
@@ -42,6 +51,7 @@ void				ft_putendl(const char *s);
 void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_putcolor(char *str, char *color);
 void				ft_freetab(char **tab);
 
 int					ft_strcmp(const char *s1, const char *s2);
