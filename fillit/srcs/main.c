@@ -95,6 +95,7 @@ int				main(int argc, char const **argv)
 	char	*str;
 	int		lenstr;
 
+	tetri = NULL;
 	if (argc != 2)
 		ft_putstr("Error use ./fillit file\n");
 	else

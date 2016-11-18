@@ -46,7 +46,7 @@ $(NAME): $(OBCC)
 
 $(ODIR)%.o: $(SDIR)%.c
 	@echo "Génération du fichier objet $@..."
-	@$(CC) $^ $(CFLAG) -c -o $@
+	@$(CC) $^ $(CFLAGS) -c -o $@
 
 directories: ${OUT_DIR}
 

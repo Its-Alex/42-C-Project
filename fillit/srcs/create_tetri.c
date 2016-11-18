@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../incs/fillit.h"
+#include <stdio.h>
 
 void			ft_free_array(char **tab)
 {
@@ -42,7 +43,7 @@ static	char	*ft_readfile(int fd)
 		if (count_read > 21 * 26 + 1)
 			ret = -1;
 	}
-	if (ret == -1)
+	if (ret == -1 || !str[0])
 	{
 		if (str != NULL)
 			free(str);
@@ -59,10 +60,11 @@ char			*ft_create_str(const char *name_file)
 	if ((fd = open(name_file, O_RDONLY)) < 0)
 		return (NULL);
 	str = ft_readfile(fd);
-	if (close(fd) == -1)
+	if (close(fd) == -1 || str == NULL)
 	{
 		if (str != NULL)
 			free(str);
+		ft_putstr("error\n");
 		return (NULL);
 	}
 	return (str);
