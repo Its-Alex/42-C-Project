@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/18 16:39:50 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/18 17:07:23 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 # include <string.h>
 # include <fcntl.h>
 
-#	define RED   "\x1B[31m"
-#	define GRN   "\x1B[32m"
-#	define YEL   "\x1B[33m"
-#	define BLU   "\x1B[34m"
-#	define MAG   "\x1B[35m"
-#	define CYN   "\x1B[36m"
-#	define WHT   "\x1B[37m"
-#	define RESET "\x1B[0m"
+# define RED   "\x1B[31m"
+# define GRN   "\x1B[32m"
+# define YEL   "\x1B[33m"
+# define BLU   "\x1B[34m"
+# define MAG   "\x1B[35m"
+# define CYN   "\x1B[36m"
+# define WHT   "\x1B[37m"
+# define RESET "\x1B[0m"
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {

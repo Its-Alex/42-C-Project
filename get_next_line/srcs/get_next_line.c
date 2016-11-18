@@ -6,12 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/18 15:55:09 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/18 17:08:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/get_next_line.h"
-#include <stdio.h>
 
 static	char		*freestrjoin(char *s1, char *s2)
 {
