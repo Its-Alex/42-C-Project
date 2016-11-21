@@ -1,0 +1,2 @@
+#!/bin/sh
+ifconfig | grep ether | cut -c8- | rev | cut -c2- | rev

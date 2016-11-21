@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/18 17:08:37 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 16:13:41 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ static	char		*read_file(const int fd, char *str)
 	char	buf[BUFF_SIZE + 1];
 
 	ret = 0;
-	while (!ft_strchr(str, '\n') && (ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		str = freestrjoin(str, buf);
+		if (ft_strchr(str, '\n'))
+		 	break ;
 	}
 	if (ret == -1)
 	{
@@ -52,7 +54,7 @@ static	int			fill_save_line(char *save, char **line)
 	while (save[count] != '\n' && save[count] != '\0')
 		count++;
 	*line = ft_strsub(save, 0, count);
-	tmp = (char *)ft_memalloc(sizeof(tmp) * (ft_strlen(save) + 1));
+	tmp = ft_strnew(sizeof(tmp) * (ft_strlen(save) + 1));
 	if (tmp == NULL)
 		return (-1);
 	tmp = ft_strcpy(tmp, &save[count + 1]);
@@ -68,7 +70,7 @@ int					get_next_line(const int fd, char **line)
 
 	if (BUFF_SIZE <= 0 || fd < 0 || line == NULL || BUFF_SIZE >= 10000000)
 		return (-1);
-	if (!save[fd] && (save[fd] = (char *)ft_memalloc(sizeof(save[fd]) * 2))
+	if (!save[fd] && (save[fd] = ft_strnew(sizeof(save[fd]) * 2))
 			== NULL)
 		return (-1);
 	if ((save[fd] = read_file(fd, save[fd])) == NULL)
