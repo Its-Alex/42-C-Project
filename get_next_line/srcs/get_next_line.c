@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/21 16:13:41 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:07:45 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static	int			fill_save_line(char *save, char **line)
 	while (save[count] != '\n' && save[count] != '\0')
 		count++;
 	*line = ft_strsub(save, 0, count);
-	tmp = ft_strnew(sizeof(tmp) * (ft_strlen(save) + 1));
+	tmp = ft_strnew(sizeof(tmp) * (ft_strlen(save)));
 	if (tmp == NULL)
 		return (-1);
 	tmp = ft_strcpy(tmp, &save[count + 1]);
@@ -66,7 +66,7 @@ static	int			fill_save_line(char *save, char **line)
 
 int					get_next_line(const int fd, char **line)
 {
-	static	char	*save[sizeof(fd)];
+	static	char	*save[SIZE_FD];
 
 	if (BUFF_SIZE <= 0 || fd < 0 || line == NULL || BUFF_SIZE >= 10000000)
 		return (-1);
