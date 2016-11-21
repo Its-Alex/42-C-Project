@@ -6,13 +6,13 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/04/07 20:53:19 by alex             ###   ########.fr        #
+#    Updated: 2016/11/21 21:47:57 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = get_next_line
 DEBUG = no
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra -pedantic
 MKDIR_P = mkdir -p
 
@@ -31,14 +31,8 @@ INCC =		$(addprefix $(IDIR),$(INCS))
 INCLUDE = -I./incs/
 
 ODIR =		./objs/
-
-ifeq ($(CC), gcc)
-	OBJS =		$(SRCS:.c=.o)
-	OBCC =		$(addprefix $(ODIR),$(OBJS))
-else
-	OBJS =		$(SRCS:.cpp=.o)
-	OBCC =		$(addprefix $(ODIR),$(OBJS))
-endif
+OBJS =		$(SRCS:.c=.o)
+OBCC =		$(addprefix $(ODIR),$(OBJS))
 
 all: directories $(NAME)
 

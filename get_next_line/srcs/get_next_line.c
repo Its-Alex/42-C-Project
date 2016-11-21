@@ -3,38 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/21 18:22:09 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 22:12:09 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/get_next_line.h"
 
-static	char		*freestrjoin(char *s1, char *s2)
-{
-	char	*tmp;
-
-	tmp = s1;
-	if (!(s1 = ft_strjoin(tmp, s2)))
-		return (NULL);
-	free(tmp);
-	return (s1);
-}
-
 static	char		*read_file(const int fd, char *str)
 {
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
+	char	*tmp;
 
 	ret = 0;
 	while (!(ft_strchr(str, '\n')) && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		str = freestrjoin(str, buf);
-		if (ft_strchr(str, '\n'))
-		 	break ;
+		tmp = str;
+		if (!(str = ft_strjoin(tmp, buf)))
+			return (NULL);
+		free(tmp);
 	}
 	if (ret == -1)
 	{

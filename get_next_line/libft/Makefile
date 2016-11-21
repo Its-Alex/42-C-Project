@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/07 14:46:52 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/21 21:50:05 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	@echo "Génération du fichier objet $@..."
-	@gcc $^ $(CFLAG) -c -o $@ -I.incs/libft.h
+	@clang $^ $(CFLAG) -c -o $@ -I.incs/libft.h
 
 clean:
 	@echo "Suppression des fichiers objets et des fichiers résiduels du programme..."
