@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 13:12:37 by alex              #+#    #+#             */
-/*   Updated: 2016/11/04 17:18:07 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:34:14 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnew(size_t size)
 	size_t	count;
 
 	count = 0;
-	str = (char *)malloc(size + 1);
+	str = (char *)malloc(size + sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	while (count <= size)

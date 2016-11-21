@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/26 13:36:53 by root              #+#    #+#             */
-/*   Updated: 2016/11/07 14:59:15 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:25:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static	char	*ft_minint(void)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * 12);
+	str = ft_strnew(sizeof(char) * 12);
 	str = ft_strcpy(str, "-2147483648");
 	return (str);
 }
@@ -77,7 +77,7 @@ char			*ft_itoa(int n)
 		n = -n;
 		is_negative = 1;
 	}
-	if ((str = (char *)ft_memalloc(sizeof(char) * (ft_getlen(n) + 1 +
+	if ((str = ft_strnew(sizeof(char) * (ft_getlen(n) +
 						is_negative))) == NULL)
 		return (NULL);
 	count = ft_getstr(n, str);

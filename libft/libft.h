@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/18 17:07:23 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:32:31 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-int 				get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/16 10:51:55 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/04 15:16:05 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:27:55 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(char *src)
 
 	count = 0;
 	src_size = ft_strlen(src);
-	new_str = (char*)malloc(sizeof(*new_str) * (src_size + 1));
+	new_str = ft_strnew(sizeof(*new_str) * (src_size + 1) - 1);
 	if (new_str == NULL)
 		return (NULL);
 	while (count < src_size)

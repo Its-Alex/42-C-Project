@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 15:45:12 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/18 16:16:21 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:31:10 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	ft_freetab(char **tab)
 	i = ft_strlen(tab[0]);
 	if (tab == NULL)
 	{
-		free(tab);
+		ft_strdel(tab);
 		tab = NULL;
 		return ;
 	}
 	while (i >= 0)
 	{
-		free(tab[i]);
+		ft_strdel(&tab[i]);
 		tab[i] = NULL;
 		i--;
 	}
-	free(tab);
+	ft_strdel(tab);
 	tab = NULL;
 }

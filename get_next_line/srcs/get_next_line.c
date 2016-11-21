@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/21 18:07:45 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:22:09 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static	char		*read_file(const int fd, char *str)
 	char	buf[BUFF_SIZE + 1];
 
 	ret = 0;
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while (!(ft_strchr(str, '\n')) && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		str = freestrjoin(str, buf);
