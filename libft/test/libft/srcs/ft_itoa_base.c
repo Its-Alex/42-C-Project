@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 23:15:57 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 16:48:42 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 22:09:20 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static	int	ft_getstr(int value, int base, char *str)
 	return (count);
 }
 
-static	int		is_negative(int value)
+static	int		is_negative(int *value)
 {
 	int		sign;
 
 	sign = 1;
-	if (value < 0)
+	if (*value < 0)
 	{
-		value = -value;
+		*value = -*value;
 		sign = -1;
 	}
 	return (sign);
@@ -61,12 +61,14 @@ char			*ft_itoa_base(int value, int base)
 	char	*str;
 
 	count = 0;
-	sign = is_negative(value);
+	sign = is_negative(&value);
+	if (base < 2 || base > 16)
+		return ("");
 	if (value == 0 || value == -0)
 		return ("0");
-	if (value == INT_MIN)
+	if (value == -2147483648)
 		return ("-2147483648");
-	if (value == INT_MAX)
+	if (value == 2147483647)
 		return ("2147483647");
 	if ((str = ft_strnew(sizeof(char) * (ft_getlen(value, base) +
 			sign))) == NULL)

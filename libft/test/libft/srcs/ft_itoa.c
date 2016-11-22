@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/26 13:36:53 by root              #+#    #+#             */
-/*   Updated: 2016/11/22 16:40:26 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 22:05:40 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static	int		ft_getstr(int value, char *str)
 	return (count);
 }
 
-static	int		is_negative(int value)
+static	int		is_negative(int *value)
 {
 	int		sign;
 
 	sign = 1;
-	if (value < 0)
+	if (*value < 0)
 	{
-		value = -value;
+		*value = -*value;
 		sign = -1;
 	}
 	return (sign);
@@ -61,15 +61,15 @@ char			*ft_itoa(int value)
 	char	*str;
 
 	count = 0;
-	sign = is_negative(value);
+	sign = is_negative(&value);
 	if (value == 0 || value == -0)
 		return ("0");
-	if (value == INT_MIN)
+	if (value == -2147483648)
 		return ("-2147483648");
-	if (value == INT_MAX)
+	if (value == 2147483647)
 		return ("2147483647");
 	if ((str = ft_strnew(sizeof(char) * (ft_getlen(value) +
-			sign))) == NULL)
+			1))) == NULL)
 		return (NULL);
 	count = ft_getstr(value, str);
 	if (sign < 0)

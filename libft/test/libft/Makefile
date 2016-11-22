@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/22 16:25:53 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/22 21:58:49 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ $(NAME): $(OBCC)
 
 $(ODIR)%.o: $(SDIR)%.c
 	@echo "Génération du fichier objet $@..."
-	@gcc $^ $(CFLAG) -c -o $@ -I includes
+	@clang $^ $(CFLAG) -c -o $@ -I includes
 
 clean:
 	@echo "Suppression des fichiers objets et des fichiers résiduels du programme..."
