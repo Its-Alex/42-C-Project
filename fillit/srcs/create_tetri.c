@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tetri.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 14:39:13 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/21 18:16:01 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 15:07:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ char			*ft_create_str(const char *name_file)
 	char	*str;
 
 	if ((fd = open(name_file, O_RDONLY)) < 0)
+	{
+		ft_putstr("error\n");
 		return (NULL);
+	}
 	str = ft_readfile(fd);
 	if (close(fd) == -1 || str == NULL)
 	{
