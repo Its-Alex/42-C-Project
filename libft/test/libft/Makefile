@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/22 21:58:49 by alex             ###   ########.fr        #
+#    Updated: 2016/11/22 23:18:01 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRCS =		ft_atoi.c \
 			ft_putnbr_fd.c \
 			ft_strmap.c \
 			get_next_line.c \
+			get_line.c \
 			ft_lstmap.c \
 			ft_putstr.c \
 			ft_strmapi.c \
