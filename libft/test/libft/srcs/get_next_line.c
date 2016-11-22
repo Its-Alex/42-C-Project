@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 15:43:06 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 22:55:07 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int					get_next_line(const int fd, char **line)
 {
 	static	char	*save[SIZE_FD];
 
-	if (BUFF_SIZE <= 0 || fd < 0 || line == NULL || BUFF_SIZE >= 10000000)
+	if (BUFF_SIZE <= 0 || fd < 0 || fd > 2147483647 || line == NULL
+		|| BUFF_SIZE >= 10000000)
 		return (-1);
 	if (!save[fd] && (save[fd] = ft_strnew(sizeof(save[fd]) * 2))
 			== NULL)
