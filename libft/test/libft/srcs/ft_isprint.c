@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putcolor.c                                      :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 16:16:54 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 15:47:41 by malexand         ###   ########.fr       */
+/*   Created: 2016/05/07 12:52:19 by alex              #+#    #+#             */
+/*   Updated: 2016/11/22 15:47:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_putcolor(char *str, char *color)
+int		ft_isprint(int c)
 {
-	ft_putstr(color);
-	ft_putstr(str);
-	ft_putstr(RESET);
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

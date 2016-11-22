@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/22 16:03:50 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 16:36:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define _LIBFT_H
 
 # include <stdlib.h>
+# include <limits.h>
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
@@ -85,7 +86,7 @@ size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 int					ft_atoi(char *str);
-char				*ft_itoa(int n);
+char				*ft_itoa(int value);
 char				*ft_itoa_base(int value, int base);
 void				ft_swap(int *a, int *b);
 void				ft_bzero(void *s, size_t n);
