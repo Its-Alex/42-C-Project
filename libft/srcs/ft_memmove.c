@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/07 21:05:39 by alex              #+#    #+#             */
-/*   Updated: 2016/11/22 15:14:09 by malexand         ###   ########.fr       */
+/*   Created: 2016/05/01 20:55:54 by alex              #+#    #+#             */
+/*   Updated: 2016/11/22 15:47:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	char	*tmp;
+	char	*dest0;
+	char	*src0;
 	size_t	count;
-	size_t	lens_s1;
-	size_t	len_s2;
-	char	*str;
 
-	lens_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	if (!s1 || !s2)
-		return (NULL);
-	str = ft_strnew(sizeof(char) * (lens_s1 + len_s2));
-	if (str == NULL)
-		return (NULL);
 	count = 0;
-	while (count < lens_s1)
+	src0 = (char *)src;
+	dest0 = (char *)dest;
+	if (dest == src || n == 0 ||
+			(tmp = (char *)malloc(sizeof(char) * n)) == NULL)
+		return (dest);
+	while (count < n)
 	{
-		str[count] = s1[count];
+		tmp[count] = src0[count];
 		count++;
 	}
-	while (count < (lens_s1 + len_s2))
+	count = 0;
+	while (count < n)
 	{
-		str[count] = s2[count - lens_s1];
+		dest0[count] = tmp[count];
 		count++;
 	}
-	str[count] = '\0';
-	return (str);
+	free(tmp);
+	tmp = NULL;
+	return (dest);
 }

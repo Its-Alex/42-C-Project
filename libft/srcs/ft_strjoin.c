@@ -6,11 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 21:05:39 by alex              #+#    #+#             */
-/*   Updated: 2016/11/22 15:14:09 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/22 15:47:50 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

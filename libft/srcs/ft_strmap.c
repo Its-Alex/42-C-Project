@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/07 21:05:39 by alex              #+#    #+#             */
-/*   Updated: 2016/11/22 15:14:09 by malexand         ###   ########.fr       */
+/*   Created: 2016/05/07 13:46:35 by alex              #+#    #+#             */
+/*   Updated: 2016/11/22 15:47:51 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strmap(const char *s, char (*f)(char))
 {
-	size_t	count;
-	size_t	lens_s1;
-	size_t	len_s2;
 	char	*str;
+	size_t	count;
 
-	lens_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	if (!s1 || !s2)
+	count = 0;
+	if (!s || !f)
 		return (NULL);
-	str = ft_strnew(sizeof(char) * (lens_s1 + len_s2));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (str == NULL)
 		return (NULL);
-	count = 0;
-	while (count < lens_s1)
+	while (s[count])
 	{
-		str[count] = s1[count];
-		count++;
-	}
-	while (count < (lens_s1 + len_s2))
-	{
-		str[count] = s2[count - lens_s1];
+		str[count] = f(s[count]);
 		count++;
 	}
 	str[count] = '\0';
