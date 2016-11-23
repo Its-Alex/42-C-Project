@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/22 16:03:50 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/23 10:43:17 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char				*ft_strmap(const char *s, char (*f)(char));
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);
+char				*ft_strjoin_free(char *s1, const char *s2);
 char				*ft_strtrim(const char *s);
 char				**ft_strsplit(const char *s, char c);
 void				ft_strdel(char **as);
@@ -85,7 +86,7 @@ size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 int					ft_atoi(char *str);
-char				*ft_itoa(int n);
+char				*ft_itoa(int value);
 char				*ft_itoa_base(int value, int base);
 void				ft_swap(int *a, int *b);
 void				ft_bzero(void *s, size_t n);
@@ -106,6 +107,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+int					get_line(const int fd, int nb_line, char **line);
 int					get_next_line(const int fd, char **line);
 
 #endif

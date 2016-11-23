@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:32:41 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 15:47:50 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/23 11:36:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,28 @@
 char	*ft_strjoin_free(char *s1, const char *s2)
 {
 	size_t	count;
+	size_t	len[2];
 	char	*str;
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	len[0] = ft_strlen(s1);
+	len[1] = ft_strlen(s2);
+	str = ft_strnew(sizeof(char) * (len[0] + len[1]));
 	if (str == NULL)
 		return (NULL);
 	count = 0;
-	while (count < ft_strlen(s1))
+	while (count < len[0])
 	{
 		str[count] = s1[count];
 		count++;
 	}
-	while (count < (ft_strlen(s1) + ft_strlen(s2)))
+	while (count < (len[0] + len[1]))
 	{
-		str[count] = s2[count - ft_strlen(s1)];
+		str[count] = s2[count - len[0]];
 		count++;
 	}
-	free(s1);
 	str[count] = '\0';
+	free(s1);
 	return (str);
 }
