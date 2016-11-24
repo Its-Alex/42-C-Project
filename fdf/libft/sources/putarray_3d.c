@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   putarray_3d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/24 13:54:01 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/24 15:40:45 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/24 15:53:48 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../mlx/mlx.h"
-# include "../libft/includes/libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <string.h>
-# include <math.h>
-# include <errno.h>
+#include "../includes/libft.h"
 
-typedef struct	s_params
+void	putarray_3d(char ***array)
 {
-	void		*mlx;
-	void		*win;
-}				t_params;
+	int		line;
+	int		column;
 
-char			*parse_file(const char *file_name);
-
-#endif
+	line = 0;
+	column = 0;
+	while (array[line])
+	{
+		column = 0;
+		while (array[line][column])
+		{
+			ft_putstr(array[line][column]);
+			ft_putstr(" ");
+			column++;
+		}
+		ft_putendl("");
+		line++;
+	}
+}

@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/23 18:14:42 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/24 16:52:52 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = fdf
 DEBUG = no
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
 MKDIR_P = mkdir -p
 
 OUT_DIR = objs
@@ -39,11 +40,13 @@ all: directories $(NAME)
 $(NAME): $(OBCC)
 	@make -C ./libft
 	@make -C ./mlx
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
-	@echo "Génération du programme ✅"
+	@echo "\x1B[31m\c"
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@echo "\x1B[0m\c"
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo "Build $(NAME) ✅"
 
 $(ODIR)%.o: $(SDIR)%.c
-	@echo "Génération du fichier objet $@..."
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
 
 directories: ${OUT_DIR} ${SRC_DIR} ${INC_DIR}
@@ -59,16 +62,16 @@ ${INC_DIR}:
 
 clean:
 	@rm -f $(OBCC)
-	@echo "Suppression des fichiers objets et des fichiers résiduels du programme ✅"
+	@echo "Deleting compilation files ✅"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "Suppression de l'exécutable ✅"
+	@echo "Deleting $(NAME) ✅"
 
 re: fclean all
 
 run: re
-	@./$(NAME) test
+	@./$(NAME) maps/42.fdf
 
 cleanlib:
 	@make -C ./libft fclean

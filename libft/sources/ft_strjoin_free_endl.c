@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 11:19:35 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/24 11:41:15 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/24 13:57:33 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	char	*putend(char *str, int count)
 {
 	str[count++] = '\n';
 	str[count] = '\0';
-	return(str);
+	return (str);
 }
 
 char			*ft_strjoin_free_endl(char *s1, const char *s2)

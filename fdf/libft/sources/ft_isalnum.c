@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/24 13:54:01 by malexand         ###   ########.fr       */
+/*   Created: 2016/05/07 12:50:44 by alex              #+#    #+#             */
+/*   Updated: 2016/11/22 15:47:30 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "../mlx/mlx.h"
-# include "../libft/includes/libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <string.h>
-# include <math.h>
-# include <errno.h>
+#include "../includes/libft.h"
 
-typedef struct	s_params
+int		ft_isalnum(int c)
 {
-	void		*mlx;
-	void		*win;
-}				t_params;
-
-char			*parse_file(const char *file_name);
-
-#endif
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	else
+		return (0);
+}

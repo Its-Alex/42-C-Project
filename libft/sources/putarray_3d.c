@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetab.c                                       :+:      :+:    :+:   */
+/*   putarray_3d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 15:45:12 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 15:47:29 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/24 15:40:45 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/24 15:53:48 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_freetab(char **tab)
+void	putarray_3d(char ***array)
 {
-	int	i;
+	int		line;
+	int		column;
 
-	i = ft_strlen(tab[0]);
-	if (tab == NULL)
+	line = 0;
+	column = 0;
+	while (array[line])
 	{
-		ft_strdel(tab);
-		tab = NULL;
-		return ;
+		column = 0;
+		while (array[line][column])
+		{
+			ft_putstr(array[line][column]);
+			ft_putstr(" ");
+			column++;
+		}
+		ft_putendl("");
+		line++;
 	}
-	while (i >= 0)
-	{
-		ft_strdel(&tab[i]);
-		tab[i] = NULL;
-		i--;
-	}
-	ft_strdel(tab);
-	tab = NULL;
 }

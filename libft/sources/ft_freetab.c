@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/07 12:50:44 by alex              #+#    #+#             */
-/*   Updated: 2016/11/23 17:43:11 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/16 15:45:12 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/24 16:49:19 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		ft_isalnum(int c)
+void	ft_freetab(char **tab)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	else
-		return (0);
+	int	count;
+
+	count = 0;
+	if (tab == NULL)
+	{
+		free(tab);
+		tab = NULL;
+		return ;
+	}
+	while (tab[count])
+	{
+		ft_strdel(&tab[count]);
+		tab[count] = NULL;
+		count++;
+	}
+	ft_strdel(&tab[count]);
+	tab[count] = NULL;
+	free(tab);
+	tab = NULL;
 }
