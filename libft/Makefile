@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/23 18:02:28 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/24 11:22:55 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRCS =		ft_atoi.c \
 			ft_strnew.c \
 			ft_strsub.c \
 			get_line.c \
-			get_next_line.c
+			get_next_line.c \
+			ft_strjoin_free_endl.c
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 #IDIR =		./includes/

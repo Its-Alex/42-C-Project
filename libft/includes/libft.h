@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/23 10:43:17 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/24 11:19:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strjoin_free(char *s1, const char *s2);
+char				*ft_strjoin_free_endl(char *s1, const char *s2);
 char				*ft_strtrim(const char *s);
 char				**ft_strsplit(const char *s, char c);
 void				ft_strdel(char **as);
