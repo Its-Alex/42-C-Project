@@ -11,4 +11,4 @@ All of my project at 42born2code
 	* Multiple file descriptor
 	* 1 static variables
 	* Fail one medium tes
-* fdf : ?/100t
+* fdf : ?/100
