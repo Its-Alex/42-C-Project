@@ -5,46 +5,55 @@
 #                                                     +:+ +:+         +:+      #
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/24 16:52:52 by malexand         ###   ########.fr        #
+#    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
+#    Updated: 2016/11/25 14:29:04 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-DEBUG = no
+DEBUG = yes
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
+OS := $(shell uname -s)
 MKDIR_P = mkdir -p
 
-OUT_DIR = objs
-SRC_DIR = srcs
-INC_DIR = incs
+ifeq ($(DEBUG), yes)
+	CFLAGS = -g -ggdb -Wall -Werror -Wextra
+else
+	CFLAGS = -Wall -Werror -Wextra
+endif
+LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
 
-SDIR =		./srcs/
-SRCS =		$(shell ls srcs/)
+OUT_DIR = objets
+SRC_DIR = sources
+INC_DIR = includes
+
+SDIR =		./sources/
+SRCS =		$(shell ls sources/)
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
-IDIR =		./incs/
-INCS =		$(shell ls incs/)
-INCC =		$(addprefix $(IDIR),$(INCS))
+INCLUDE = -I includes
 
-INCLUDE = -I incs/
-
-ODIR =		./objs/
+ODIR =		./objets/
 OBJS =		$(SRCS:.c=.o)
 OBCC =		$(addprefix $(ODIR),$(OBJS))
 
 all: directories $(NAME)
 
 $(NAME): $(OBCC)
+ifeq ($(OS), Linux)
+	@make -C ./libft
+	@make -C ./mlx
+	@clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo "Build $(NAME) ✅"
+else
 	@make -C ./libft
 	@make -C ./mlx
 	@echo "\x1B[31m\c"
-	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@norminette sources/* includes/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "Build $(NAME) ✅"
+endif
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
