@@ -12,7 +12,7 @@
 
 NAME = fdf
 DEBUG = yes
-CC = gcc
+CC = clang
 OS := $(shell uname -s)
 MKDIR_P = mkdir -p
 
@@ -21,7 +21,11 @@ ifeq ($(DEBUG), yes)
 else
 	CFLAGS = -Wall -Werror -Wextra
 endif
-LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
+ifeq ($(OS), Linux)
+	LFLAGS = libft/libft.a mlx/libmlx_Linux.a -lXext -lX11
+else
+	LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
+endif
 
 OUT_DIR = objets
 SRC_DIR = sources
@@ -42,8 +46,7 @@ all: directories $(NAME)
 $(NAME): $(OBCC)
 ifeq ($(OS), Linux)
 	@make -C ./libft
-	@make -C ./mlx
-	@clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "Build $(NAME) ✅"
 else
 	@make -C ./libft
