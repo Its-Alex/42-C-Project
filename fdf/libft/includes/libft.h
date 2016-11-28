@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/24 15:36:55 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/28 17:02:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_tab2d
+{
+	int				line;
+	int				column;
+	int				**tab;
+}					t_tab2d;
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -112,5 +119,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					get_line(const int fd, int nb_line, char **line);
 int					get_next_line(const int fd, char **line);
+
+int					tab2d_int_malloc(t_tab2d *tab2d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:21:24 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/25 14:03:32 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/28 18:08:05 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 static	int		atoi_3d(char ***tabstr)
 {
-	(void)tabstr;
+	t_tab2d		*tab;
+
+	tab = (t_tab2d*)malloc(sizeof(t_tab2d));
+	tab->line = 0;
+	tab->column = 0;
+	while (tabstr[tab->line] != NULL)
+		tab->line++;
+	while (tabstr[0][tab->column] != NULL)
+		tab->column++;
+	tab2d_int_malloc(tab);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/25 14:29:04 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/28 16:36:21 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ endif
 ifeq ($(OS), Linux)
 	LFLAGS = libft/libft.a mlx/libmlx_Linux.a -lXext -lX11
 else
-	LFLAGS = libft/libft.a mlx/libmlx.a -lmlx -framework OpenGL -framework AppKit
+	LFLAGS = libft/libft.a -lmlx -framework OpenGL -framework AppKit
 endif
 
 OUT_DIR = objets
@@ -50,7 +50,6 @@ ifeq ($(OS), Linux)
 	@echo "Build $(NAME) ✅"
 else
 	@make -C ./libft
-	@make -C ./mlx
 	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"

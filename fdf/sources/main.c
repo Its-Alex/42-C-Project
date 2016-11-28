@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/25 15:56:00 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/28 18:04:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,11 @@ void	error(int error, int send_perror, char *str)
 
 int		my_keyfunc(int keycode, t_params *params)
 {
-	t_mlx_key key;
-
-	key = keycode;
 	if (keycode == KEY_ESCAPE)
 	{
 		mlx_destroy_window(params->mlx, params->win);
 		exit(0);
 	}
-	// if (keycode == 126)
-	// {
-	// 	params->point->x++;
-	// }
-	// if (keycode == 123)
-	// 	params->point->y--;
-	// if (keycode == 125)
-	// 	params->point->x--;
-	// if (keycode == 124)
-	// 	params->point->y++;
-	// mlx_pixel_put(params->mlx, params->win, params->point->x, params->point->y, 0x0000FF);
 	printf("Key event : %d\n", keycode);
 	return (0);
 }

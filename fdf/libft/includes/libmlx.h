@@ -6,12 +6,51 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/25 16:54:49 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/28 16:35:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMLX_H
 # define LIBMLX_H
+# include <mlx.h>
+# include <math.h>
+
+typedef struct	s_point
+{
+	int			px;
+	int			py;
+
+	int			x;
+	int			y;
+	int			z;
+
+	int			color;
+}				t_point;
+
+typedef struct	s_params
+{
+	void		*mlx;
+	void		*win;
+
+	int			heigth;
+	int			width;
+
+	t_point		***point;
+}				t_params;
+
+typedef struct	s_bresenham
+{
+	int			x;
+	int			y;
+
+	int			dx;
+	int			dy;
+
+	int			incx;
+	int			incy;
+
+	int			color;
+}				t_bresenham;
 
 typedef enum	e_mlx_key
 {
@@ -67,5 +106,7 @@ typedef enum	e_mlx_key
 	KEY_DOWN = 125,
 	KEY_ESCAPE = 53
 }				t_mlx_key;
+
+void			bres(t_params *params, t_point point1, t_point point2);
 
 #endif

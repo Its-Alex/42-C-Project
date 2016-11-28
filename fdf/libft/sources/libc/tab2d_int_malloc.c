@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   tab2d_int_malloc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/28 16:31:18 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/28 16:43:00 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/28 17:02:30 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include <mlx.h>
-# include "../libft/includes/libft.h"
-# include "../libft/includes/libmlx.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <string.h>
-# include <math.h>
-# include <errno.h>
+#include "../../includes/libft.h"
 
-char			*parse_file(const char *file_name);
-void			error(int error, int perror, char *str);
+int		tab2d_int_malloc(t_tab2d *tab2d)
+{
+	int			count;
+	int			*tab;
 
-#endif
+	count = 0;
+	if ((tab2d->tab = (int**)malloc(sizeof(int) * tab2d->line)) == NULL)
+		return (-1);
+	if ((tab = (int*)malloc(sizeof(int) * tab2d->line * tab2d->column)) == NULL)
+		return (-1);
+	while (count < tab2d->line)
+	{
+		tab2d->tab[count] = &tab[count * tab2d->column];
+		count++;
+	}
+	return (1);
+}

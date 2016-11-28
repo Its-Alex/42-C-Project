@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/25 16:53:47 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/28 16:57:55 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,10 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_strclr.c libc/ft_striter.c libc/ft_strmap.c \
 					libc/ft_strnew.c libc/ft_strsub.c libc/get_line.c \
 					libc/get_next_line.c libc/ft_strjoin_free_endl.c \
-					libc/parse_array_3d.c libc/putarray_3d.c \
+					libc/parse_array_3d.c libc/putarray_3d.c libc/tab2d_int_malloc.c\
 					\
 					\
+					libmlx/bresenham.c
 					
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
