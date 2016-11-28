@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_check_new_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vacrozet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 11:18:01 by vacrozet          #+#    #+#             */
-/*   Updated: 2016/11/28 16:22:56 by vacrozet         ###   ########.fr       */
+/*   Created: 2016/11/28 16:24:44 by vacrozet          #+#    #+#             */
+/*   Updated: 2016/11/28 16:27:05 by vacrozet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "./includes/libft.h"
 
-# include "libft/includes/libft.h"
-# define BUFF_SIZE 8
-# define FD_SIZE 2147483647
+int		ft_check_new_line(char *str)
+{
+	int		i;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	if (!str)
+		return (-1);
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}

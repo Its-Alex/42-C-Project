@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vacrozet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vacrozet <vacrozet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 11:18:01 by vacrozet          #+#    #+#             */
-/*   Updated: 2016/11/28 16:22:56 by vacrozet         ###   ########.fr       */
+/*   Created: 2016/08/20 14:33:35 by vacrozet          #+#    #+#             */
+/*   Updated: 2016/08/24 14:12:53 by vacrozet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
-# define BUFF_SIZE 8
-# define FD_SIZE 2147483647
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, '\0', n);
+}

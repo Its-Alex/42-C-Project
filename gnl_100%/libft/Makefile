@@ -1,0 +1,99 @@
+#* ************************************************************************** *#
+#*                                                                            *#
+#*                                                        :::      ::::::::   *#
+#*   Makefile                                           :+:      :+:    :+:   *#
+#*                                                    +:+ +:+         +:+     *#
+#*   By: vacrozet <vacrozet@student.42.fr>          +#+  +:+       +#+        *#
+#*                                                +#+#+#+#+#+   +#+           *#
+#*   Created: 2016/08/22 14:16:24 by vacrozet          #+#    #+#             *#
+#*   Updated: 2016/09/15 14:13:32 by vacrozet         ###   ########.fr       *#
+#*                                                                            *#
+#* ************************************************************************** *#
+
+NAME = libft.a
+
+SRC = 	ft_strcmp.c\
+	ft_strncmp.c\
+	ft_strlen.c\
+	ft_atoi.c\
+	ft_bzero.c\
+	ft_memcpy.c\
+	ft_memset.c\
+	ft_strcat.c\
+	ft_strncat.c\
+	ft_strlcat.c\
+	ft_strchr.c\
+	ft_strrchr.c\
+	ft_strcpy.c\
+	ft_strdup.c\
+	ft_strncpy.c\
+	ft_isdigit.c\
+	ft_isalpha.c\
+	ft_memmove.c\
+	ft_memcmp.c\
+	ft_strstr.c\
+	ft_strnstr.c\
+	ft_memchr.c\
+	ft_memccpy.c\
+	ft_isalnum.c\
+	ft_isascii.c\
+	ft_isprint.c\
+	ft_toupper.c\
+	ft_tolower.c\
+	ft_memalloc.c\
+	ft_memdel.c\
+	ft_strnew.c\
+	ft_strdel.c\
+	ft_strclr.c\
+	ft_striter.c\
+	ft_striteri.c\
+	ft_strmap.c\
+	ft_strmapi.c\
+	ft_strequ.c\
+	ft_strnequ.c\
+	ft_putstr.c\
+	ft_putchar.c\
+	ft_putnbr.c\
+	ft_strsub.c\
+	ft_strjoin.c\
+	ft_strtrim.c\
+	ft_check_past.c\
+	ft_strsplit.c\
+	ft_itoa.c\
+	ft_putendl.c\
+	ft_putchar_fd.c\
+	ft_putstr_fd.c\
+	ft_putendl_fd.c\
+	ft_putnbr_fd.c\
+	ft_lstdelone.c\
+	ft_lstnew.c\
+	ft_lstdel.c\
+	ft_lstadd.c\
+	ft_lstiter.c\
+	ft_lstmap.c\
+	ft_swap_int.c\
+	ft_swap_char.c\
+	ft_absolut.c\
+	ft_recursive_factorial.c\
+	ft_check_new_line.c\
+
+ORG = $(SRC:.c=.o)
+
+$(NAME): 
+	@gcc -c -Wall -Wextra -Werror $(SRC) 
+	@ar rc $(NAME) $(ORG)
+	@ranlib $(NAME)
+	@echo "\033[35m✔ Compilation libft\033[1;34;35m😎  $(NAME) 😎 \033[0m"
+all: $(NAME)
+
+.PHONY: clean
+clean: 
+	@/bin/rm -f $(ORG)
+	@echo "\033[35m✔ Removal files .o \033[1;34;35m$(NAME)\033[0m"
+
+fclean: clean
+	@/bin/rm -f $(NAME)
+	@echo "\033[35m✔ removal libft \033[1;34;35m⚔  $(NAME) ⚔ \033[0m"
+
+re: fclean all
+

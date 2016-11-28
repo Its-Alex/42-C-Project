@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vacrozet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vacrozet <vacrozet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 11:18:01 by vacrozet          #+#    #+#             */
-/*   Updated: 2016/11/28 16:22:56 by vacrozet         ###   ########.fr       */
+/*   Created: 2016/08/25 00:45:48 by vacrozet          #+#    #+#             */
+/*   Updated: 2016/11/09 17:19:04 by vacrozet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
-# define BUFF_SIZE 8
-# define FD_SIZE 2147483647
+void	ft_putchar(unsigned char c)
+{
+	unsigned int tmp;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (c < 128)
+		write(1, &c, 1);
+	else
+	{
+		tmp = (192 | (c >> 6));
+		write(1, &tmp, 1);
+		tmp = (128 | (c & 63));
+		write(1, &tmp, 1);
+	}
+}

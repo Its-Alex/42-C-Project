@@ -6,12 +6,11 @@
 /*   By: vacrozet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 11:17:25 by vacrozet          #+#    #+#             */
-/*   Updated: 2016/11/23 18:17:31 by vacrozet         ###   ########.fr       */
+/*   Updated: 2016/11/28 16:23:03 by vacrozet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "./libft/libft.h"
 
 char	*ft_add(char *s1, char *s2)
 {
