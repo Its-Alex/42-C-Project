@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/28 16:35:56 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/29 18:00:01 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define LIBMLX_H
 # include <mlx.h>
 # include <math.h>
+
+typedef struct	s_img
+{
+	void		*img;
+	char		*addr;
+
+	int			bpp;
+	int			size_l;
+	int			endian;
+}				t_img;
 
 typedef struct	s_point
 {
@@ -31,11 +41,15 @@ typedef struct	s_params
 {
 	void		*mlx;
 	void		*win;
+	t_img		*img;
 
 	int			heigth;
 	int			width;
 
-	t_point		***point;
+	char		**av;
+	char		**parse;
+
+	t_point		**point;
 }				t_params;
 
 typedef struct	s_bresenham
@@ -65,7 +79,7 @@ typedef enum	e_mlx_key
 	KEY_I = 34,
 	KEY_J = 38,
 	KEY_K = 40,
-	KEY_L = 3,
+	KEY_L = 37,
 	KEY_M = 46,
 	KEY_N = 45,
 	KEY_O = 31,
@@ -104,9 +118,11 @@ typedef enum	e_mlx_key
 	KEY_RIGHT = 124,
 	KEY_UP = 126,
 	KEY_DOWN = 125,
-	KEY_ESCAPE = 53
+	KEY_ESC = 53
 }				t_mlx_key;
 
+t_params		*init_mlx(t_params *params, char **av, int w, int h);
+t_img			*init_img(t_params *params);
 void			bres(t_params *params, t_point point1, t_point point2);
 
 #endif

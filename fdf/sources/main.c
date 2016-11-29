@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/28 18:04:59 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/29 18:22:47 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error(int error, int send_perror, char *str)
 
 int		my_keyfunc(int keycode, t_params *params)
 {
-	if (keycode == KEY_ESCAPE)
+	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(params->mlx, params->win);
 		exit(0);
@@ -39,28 +39,43 @@ int		my_keyfunc(int keycode, t_params *params)
 	return (0);
 }
 
+int		draw(t_params * params)
+{
+	int		count;
+
+	count = 0;
+	params->img = init_img(params);
+	ft_putnbr(params->img->bpp);
+	ft_putendl("");
+	ft_putnbr(params->img->size_l);
+	ft_putendl("");
+	ft_putnbr(params->img->endian);
+	ft_putendl("");
+	while (params->img->addr[count])
+	{
+		params->img->addr[count] = 0xFF;
+		count++;
+	}
+	mlx_put_image_to_window(params->mlx, params->win, params->img->img, 500, 500);
+	return (0);
+}
+
 int		main(int argc, char **argv)
 {
 	t_params	*params;
 
-	(void)argv;
+	(void)argc;
 	params = (t_params *)malloc(sizeof(t_params));
-	// params->point = (t_point *)malloc(sizeof(t_point));
-	// params->point->x = 50;
-	// params->point->y = 50;
-	// ft_putnbr(params->point->y);
-	if (argc != 2)
+	params = init_mlx(params, argv, 500, 500);
+	mlx_expose_hook(params->win, draw, params);
+	mlx_loop(params->mlx);
+	/*if (argc != 2)
 	{
 		error(1, 0, "Wrong number of params!");
 	}
 	else
 	{
 		parse_file(argv[1]);
-		params = (t_params*)malloc(sizeof(t_params));
-		params->mlx = mlx_init();
-		params->win = mlx_new_window(params->mlx, 400, 400, "fdf");
-		mlx_key_hook(params->win, my_keyfunc, params);
-		mlx_loop(params->mlx);
-	}
+	}*/
 	return (0);
 }
