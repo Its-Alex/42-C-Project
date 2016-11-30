@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/29 18:00:01 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/30 17:07:24 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ typedef struct	s_img
 
 typedef struct	s_point
 {
-	int			px;
-	int			py;
+	int				px;
+	int				py;
 
-	int			x;
-	int			y;
-	int			z;
+	int				x;
+	int				y;
+	int				z;
 
-	int			color;
+	unsigned long	color;
 }				t_point;
 
-typedef struct	s_params
+typedef struct	s_mlx
 {
 	void		*mlx;
 	void		*win;
@@ -45,25 +45,23 @@ typedef struct	s_params
 
 	int			heigth;
 	int			width;
-
-	char		**av;
-	char		**parse;
+	int			degrad;
 
 	t_point		**point;
-}				t_params;
+}				t_mlx;
 
 typedef struct	s_bresenham
 {
-	int			x;
-	int			y;
+	int				x;
+	int				y;
 
-	int			dx;
-	int			dy;
+	int				dx;
+	int				dy;
 
-	int			incx;
-	int			incy;
+	int				incx;
+	int				incy;
 
-	int			color;
+	unsigned long	color;
 }				t_bresenham;
 
 typedef enum	e_mlx_key
@@ -121,8 +119,12 @@ typedef enum	e_mlx_key
 	KEY_ESC = 53
 }				t_mlx_key;
 
-t_params		*init_mlx(t_params *params, char **av, int w, int h);
-t_img			*init_img(t_params *params);
-void			bres(t_params *params, t_point point1, t_point point2);
+void			mlx_pixel_put_img(unsigned long color, t_img *img,
+					int x, int y);
+void			mlx_trace_line(t_mlx *mlx, t_point point1, t_point point2);
+
+t_point			*new_point(int x, int y, char *z);
+t_img			*init_img(t_mlx *mlx);
+t_mlx			*init_mlx(t_mlx *mlx, int w, int h);
 
 #endif

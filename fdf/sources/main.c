@@ -6,76 +6,65 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/29 18:22:47 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/30 17:39:55 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	error(int error, int send_perror, char *str)
-{
-	if (send_perror == 1)
-	{
-		ft_putstr_color("Error \x1B[0m: ", RED);
-		perror("");
-	}
-	else
-	{
-		ft_putstr_color("Error", RED);
-		ft_putstr(" : ");
-		ft_putendl(str);
-	}
-	exit(error);
-}
-
-int		my_keyfunc(int keycode, t_params *params)
+int		my_keyfunc(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_window(params->mlx, params->win);
+		mlx_destroy_image(mlx->mlx, mlx->img);
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		free(mlx);
 		exit(0);
 	}
 	printf("Key event : %d\n", keycode);
 	return (0);
 }
 
-int		draw(t_params * params)
+int		draw(t_mlx *mlx)
 {
 	int		count;
+	t_point	p1;
+	t_point	p2;
 
+	p1.x = 50;
+	p1.y = 50;
+	p2.x = 200;
+	p2.y = 200;
+	p1.color = 0x0000FF;
 	count = 0;
-	params->img = init_img(params);
-	ft_putnbr(params->img->bpp);
-	ft_putendl("");
-	ft_putnbr(params->img->size_l);
-	ft_putendl("");
-	ft_putnbr(params->img->endian);
-	ft_putendl("");
-	while (params->img->addr[count])
-	{
-		params->img->addr[count] = 0xFF;
-		count++;
-	}
-	mlx_put_image_to_window(params->mlx, params->win, params->img->img, 500, 500);
+	mlx->img = init_img(mlx);
+	mlx_trace_line(mlx, p1, p2);
+	mlx_pixel_put_img(0x0000FF, mlx->img, 400, 400);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	return (0);
+}
+
+void	mlx_launch(t_mlx *mlx)
+{
+	mlx_expose_hook(mlx->win, draw, mlx);
+	mlx_key_hook(mlx->win, my_keyfunc, mlx);
+	mlx_loop(mlx->mlx);
 }
 
 int		main(int argc, char **argv)
 {
-	t_params	*params;
+	t_mlx	*mlx;
 
-	(void)argc;
-	params = (t_params *)malloc(sizeof(t_params));
-	params = init_mlx(params, argv, 500, 500);
-	mlx_expose_hook(params->win, draw, params);
-	mlx_loop(params->mlx);
-	/*if (argc != 2)
+	mlx = (t_mlx *)malloc(sizeof(t_mlx));
+	if (argc != 2)
 	{
-		error(1, 0, "Wrong number of params!");
+		error(1, 0, "Wrong number of mlx!");
 	}
 	else
 	{
-		parse_file(argv[1]);
-	}*/
+		mlx->point = parse(mlx, argv);
+		mlx = init_mlx(mlx, 500, 500);
+		mlx_launch(mlx);
+	}
 	return (0);
 }

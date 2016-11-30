@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/29 17:25:35 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/30 17:02:22 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OUT_DIR 		= objets
 SRC_DIR 		= sources
 INC_DIR 		= includes
 OUT_LIBC_DIR 	= objets/libc
-CFLAG 			= -Wall -Werror -Wextra
+CFLAG 			= -Wall -Werror -Wextra -g -ggdb
 
 SDIR =				sources/
 SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
@@ -46,10 +46,11 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_strclr.c libc/ft_striter.c libc/ft_strmap.c \
 					libc/ft_strnew.c libc/ft_strsub.c libc/get_line.c \
 					libc/get_next_line.c libc/ft_strjoin_free_endl.c \
-					libc/parse_array_3d.c libc/putarray_3d.c \
+					libc/parse_array_3d.c libc/putarray_3d.c libc/error.c\
 					\
 					\
-					libmlx/bresenham.c libmlx/init.c
+					libmlx/mlx_trace_line.c libmlx/init.c \
+					libmlx/mlx_pixel_put_img.c
 					
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
@@ -57,6 +58,7 @@ INCDIR = 			includes/
 
 ODIR =				objets/
 ODIR_LIBC =			objets/libc
+ODIR_MLX =			objets/libmlx
 OBJS =				$(SRCS:.c=.o)
 OBCC =				$(addprefix $(ODIR),$(OBJS))
 
@@ -79,13 +81,16 @@ endif
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
 
-directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR) $(OUT_LIBC_DIR) $(ODIR_LIBC)
+directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR) $(OUT_LIBC_DIR) $(ODIR_MLX)
 
 $(OUT_DIR):
 	@$(MKDIR_P) $(OUT_DIR)
 
 $(ODIR_LIBC):
 	@$(MKDIR_P) $(ODIR_LIBC)
+
+$(ODIR_MLX):
+	@$(MKDIR_P) $(ODIR_MLX)
 
 $(SRC_DIR):
 	@$(MKDIR_P) $(SRC_DIR)
@@ -95,7 +100,7 @@ $(INC_DIR):
 
 clean:
 	@echo "Deleting compilation files ✅"
-	@rm -f $(OBCC)
+	@rm -rf $(ODIR)
 
 fclean: clean
 	@echo "Deleting $(NAME) ✅"

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/28 17:02:22 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/30 17:03:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define _LIBFT_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
@@ -63,6 +64,7 @@ void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_freetab(char **tab);
 void				putarray_3d(char ***array);
+void				error(int error, int send_perror, char *str);
 
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp (const char *s1, const char *s2, size_t num);

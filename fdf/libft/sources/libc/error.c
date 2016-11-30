@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 18:04:02 by malexand         ###   ########.fr       */
+/*   Created: 2016/11/30 17:01:17 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/30 17:04:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include <mlx.h>
-# include "../libft/includes/libft.h"
-# include "../libft/includes/libmlx.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <string.h>
-# include <math.h>
-# include <errno.h>
+#include "../../includes/libft.h"
 
-t_point			**parse(t_mlx *mlx, char **argv);
-void			check(char	*str);
-
-#endif
+void	error(int error, int send_perror, char *str)
+{
+	if (send_perror == 1)
+	{
+		ft_putstr_color("Error \x1B[0m: ", RED);
+		perror("");
+	}
+	else
+	{
+		ft_putstr_color("Error", RED);
+		ft_putstr(" : ");
+		ft_putendl(str);
+	}
+	exit(error);
+}

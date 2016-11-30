@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/29 17:54:48 by malexand         ###   ########.fr        #
+#    Updated: 2016/11/30 18:44:56 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,6 @@ run: re
 
 cleanlib:
 	@make -C ./libft fclean
-	@make -C ./mlx clean
 
 
 .PHONY: all clean fclean re run directories cleanlib
