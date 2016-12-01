@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/11/30 17:03:39 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 15:09:15 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <errno.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"

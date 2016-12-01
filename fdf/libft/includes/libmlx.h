@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 17:07:24 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 17:02:09 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 typedef struct	s_img
 {
-	void		*img;
-	char		*addr;
+	void			*img;
+	char			*addr;
 
-	int			bpp;
-	int			size_l;
-	int			endian;
+	int				bpp;
+	int				size_l;
+	int				endian;
 }				t_img;
 
 typedef struct	s_point
@@ -39,15 +39,19 @@ typedef struct	s_point
 
 typedef struct	s_mlx
 {
-	void		*mlx;
-	void		*win;
-	t_img		*img;
+	void			*mlx;
+	void			*win;
+	t_img			*img;
 
-	int			heigth;
-	int			width;
-	int			degrad;
+	int				heigth;
+	int				width;
+	int				mapw;
+	int				maph;
+	int				degrad;
 
-	t_point		**point;
+	char			*str;
+
+	t_point			***point;
 }				t_mlx;
 
 typedef struct	s_bresenham
@@ -121,9 +125,9 @@ typedef enum	e_mlx_key
 
 void			mlx_pixel_put_img(unsigned long color, t_img *img,
 					int x, int y);
-void			mlx_trace_line(t_mlx *mlx, t_point point1, t_point point2);
+void			mlx_trace_line(t_mlx *mlx, t_point *p1, t_point *p2);
 
-t_point			*new_point(int x, int y, char *z);
+t_point			*new_point(int x, int y, char *z, int color);
 t_img			*init_img(t_mlx *mlx);
 t_mlx			*init_mlx(t_mlx *mlx, int w, int h);
 

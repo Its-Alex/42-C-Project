@@ -6,23 +6,25 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:17:39 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 18:05:58 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 16:50:57 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libmlx.h"
 #include "../../includes/libft.h"
 
-t_point		*new_point(int x, int y, char *z)
+t_point		*new_point(int x, int y, char *z, int color)
 {
 	t_point	*point;
 
 	if (!(point = (t_point *)malloc(sizeof(*point))))
 		error(1, 0, "Malloc struct point");
+	point->px = 0;
+	point->py = 0;
 	point->x = x;
 	point->y = y;
 	point->z = ft_atoi(z);
-	// point->color = find_color(z);
+	point->color = color;
 	free(z);
 	return (point);
 }
@@ -35,7 +37,9 @@ t_mlx		*init_mlx(t_mlx *mlx, int w, int h)
 	mlx->win = mlx_new_window(mlx->mlx, 500, 500, "fdf");
 	mlx->width = w;
 	mlx->heigth = h;
-	mlx->degrad = 10;
+	mlx->mapw = 0;
+	mlx->maph = 0;
+	mlx->degrad = 100000;
 	return (mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 17:39:55 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 17:48:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,32 @@ int		my_keyfunc(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int		draw(t_mlx *mlx)
-{
-	int		count;
-	t_point	p1;
-	t_point	p2;
-
-	p1.x = 50;
-	p1.y = 50;
-	p2.x = 200;
-	p2.y = 200;
-	p1.color = 0x0000FF;
-	count = 0;
-	mlx->img = init_img(mlx);
-	mlx_trace_line(mlx, p1, p2);
-	mlx_pixel_put_img(0x0000FF, mlx->img, 400, 400);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
-	return (0);
-}
-
 void	mlx_launch(t_mlx *mlx)
 {
-	mlx_expose_hook(mlx->win, draw, mlx);
 	mlx_key_hook(mlx->win, my_keyfunc, mlx);
 	mlx_loop(mlx->mlx);
+}
+
+char	*take_str(char *av, t_mlx *mlx)
+{
+	int		fd;
+	int		ret;
+	char	*tmp;
+
+	fd = 0;
+	ret = 0;
+	mlx->str = (char*)malloc(sizeof(char));
+	mlx->str[0] = '\0';
+	if ((fd = open(av, O_RDONLY)) < 0)
+		error(1, 1, "");
+	while ((ret = get_next_line(fd, &tmp)) == 1)
+		mlx->str = ft_strjoin_free_endl(mlx->str, tmp);
+	if (ret == -1)
+		error(1, 1, "");
+	ft_strdel(&tmp);
+	if (close(fd) < 0)
+		error(1, 1, "");
+	return (mlx->str);
 }
 
 int		main(int argc, char **argv)
@@ -62,8 +64,11 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		mlx->point = parse(mlx, argv);
 		mlx = init_mlx(mlx, 500, 500);
+		mlx->str = take_str(argv[1], mlx);
+		//check(mlx->str);
+		mlx->point = str_to_point(mlx);
+		put_img(mlx);
 		mlx_launch(mlx);
 	}
 	return (0);

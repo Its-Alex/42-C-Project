@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 10:58:43 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 16:37:24 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 16:58:34 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	void		first_case(t_mlx *mlx, t_bresenham bresen)
 	count = 0;
 	while (count < bresen.dx)
 	{
-		bresen.color += mlx->degrad;
+		bresen.color -= mlx->degrad;
 		if (e >= 0)
 		{
 			bresen.y += bresen.incy;
@@ -58,7 +58,7 @@ static	void		second_case(t_mlx *mlx, t_bresenham bresen)
 	count = 0;
 	while (count < bresen.dy)
 	{
-		bresen.color += mlx->degrad;
+		bresen.color -= mlx->degrad;
 		if (e >= 0)
 		{
 			bresen.x += bresen.incx;
@@ -72,25 +72,25 @@ static	void		second_case(t_mlx *mlx, t_bresenham bresen)
 	}
 }
 
-void				mlx_trace_line(t_mlx *mlx, t_point p1, t_point p2)
+void				mlx_trace_line(t_mlx *mlx, t_point *p1, t_point *p2)
 {
 	t_bresenham bresen;
 
-	bresen.color = p1.color;
-	bresen.dx = p2.x - p1.x;
-	bresen.dy = p2.y - p1.y;
+	bresen.color = p1->color;
+	bresen.dx = p2->px - p1->px;
+	bresen.dy = p2->py - p1->py;
 	if (bresen.dx < 0)
 		bresen.dx = -bresen.dx;
 	if (bresen.dy < 0)
 		bresen.dy = -bresen.dy;
 	bresen.incx = 1;
-	if (p2.x < p1.x)
+	if (p2->px < p1->px)
 		bresen.incx = -1;
 	bresen.incy = 1;
-	if (p2.y < p1.y)
+	if (p2->py < p1->py)
 		bresen.incy = -1;
-	bresen.x = p1.x;
-	bresen.y = p1.y;
+	bresen.x = p1->px;
+	bresen.y = p1->py;
 	if (bresen.dx > bresen.dy)
 		first_case(mlx, bresen);
 	else

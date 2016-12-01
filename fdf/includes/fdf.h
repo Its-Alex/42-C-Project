@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 18:04:02 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/01 15:57:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <math.h>
 # include <errno.h>
 
-t_point			**parse(t_mlx *mlx, char **argv);
+int				put_img(t_mlx *mlx);
 void			check(char	*str);
+t_point			***str_to_point(t_mlx *mlx);
 
 #endif
