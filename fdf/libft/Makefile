@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/30 17:02:22 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/02 15:06:02 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/parse_array_3d.c libc/putarray_3d.c libc/error.c\
 					\
 					\
-					libmlx/mlx_trace_line.c libmlx/init.c \
+					libmlx/mlx_put_line.c libmlx/init.c \
 					libmlx/mlx_pixel_put_img.c
 					
 SRCC =				$(addprefix $(SDIR),$(SRCS))

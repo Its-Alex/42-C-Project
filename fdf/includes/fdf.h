@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/01 15:57:56 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/02 13:28:43 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 
 int				put_img(t_mlx *mlx);
 void			check(char	*str);
-t_point			***str_to_point(t_mlx *mlx);
+t_point			***str_to_point(t_mlx *mlx, char *str);
 
 #endif

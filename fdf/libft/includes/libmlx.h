@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/01 17:02:09 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/02 17:32:05 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,29 @@ typedef struct	s_mlx
 	int				width;
 	int				mapw;
 	int				maph;
-	int				degrad;
-
-	char			*str;
+	int				sinus;
+	double			cosinus;
+	double			degrad;
 
 	t_point			***point;
 }				t_mlx;
 
-typedef struct	s_bresenham
+typedef struct	s_bres
 {
-	int				x;
-	int				y;
+	int				x0;
+	int				y0;
+	int				x1;
+	int				y1;
 
 	int				dx;
 	int				dy;
-
-	int				incx;
-	int				incy;
+	int				err;
+	int				e2;
+	int				sx;
+	int				sy;
 
 	unsigned long	color;
-}				t_bresenham;
+}				t_bres;
 
 typedef enum	e_mlx_key
 {
@@ -125,7 +128,7 @@ typedef enum	e_mlx_key
 
 void			mlx_pixel_put_img(unsigned long color, t_img *img,
 					int x, int y);
-void			mlx_trace_line(t_mlx *mlx, t_point *p1, t_point *p2);
+void			mlx_put_line(t_mlx *mlx, t_point *p1, t_point *p2);
 
 t_point			*new_point(int x, int y, char *z, int color);
 t_img			*init_img(t_mlx *mlx);

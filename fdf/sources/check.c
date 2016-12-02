@@ -6,30 +6,35 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:40:13 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/01 15:29:07 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/02 13:54:50 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static	int		check_format(char *str)
+static	int		check_format(char *str, int count, int nb_elem)
 {
-	int		line;
-	int		count;
-	int		nb_line;
+	int		save;
 
-	line = 0;
-	count = 0;
-	nb_line = 0;
+	save = 0;
 	while (str[count] != '\0')
 	{
-		if (str[count] == '\n' && str[count + 1] != '\0')
+		if (str[count] != ' ' && str[count] != '\n')
 		{
-			if (line == 0)
-				line = count;
-			else if (((count - nb_line) % line) != 0)
-				return (-1);
-			nb_line++;
+			while (str[count] != ' ' && str[count] != '\n')
+				count++;
+			nb_elem++;
+		}
+		if (str[count] == '\n')
+		{
+			if (save == 0)
+				save = nb_elem;
+			else
+			{
+				if (save != nb_elem)
+					return (-1);
+			}
+			nb_elem = 0;
 		}
 		count++;
 	}
@@ -77,7 +82,7 @@ static	int		check_fnumbers(char *str)
 
 void			check(char *str)
 {
-	if (check_format(str) == -1)
+	if (check_format(str, 0, 0) == -1)
 		error(1, 0, "Bad format lenght of the lines must be the same!");
 	if (check_fnumbers(str) == -1)
 		error(1, 0, "Bad format must be [nombre,color]!");
