@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:17:39 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/02 17:37:44 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/05 18:05:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ t_mlx		*init_mlx(t_mlx *mlx, int w, int h)
 	mlx->heigth = h;
 	mlx->mapw = 0;
 	mlx->maph = 0;
-	mlx->sinus = 0.0;
-	mlx->cosinus = 0.0;
-	mlx->degrad = 10000;
+	mlx->prof = 10;
+	mlx->decaly = 0;
+	mlx->decalx = 0;
+	mlx->persp = 10;
+	mlx->diff = 1;
 	mlx->point = NULL;
 	return (mlx);
 }

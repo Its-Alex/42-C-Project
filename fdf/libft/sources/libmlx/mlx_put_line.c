@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_put_line_err.c                                 :+:      :+:    :+:   */
+/*   mlx_put_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 10:58:43 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/02 15:05:11 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/05 18:22:27 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libmlx.h"
+#include <stdio.h>
 
 /*
 **	Tracer de Bresenham
@@ -38,10 +39,12 @@ void			mlx_put_line(t_mlx *mlx, t_point *p1, t_point *p2)
 	t_bres		bres;
 
 	bres = init(p1, p2);
-	bres.color = 0xFFFFFF;
+	bres.color = 0x0000FF;
+	//bres.degrad = (p2->z - p1->z) * mlx->diff;
 	while (1)
 	{
-		if (bres.x0 < mlx->width && bres.y0 < mlx->heigth)
+		if (bres.x0 < mlx->width && bres.y0 < mlx->heigth &&
+				bres.x0 > 0 && bres.y0 > 0)
 			mlx_pixel_put_img(bres.color, mlx->img, bres.x0, bres.y0);
 		if (bres.x0 == bres.x1 && bres.y0 == bres.y1)
 			break ;
@@ -56,5 +59,6 @@ void			mlx_put_line(t_mlx *mlx, t_point *p1, t_point *p2)
 			bres.err += bres.dx;
 			bres.y0 += bres.sy;
 		}
+		//bres.color += bres.degrad;
 	}
 }

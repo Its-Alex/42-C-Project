@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/02 15:06:02 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/05 16:48:28 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ $(INC_DIR):
 
 clean:
 	@echo "Deleting compilation files ✅"
-	@rm -rf $(ODIR)
+	@rm -rf objets
 
 fclean: clean
 	@echo "Deleting $(NAME) ✅"

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/02 17:32:05 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/05 17:49:54 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ typedef struct	s_mlx
 	int				width;
 	int				mapw;
 	int				maph;
-	int				sinus;
-	double			cosinus;
-	double			degrad;
+
+	int				prof;
+	int				persp;
+	int				diff;
+	int				decalx;
+	int				decaly;
 
 	t_point			***point;
 }				t_mlx;
@@ -67,6 +70,7 @@ typedef struct	s_bres
 	int				e2;
 	int				sx;
 	int				sy;
+	int				degrad;
 
 	unsigned long	color;
 }				t_bres;

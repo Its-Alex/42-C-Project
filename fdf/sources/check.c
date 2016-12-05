@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:40:13 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/02 13:54:50 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/05 18:16:26 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static	void	check_fnumber(char *str, int *count)
 	if (str[*count] == ',')
 		*count = *count + 1;
 	while ((str[*count] >= '0' && str[*count] <= '9') ||
-			(str[*count] >= 'A' && str[*count] <= 'F'))
+			(str[*count] >= 'a' && str[*count] <= 'f') ||
+			(str[*count] >= 'A' && str[*count] <= 'F') || str[*count] == 'x')
 		*count = *count + 1;
 }
 

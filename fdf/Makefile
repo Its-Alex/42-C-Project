@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/11/30 18:44:56 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/05 18:11:34 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ ${INC_DIR}:
 	@${MKDIR_P} ${INC_DIR}
 
 clean:
-	@rm -f $(OBCC)
+	@rm -rf $(OUT_DIR)
 	@echo "Deleting compilation files ✅"
 
 fclean: clean
@@ -82,7 +82,7 @@ fclean: clean
 re: fclean all
 
 run: re
-	@./$(NAME) maps/42.fdf
+	@./$(NAME) ../maps/pyramide.fdf
 
 cleanlib:
 	@make -C ./libft fclean
