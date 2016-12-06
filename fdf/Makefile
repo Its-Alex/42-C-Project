@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/05 18:11:34 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/06 16:29:12 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OS := $(shell uname -s)
 MKDIR_P = mkdir -p
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -g -ggdb -Wall -Werror -Wextra
+	CFLAGS = -g -Wall -Werror -Wextra
 else
 	CFLAGS = -Wall -Werror -Wextra
 endif

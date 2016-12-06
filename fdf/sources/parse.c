@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:21:24 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/02 16:15:45 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 14:13:53 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,27 @@
 **	}
 */
 
+static	void		free_tab(char ***str)
+{
+	int		line;
+	int		column;
+
+	line = 0;
+	column = 0;
+	while (str[line])
+	{
+		column = 0;
+		while (str[line][column])
+		{
+			free(str[line][column]);
+			column++;
+		}
+		free(str[line]);
+		line++;
+	}
+	free(str);
+}
+
 static	t_point		**point_line(char ***array_str, int line)
 {
 	int			count;
@@ -73,7 +94,6 @@ static	t_point		**point_line(char ***array_str, int line)
 		count++;
 	}
 	p[count] = NULL;
-	free(array_str[line]);
 	return (p);
 }
 
@@ -96,6 +116,6 @@ t_point				***str_to_point(t_mlx *mlx, char *str)
 		line++;
 	}
 	mlx->point[line] = NULL;
-	free(array_str);
+	free_tab(array_str);
 	return (mlx->point);
 }

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 10:58:43 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/05 18:22:27 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 15:19:04 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 **	Tracer de Bresenham
 */
 
-static	t_bres	init(t_point *p1, t_point *p2)
+static	t_bres	init(t_mlx *mlx, t_point *p1, t_point *p2)
 {
 	t_bres		bres;
 
+	if (mlx->color == 1)
+		bres.color = 0x0000FF;
+	if (mlx->color == 2)
+		bres.color = 0x00FF00;
+	if (mlx->color == 3)
+		bres.color = 0xFF0000;
+	if (mlx->color == 4)
+		bres.color = 0xFFFFFF;
 	bres.x0 = p1->px;
 	bres.y0 = p1->py;
 	bres.x1 = p2->px;
@@ -38,9 +46,7 @@ void			mlx_put_line(t_mlx *mlx, t_point *p1, t_point *p2)
 {
 	t_bres		bres;
 
-	bres = init(p1, p2);
-	bres.color = 0x0000FF;
-	//bres.degrad = (p2->z - p1->z) * mlx->diff;
+	bres = init(mlx, p1, p2);
 	while (1)
 	{
 		if (bres.x0 < mlx->width && bres.y0 < mlx->heigth &&
@@ -59,6 +65,5 @@ void			mlx_put_line(t_mlx *mlx, t_point *p1, t_point *p2)
 			bres.err += bres.dx;
 			bres.y0 += bres.sy;
 		}
-		//bres.color += bres.degrad;
 	}
 }

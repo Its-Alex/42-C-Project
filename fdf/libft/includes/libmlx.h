@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/05 17:49:54 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 15:06:10 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_point
 	int				y;
 	int				z;
 
-	unsigned long	color;
+	unsigned int	color;
 }				t_point;
 
 typedef struct	s_mlx
@@ -45,14 +45,14 @@ typedef struct	s_mlx
 
 	int				heigth;
 	int				width;
-	int				mapw;
-	int				maph;
 
+	int				diag;
 	int				prof;
 	int				persp;
 	int				diff;
 	int				decalx;
 	int				decaly;
+	int				color;
 
 	t_point			***point;
 }				t_mlx;
@@ -72,7 +72,7 @@ typedef struct	s_bres
 	int				sy;
 	int				degrad;
 
-	unsigned long	color;
+	int				color;
 }				t_bres;
 
 typedef enum	e_mlx_key

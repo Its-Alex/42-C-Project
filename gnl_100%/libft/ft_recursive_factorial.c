@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vacrozet <vacrozet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 14:13:35 by vacrozet          #+#    #+#             */
-/*   Updated: 2016/11/14 14:16:12 by vacrozet         ###   ########.fr       */
+/*   Created: 2016/11/02 14:13:35 by malexand          #+#    #+#             */
+/*   Updated: 2016/11/14 14:16:12 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

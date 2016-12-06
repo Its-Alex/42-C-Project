@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 15:00:05 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/24 16:42:38 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 14:42:15 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ char				***parse_array_3d(char *str, char carac1, char carac2)
 	while (count < len)
 	{
 		parse[count] = ft_strsplit(split[count], carac2);
+		ft_strdel(&split[count]);
 		count++;
 	}
 	parse[count] = NULL;
-	ft_freetab(split);
+	free(split);
 	return (parse);
 }

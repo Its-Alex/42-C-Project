@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/05 16:48:28 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/06 16:55:30 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_strstr.c libc/ft_isascii.c libc/ft_lstdel.c \
 					libc/ft_memccpy.c libc/ft_memset.c libc/ft_putnbr_fd.c \
 					libc/ft_strclr.c libc/ft_striter.c libc/ft_strmap.c \
-					libc/ft_strnew.c libc/ft_strsub.c libc/get_line.c \
+					libc/ft_strnew.c libc/ft_strsub.c \
 					libc/get_next_line.c libc/ft_strjoin_free_endl.c \
 					libc/parse_array_3d.c libc/putarray_3d.c libc/error.c\
 					\

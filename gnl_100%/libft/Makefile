@@ -3,10 +3,10 @@
 #*                                                        :::      ::::::::   *#
 #*   Makefile                                           :+:      :+:    :+:   *#
 #*                                                    +:+ +:+         +:+     *#
-#*   By: vacrozet <vacrozet@student.42.fr>          +#+  +:+       +#+        *#
+#*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
-#*   Created: 2016/08/22 14:16:24 by vacrozet          #+#    #+#             *#
-#*   Updated: 2016/09/15 14:13:32 by vacrozet         ###   ########.fr       *#
+#*   Created: 2016/08/22 14:16:24 by malexand          #+#    #+#             *#
+#*   Updated: 2016/09/15 14:13:32 by malexand         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -89,11 +89,9 @@ all: $(NAME)
 .PHONY: clean
 clean: 
 	@/bin/rm -f $(ORG)
-	@echo "\033[35m✔ Removal files .o \033[1;34;35m$(NAME)\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "\033[35m✔ removal libft \033[1;34;35m⚔  $(NAME) ⚔ \033[0m"
 
 re: fclean all
 
