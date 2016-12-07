@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 11:19:35 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/24 13:57:33 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:04:31 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ char			*ft_strjoin_free_endl(char *s1, const char *s2)
 		str[count] = s2[count - len[0]];
 		count++;
 	}
-	free(s1);
+	ft_strdel(&s1);
 	return (putend(str, count));
 }

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/07 12:45:44 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:09:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void			free_func(t_mlx *mlx)
 	mlx_clear_window(mlx->mlx, mlx->win);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	free(mlx->mlx);
-	free(mlx);
 	exit(0);
 }
 
@@ -63,10 +62,12 @@ static	char	*take_str(char *av, char *str)
 	if ((fd = open(av, O_RDONLY)) < 0)
 		error(1, 1, "");
 	while ((ret = get_next_line(fd, &tmp)) == 1)
+	{
 		str = ft_strjoin_free_endl(str, tmp);
+		ft_strdel(&tmp);
+	}
 	if (ret == -1)
 		error(1, 1, "");
-	ft_strdel(&tmp);
 	if (close(fd) < 0)
 		error(1, 1, "");
 	return (str);
@@ -76,7 +77,7 @@ static	void	mlx_main(char *str, char **av)
 {
 	t_mlx	*mlx;
 
-	mlx = (t_mlx *)malloc(sizeof(t_mlx));
+	mlx = NULL;
 	if (av[2] != NULL && av[3] != NULL)
 		mlx = init_mlx(mlx, ft_atoi(av[2]), ft_atoi(av[3]));
 	else

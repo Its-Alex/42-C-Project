@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:21:24 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/06 14:13:53 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:00:44 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static	void		free_tab(char ***str)
 		column = 0;
 		while (str[line][column])
 		{
-			free(str[line][column]);
+			ft_strdel(&str[line][column]);
 			column++;
 		}
 		free(str[line]);

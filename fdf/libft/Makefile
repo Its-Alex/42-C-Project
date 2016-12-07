@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/06 16:55:30 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/07 13:10:29 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OUT_DIR 		= objets
 SRC_DIR 		= sources
 INC_DIR 		= includes
 OUT_LIBC_DIR 	= objets/libc
-CFLAG 			= -Wall -Werror -Wextra -g -ggdb
+CFLAG 			= -Wall -Werror -Wextra
 
 SDIR =				sources/
 SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \

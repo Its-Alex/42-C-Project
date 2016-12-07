@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/06 18:03:53 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/07 13:10:22 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OS := $(shell uname -s)
 MKDIR_P = mkdir -p
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -g -Wall -Werror -Wextra
+	CFLAGS = -Wall -Werror -Wextra
 else
 	CFLAGS = -Wall -Werror -Wextra
 endif
@@ -32,7 +32,7 @@ SRC_DIR = sources
 INC_DIR = includes
 
 SDIR =		./sources/
-SRCS =		$(shell ls sources/)
+SRCS =		check.c event.c image.c main.c menu.c parse.c
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 INCLUDE = -I includes
@@ -83,7 +83,7 @@ fclean: clean
 re: fclean all
 
 run: re
-	@./$(NAME) ../maps/pyramide.fdf
+	@./$(NAME) ../42project/fdf/maps/42x2.fdf
 
 cleanlib:
 	@make -C ./libft fclean
