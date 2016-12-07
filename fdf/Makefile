@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/06 16:29:12 by malexand         ###   ########.fr        #
+#    Updated: 2016/12/06 18:03:53 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@make -C ./libft fclean
 	@echo "Deleting $(NAME) ✅"
 
 re: fclean all

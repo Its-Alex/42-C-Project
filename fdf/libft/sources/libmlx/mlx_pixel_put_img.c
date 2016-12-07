@@ -6,13 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 11:02:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/30 16:28:54 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:03:19 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libmlx.h"
-#include <stdio.h>
-#include <unistd.h>
 
 void	mlx_pixel_put_img(unsigned long color, t_img *img, int x, int y)
 {

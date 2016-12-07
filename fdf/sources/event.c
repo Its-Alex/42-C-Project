@@ -6,49 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 13:41:23 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/06 17:53:05 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/07 12:38:27 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-static void		free_func(t_mlx *mlx)
-{
-	int		line;
-	int		column;
-
-	line = 0;
-	column = 0;
-	while (mlx->point[line])
-	{
-		column = 0;
-		while (mlx->point[line][column])
-		{
-			free(mlx->point[line][column]);
-			column++;
-		}
-		free(mlx->point[line]);
-		line++;
-	}
-	mlx_destroy_image(mlx->mlx, mlx->img);
-	mlx_clear_window(mlx->mlx, mlx->win);
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	free(mlx->mlx);
-	free(mlx);
-	exit(0);
-}
-
-static	t_mlx	*reset_mlx(t_mlx *mlx)
-{
-	mlx->prof = 10;
-	mlx->decaly = 0;
-	mlx->decalx = 0;
-	mlx->persp = 10;
-	mlx->diff = 1;
-	mlx->diag = 0;
-	mlx->color = 4;
-	return (mlx);
-}
 
 static	void	gere_key(int keycode, t_mlx *mlx)
 {
@@ -84,7 +46,7 @@ int				my_keyfunc(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int				pressDestroy(t_mlx *mlx)
+int				press_destroy(t_mlx *mlx)
 {
 	free_func(mlx);
 	return (0);

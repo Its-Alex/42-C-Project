@@ -6,12 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 10:58:43 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/06 15:19:04 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:03:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libmlx.h"
-#include <stdio.h>
 
 /*
 **	Tracer de Bresenham

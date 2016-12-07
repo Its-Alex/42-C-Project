@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:17:39 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/06 15:18:42 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/07 12:44:24 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,19 @@ t_mlx		*init_mlx(t_mlx *mlx, int w, int h)
 	if ((mlx = (t_mlx *)malloc(sizeof(t_mlx))) == NULL)
 		error(1, 0, "Malloc struct mlx");
 	mlx->mlx = mlx_init();
+	if (w < 250 || h < 250 || w > 2550 ||
+		h > 1080)
+	{
+		w = 1000;
+		h = 1000;
+	}
 	mlx->win = mlx_new_window(mlx->mlx, w, h, "fdf");
-	mlx->width = w;
-	mlx->heigth = h;
-	mlx->prof = 10;
+	mlx->prof = 2;
 	mlx->decaly = 0;
 	mlx->decalx = 0;
-	mlx->persp = 10;
+	mlx->width = w;
+	mlx->heigth = h;
+	mlx->persp = 2;
 	mlx->diff = 1;
 	mlx->diag = 0;
 	mlx->color = 4;
