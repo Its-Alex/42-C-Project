@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 14:53:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/07 12:42:01 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/08 11:49:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBMLX_H
 # include <mlx.h>
 # include <math.h>
+# include "libft.h"
 
 typedef struct	s_img
 {

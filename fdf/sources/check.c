@@ -6,11 +6,20 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:40:13 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/05 18:16:26 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/08 12:02:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static	int		check_str(char *str)
+{
+	if (str == NULL)
+		return (-1);
+	if (str[0] == '\0')
+		return (-1);
+	return (0);
+}
 
 static	int		check_format(char *str, int count, int nb_elem)
 {
@@ -83,6 +92,8 @@ static	int		check_fnumbers(char *str)
 
 void			check(char *str)
 {
+	if (check_str(str) == -1)
+		error(1, 0, "Bad format!");
 	if (check_format(str, 0, 0) == -1)
 		error(1, 0, "Bad format lenght of the lines must be the same!");
 	if (check_fnumbers(str) == -1)

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 17:17:39 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/07 12:44:24 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/08 12:02:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,19 @@
 t_point		*new_point(int x, int y, char *z, int color)
 {
 	t_point	*point;
+	long	test;
 
+	test = ft_atoi(z);
 	if (!(point = (t_point *)malloc(sizeof(*point))))
 		error(1, 0, "Malloc struct point");
 	point->px = 0;
 	point->py = 0;
 	point->x = x;
 	point->y = y;
-	point->z = ft_atoi(z);
+	if (test >= 0 && test <= 2147480000)
+		point->z = test;
+	else
+		point->z = 0;
 	point->color = color;
 	return (point);
 }

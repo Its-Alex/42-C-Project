@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 12:00:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/06 15:28:31 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/08 11:57:14 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static	void		trace_diag(t_mlx *mlx)
 	int		line;
 	int		column;
 
-	line = 1;
+	line = 0;
 	while (mlx->point[line])
 	{
 		column = 0;
@@ -51,7 +51,7 @@ static	void		trace_diag(t_mlx *mlx)
 				if (mlx->point[line + 1][column + 1])
 					mlx_put_line(mlx, mlx->point[line][column],
 						mlx->point[line + 1][column + 1]);
-			if (line >= 2)
+			if (line >= 1)
 				if (mlx->point[line - 1][column + 1])
 					mlx_put_line(mlx, mlx->point[line][column],
 						mlx->point[line - 1][column + 1]);
@@ -66,7 +66,7 @@ static	void		point_put_img(t_mlx *mlx)
 	int		line;
 	int		column;
 
-	line = 1;
+	line = 0;
 	column = 0;
 	while (mlx->point[line])
 	{
@@ -79,6 +79,11 @@ static	void		point_put_img(t_mlx *mlx)
 			if (mlx->point[line][column + 1])
 				mlx_put_line(mlx, mlx->point[line][column],
 					mlx->point[line][column + 1]);
+			if (!mlx->point[line + 1] && !mlx->point[line][column + 1])
+			{
+				mlx_put_line(mlx, mlx->point[line][column],
+					mlx->point[line][column]);
+			}
 			column++;
 		}
 		line++;
