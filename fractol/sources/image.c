@@ -27,7 +27,7 @@ void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 		img->addr[y * img->size_l + x * img->bpp / 8 + 1] = g;
 		img->addr[y * img->size_l + x * img->bpp / 8 + 2] = r;
 	}
-	else
+	else if (img->endian == 1)
 	{
 		img->addr[y * img->size_l + x * img->bpp / 8] = r;
 		img->addr[y * img->size_l + x * img->bpp / 8 + 1] = g;
@@ -37,22 +37,15 @@ void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 
 static	void	create_img(t_env *e)
 {
-	// mandelbrot(e);
-	mlx_pixel_put_img(e->color, e->img, 10, 10);
-	mlx_pixel_put_img(e->color, e->img, 11, 11);
-	mlx_pixel_put_img(e->color, e->img, 12, 12);
-	mlx_pixel_put_img(e->color, e->img, 13, 13);
-	mlx_pixel_put_img(e->color, e->img, 14, 14);
+	mandelbrot(e);
 }
 
 int				put_img(t_env *e)
 {
 	ft_bzero(e->img->addr, e->img->size_l * e->heigth);
 	create_img(e);
-	if (e->reload == 0)
-	{
-		e->reload = 1;
-	}
+	if (e->reload++ == 0)
+		e->win = mlx_new_window(e->mlx, e->width, e->heigth, "fractol");
 	mlx_clear_window(e->mlx, e->win);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	return (0);

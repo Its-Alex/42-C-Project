@@ -16,8 +16,7 @@ static	int		env_main(void)
 {
 	t_env	*e;
 
-	e = NULL;
-	e = init_env(e, 0, 0);
+	e = init_env(0, 0);
 	put_img(e);
 	mlx_hook(e->win, 2, 1L << 0, my_keyfunc, e);
 	mlx_hook(e->win, 17, 0L, press_destroy, e);

@@ -31,13 +31,15 @@ int					press_destroy(t_env *e)
 
 int					my_keyfunc(int keycode, t_env *e)
 {
-	printf("Key event : %d\n", keycode);
+	ft_putstr("Key event : ");
+	ft_putnbr(keycode);
+	ft_putendl("");
 	if (keycode == KEY_ESC)
 		press_destroy(e);
-	// e->dy = (keycode == KEY_UP) ? e->dy : e->dy + 3;
-	// e->dy = (keycode == KEY_DOWN) ? e->dy : e->dy - 3;
-	// e->dx = (keycode == KEY_LEFT) ? e->dx : e->dx + 3;
-	// e->dx = (keycode == KEY_RIGHT) ? e->dx : e->dx - 3;
+	e->dy = (keycode == KEY_UP) ? e->dy : e->dy + 3;
+	e->dy = (keycode == KEY_DOWN) ? e->dy : e->dy - 3;
+	e->dx = (keycode == KEY_LEFT) ? e->dx : e->dx + 3;
+	e->dx = (keycode == KEY_RIGHT) ? e->dx : e->dx - 3;
 	put_img(e);
 	return (0);
 }

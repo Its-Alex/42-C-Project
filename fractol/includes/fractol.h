@@ -69,6 +69,10 @@ typedef struct	s_env
 	double		zoomy;
 }				t_env;
 
+/*
+** Mlx keycode link
+*/
+
 typedef enum	e_mlx_key
 {
 	KEY_A = 0,
@@ -151,6 +155,6 @@ void			mlx_put_line(t_env *env, t_point *p1, t_point *p2);
 
 t_point			*new_point(int x, int y, char *z, int color);
 t_img			*init_img(t_env *env);
-t_env			*init_env(t_env *env, int w, int h);
+t_env			*init_env(int width, int heigth);
 
 #endif

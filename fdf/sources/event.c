@@ -42,7 +42,9 @@ int				my_keyfunc(int keycode, t_mlx *mlx)
 		mlx->width * mlx->img->bpp / 8 + 2);
 	mlx_clear_window(mlx->mlx, mlx->win);
 	put_img(mlx);
-	printf("Key event : %d\n", keycode);
+	ft_putstr("Key event : ");
+	ft_putnbr(keycode);
+	ft_putendl("");
 	return (0);
 }
 

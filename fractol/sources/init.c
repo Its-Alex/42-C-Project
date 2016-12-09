@@ -16,7 +16,6 @@ t_img			*init_img(t_env *e)
 {
 	t_img	*img;
 
-	img = NULL;
 	if ((img = (t_img *)malloc(sizeof(t_img))) == NULL)
 		error(1, 0, "Malloc struct img");
 	img->img = mlx_new_image(e->mlx, e->width, e->heigth);
@@ -25,20 +24,16 @@ t_img			*init_img(t_env *e)
 	return (img);
 }
 
-t_env			*init_env(t_env *e, int w, int h)
+t_env			*init_env(int width, int heigth)
 {
+	t_env	*e;
+
 	if ((e = (t_env *)malloc(sizeof(t_env))) == NULL)
 		error(1, 0, "Malloc struct e");
+	e->width = (width >= 250 && width <= 2550) ? width : 1000;
+	e->heigth = (heigth >= 250 && heigth <= 1080) ? heigth : 1000;
 	e->mlx = mlx_init();
-	if (w < 250 || h < 250 || w > 2550 ||
-		h > 1080)
-	{
-		w = 1000;
-		h = 1000;
-	}
-	e->width = 1000;
-	e->heigth = 1000;
-	e->win = mlx_new_window(e->mlx, e->width, e->heigth, "fractol");
+	e->win = NULL;
 	e->img = init_img(e);
 	e->dx = 0;
 	e->dy = 0;

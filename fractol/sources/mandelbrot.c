@@ -53,7 +53,7 @@ void			mandelbrot(t_env *e)
 		{
 			do_mandel(e);
 			if (e->m.i == e->m.i_max)
-				mlx_pixel_put_img(0x0000FF, e->img, e->m.x,
+				mlx_pixel_put_img(0xFFFFFF, e->img, e->m.x,
 					e->m.y);
 			e->m.y = e->m.y + 1;
 		}
