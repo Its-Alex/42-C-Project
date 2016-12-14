@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 12:00:00 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/08 11:57:14 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:40:52 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ static	void		point_init_iso(t_mlx *mlx)
 		column = 0;
 		while (mlx->point[line][column])
 		{
-			mlx->point[line][column]->px = 150 + mlx->decalx +
-				((mlx->point[line][column]->x + mlx->point[line][column]->y)
-				* (mlx->persp + mlx->prof));
-			mlx->point[line][column]->py = 400 + mlx->decaly +
-				((mlx->point[line][column]->x - mlx->point[line][column]->y)
-				* mlx->persp) - (mlx->point[line][column]->z * mlx->diff);
+			mlx->point[line][column]->px = 400 + mlx->decalx + 0.81 *
+				(mlx->point[line][column]->y - mlx->point[line][column]->x)
+					* mlx->zoom;
+			mlx->point[line][column]->py = 150 + mlx->decaly + 0.41 *
+				(mlx->point[line][column]->y + mlx->point[line][column]->x)
+					* mlx->zoom - 0.41 * mlx->point[line][column]->z *
+						mlx->prof;
 			column++;
 		}
 		line++;

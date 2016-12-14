@@ -6,46 +6,16 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 18:06:14 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/09 14:21:04 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:49:41 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void			free_func(t_mlx *mlx)
-{
-	int		line;
-	int		column;
-
-	line = 0;
-	column = 0;
-	while (mlx->point[line])
-	{
-		column = 0;
-		while (mlx->point[line][column])
-		{
-			free(mlx->point[line][column]);
-			column++;
-		}
-		free(mlx->point[line]);
-		line++;
-	}
-	free(mlx->point);
-	mlx_destroy_image(mlx->mlx, mlx->img->img);
-	mlx_clear_window(mlx->mlx, mlx->win);
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	free(mlx->img);
-	free(mlx->mlx);
-	exit(0);
-}
-
 t_mlx			*reset_mlx(t_mlx *mlx)
 {
-	mlx->prof = 2;
 	mlx->decaly = 0;
 	mlx->decalx = 0;
-	mlx->persp = 2;
-	mlx->diff = 1;
 	mlx->diag = 0;
 	mlx->color = 4;
 	return (mlx);
@@ -68,6 +38,7 @@ static	char	*take_str(char *av, char *str)
 		str = ft_strjoin_free_endl(str, tmp);
 		ft_strdel(&tmp);
 	}
+	ft_putstr(str);
 	if (ret == -1)
 		error(1, 1, "");
 	if (close(fd) < 0)

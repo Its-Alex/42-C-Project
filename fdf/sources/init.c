@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 17:17:39 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/08 12:02:21 by malexand         ###   ########.fr       */
+/*   Created: 2016/12/14 14:01:06 by malexand          #+#    #+#             */
+/*   Updated: 2016/12/14 14:37:40 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libmlx.h"
-#include "../../includes/libft.h"
+#include "../includes/fdf.h"
 
 t_point		*new_point(int x, int y, char *z, int color)
 {
@@ -45,13 +44,12 @@ t_mlx		*init_mlx(t_mlx *mlx, int w, int h)
 		h = 1000;
 	}
 	mlx->win = mlx_new_window(mlx->mlx, w, h, "fdf");
-	mlx->prof = 2;
 	mlx->decaly = 0;
 	mlx->decalx = 0;
+	mlx->zoom = 30.0;
+	mlx->prof = 2;
 	mlx->width = w;
 	mlx->heigth = h;
-	mlx->persp = 2;
-	mlx->diff = 1;
 	mlx->diag = 0;
 	mlx->color = 4;
 	mlx->point = NULL;
