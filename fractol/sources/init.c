@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:20:05 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 12:49:56 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/16 12:40:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_env			*init_env(int width, int heigth)
 	e->dy = 0;
 	e->t_dx = 0;
 	e->t_dy = 0;
+	e->zoom = 1.0;
+	e->t_zoom = 0;
 	e->reload = 0;
 	e->color = 0xFFFFFF;
 	return (e);

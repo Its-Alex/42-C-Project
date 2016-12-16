@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 14:32:13 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 13:57:11 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/16 12:51:13 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void			*mandelbrot_hg(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0xFFFFFF, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0xFFFFFF, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -50,8 +50,8 @@ void			*mandelbrot_hg1(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0xFF0000, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0xFF0000, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -74,8 +74,8 @@ void			*mandelbrot_hd(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0xFFFF00, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0xFFFF00, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -98,8 +98,8 @@ void			*mandelbrot_hd1(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0x00FF00, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0x00FF00, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -122,8 +122,8 @@ void			*mandelbrot_bg(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0x0000FF, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0x0000FF, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -146,8 +146,8 @@ void			*mandelbrot_bg1(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0xFF00FF, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0xFF00FF, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -170,8 +170,8 @@ void			*mandelbrot_bd(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0x00000FF, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0x00000FF, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -194,8 +194,8 @@ void			*mandelbrot_bd1(void *env)
 		{
 			do_mandel(e, &m);
 			if (m.i == m.i_max)
-				mlx_pixel_put_img(0xFFFFFF, e, m.x + e->dx,
-					m.y + e->dy);
+				mlx_pixel_put_img(0xFFFFFF, e, m.x,
+					m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;

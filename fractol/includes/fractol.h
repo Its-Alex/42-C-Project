@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 16:46:40 by malexand         ###   ########.fr       */
+/*   Updated: 2016/12/16 12:57:16 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ typedef struct	s_point
 
 typedef struct	s_frac
 {
-	double		x;
-	double		y;
-	double		x1;
-	double		x2;
-	double		y1;
-	double		y2;
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		tmp;
+	float		x;
+	float		y;
+	float		x1;
+	float		x2;
+	float		y1;
+	float		y2;
+	float		c_r;
+	float		c_i;
+	float		z_r;
+	float		z_i;
+	float		tmp;
 
-	double		i;
-	double		i_max;
+	float		i;
+	float		i_max;
 }				t_frac;
 
 typedef struct	s_env
@@ -59,16 +59,18 @@ typedef struct	s_env
 
 	int			heigth;
 	int			width;
-	int			dx;
-	int			dy;
 	int			t_dx;
 	int			t_dy;
+	int			t_zoom;
 	int			reload;
 
 	int			color;
 
-	double		zoomx;
-	double		zoomy;
+	float		dx;
+	float		dy;
+	float		zoomx;
+	float		zoomy;
+	float		zoom;
 }				t_env;
 
 typedef struct	s_thread
@@ -139,6 +141,8 @@ typedef enum	e_mlx_key
 	KEY_RIGTH = 124,
 	KEY_UP = 126,
 	KEY_DOWN = 125,
+	KEY_PLUS = 78,
+	KEY_MOIN = 69,
 	KEY_ESC = 53
 }				t_mlx_key;
 
