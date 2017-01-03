@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 12:52:31 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/03 16:24:51 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				main(int argc, char **argv)
 	if (argc != 2)
 	{
 		error(1, 0, "Wrong number of args!\n\tYou can use the following\
-			arguments:\n\t\tMandelbrot\n\t\tJulia\n\t\tJe sais pas encore");
+			arguments:\n\t\tMandelbrot\n\t\tJulia");
 	}
 	else
 	{

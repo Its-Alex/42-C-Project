@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 14:23:21 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 17:27:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/03 16:23:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void	do_mandel(t_env *e, t_frac *m)
 	m->z_i = 0;
 	m->i = 0;
 	while (m->z_r * m->z_r + m->z_i * m->z_i < 4
-		&& m->i < m->i_max)
+		&& m->i < e->imax)
 	{
 		m->tmp = m->z_r;
-		m->z_r = m->z_r * m->z_r - m->z_i *
-			m->z_i + m->c_r;
+		m->z_r = m->z_r * m->z_r - m->z_i * m->z_i + m->c_r;
 		m->z_i = 2 * m->z_i * m->tmp + m->c_i;
 		m->i = m->i + 1;
 	}
@@ -38,11 +37,10 @@ void	do_julia(t_env *e, t_frac *m)
 	m->z_i = m->y / e->zoomy + m->y1;
 	m->i = 0;
 	while (m->z_r * m->z_r + m->z_i * m->z_i < 4
-		&& m->i < m->i_max)
+		&& m->i < e->imax)
 	{
 		m->tmp = m->z_r;
-		m->z_r = m->z_r * m->z_r - m->z_i *
-			m->z_i + m->c_r;
+		m->z_r = m->z_r * m->z_r - m->z_i * m->z_i + m->c_r;
 		m->z_i = 2 * m->z_i * m->tmp + m->c_i;
 		m->i = m->i + 1;
 	}

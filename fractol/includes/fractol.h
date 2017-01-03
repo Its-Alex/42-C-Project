@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/16 12:57:16 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/03 15:51:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct	s_frac
 	float		tmp;
 
 	float		i;
-	float		i_max;
 }				t_frac;
 
 typedef struct	s_env
@@ -62,6 +61,7 @@ typedef struct	s_env
 	int			t_dx;
 	int			t_dy;
 	int			t_zoom;
+	int			t_imax;
 	int			reload;
 
 	int			color;
@@ -71,6 +71,7 @@ typedef struct	s_env
 	float		zoomx;
 	float		zoomy;
 	float		zoom;
+	float		imax;
 }				t_env;
 
 typedef struct	s_thread

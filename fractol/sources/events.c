@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/16 13:00:14 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/03 16:32:19 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int				key_press(int keycode, t_env *e)
 		e->t_zoom = -1;
 	if (keycode == KEY_MOIN)
 		e->t_zoom = 1;
-
+	if (keycode == KEY_NUM_7)
+		e->t_imax = -1;
+	if (keycode == KEY_NUM_9)
+		e->t_imax = 1;
 	return (0);
 }
 
@@ -58,7 +61,10 @@ int				key_release(int keycode, t_env *e)
 		e->t_zoom = 0;
 	if (keycode == KEY_MOIN)
 		e->t_zoom = 0;
-
+	if (keycode == KEY_NUM_7)
+		e->t_imax = 0;
+	if (keycode == KEY_NUM_9)
+		e->t_imax = 0;
 	return (0);
 }
 
@@ -73,10 +79,14 @@ int				loop(t_env *e)
 	if (e->t_dy == -1)
 		e->dy += -0.01;
 	if (e->t_zoom == 1)
-		e->zoom += 1.0;
-	if (e->t_zoom == -1)
-		e->zoom += -1.0;
-	printf("%f\n", e->dy);
+		e->zoom += 0.25;
+	if (e->t_zoom == -1 && e->zoom > 1)
+		e->zoom += -0.25;
+	if (e->t_imax == 1)
+		e->imax += 1;
+	if (e->t_imax == -1 && e->imax > 0)
+		e->imax += -1;
 	put_img(e);
+	printf("Imax: %f | Dx: %f |  Dy: %f\n", e->imax, e->dx, e->dy);
 	return (0);
 }

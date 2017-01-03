@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 14:22:08 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/16 13:00:18 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/03 16:51:52 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	init_mandel(t_env *e, t_frac *m)
 	m->x2 = 0.6 + e->dx;
 	m->y1 = -1.2 + e->dy;
 	m->y2 = 1.2 + e->dy;
-	m->i_max = 50;
-	e->zoomx = e->width / (m->x2 - m->x1) * e->zoom;
-	e->zoomy = e->heigth / (m->y2 - m->y1) * e->zoom;
+	e->zoomx = (e->width / (m->x2 - m->x1) + e->dx) * e->zoom;
+	e->zoomy = (e->heigth / (m->y2 - m->y1) + e->dy) * e->zoom;
 }
 
 void	init_julia(t_env *e, t_frac *m)
@@ -33,7 +32,6 @@ void	init_julia(t_env *e, t_frac *m)
 	m->x2 = 1.0;
 	m->y1 = -1.2;
 	m->y2 = 1.2;
-	m->i_max = 100;
 	e->zoomx = e->width / (m->x2 - m->x1);
 	e->zoomy = e->heigth / (m->y2 - m->y1);
 }
