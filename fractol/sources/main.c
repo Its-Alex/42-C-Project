@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 16:24:51 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 13:24:18 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static	int		env_main(void)
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);
 	mlx_hook(e->win, 17, 0L, press_destroy, e);
+	mlx_hook(e->win, 4, 0L, mouse_button, e);
 	mlx_loop_hook(e->mlx, loop, e);
 	mlx_loop(e->mlx);
 	return (0);

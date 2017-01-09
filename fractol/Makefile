@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/15 14:10:23 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/09 13:23:18 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ fclean: clean
 
 re: fclean all
 
-run: all
+run: re
 	@./$(EXEC) Mandelbrot
 
 cleanlib:

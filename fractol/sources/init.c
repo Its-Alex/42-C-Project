@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:20:05 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 15:46:51 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 13:57:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ t_env			*init_env(int width, int heigth)
 	e->dy = 0;
 	e->t_dx = 0;
 	e->t_dy = 0;
+	e->init = 0;
 	e->t_imax = 0;
 	e->imax = 20.0;
 	e->zoom = 1.0;
+	e->zoomx = (e->width / ((0.6 + e->dx) - (-2.1 + e->dx)));
+	e->zoomy = (e->heigth / ((1.2 + e->dy) - (-1.2 + e->dy)));
 	e->t_zoom = 0;
 	e->reload = 0;
 	e->color = 0xFFFFFF;

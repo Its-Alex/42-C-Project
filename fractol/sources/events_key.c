@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 16:32:19 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 14:02:03 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int				press_destroy(t_env *e)
+int				mouse_button(int button, int x, int y, t_env *e)
 {
-	mlx_destroy_image(e->mlx, e->img->img);
-	mlx_clear_window(e->mlx, e->win);
-	mlx_destroy_window(e->mlx, e->win);
-	free(e->img);
-	free(e->mlx);
-	free(e);
-	exit(0);
+	if (button == 1 || button == 4)
+	{
+		e->m_x = x;
+		e->m_y = y;
+	}
 	return (0);
 }
 
@@ -65,28 +63,5 @@ int				key_release(int keycode, t_env *e)
 		e->t_imax = 0;
 	if (keycode == KEY_NUM_9)
 		e->t_imax = 0;
-	return (0);
-}
-
-int				loop(t_env *e)
-{
-	if (e->t_dx == 1)
-		e->dx += 0.01;
-	if (e->t_dx == -1)
-		e->dx += -0.01;
-	if (e->t_dy == 1)
-		e->dy += 0.01;
-	if (e->t_dy == -1)
-		e->dy += -0.01;
-	if (e->t_zoom == 1)
-		e->zoom += 0.25;
-	if (e->t_zoom == -1 && e->zoom > 1)
-		e->zoom += -0.25;
-	if (e->t_imax == 1)
-		e->imax += 1;
-	if (e->t_imax == -1 && e->imax > 0)
-		e->imax += -1;
-	put_img(e);
-	printf("Imax: %f | Dx: %f |  Dy: %f\n", e->imax, e->dx, e->dy);
 	return (0);
 }

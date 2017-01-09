@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 14:32:13 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 16:36:42 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 14:01:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@ void			*mandelbrot_hg(void *env)
 		while (m.y < e->heigth / 2)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -52,12 +49,9 @@ void			*mandelbrot_hg1(void *env)
 		while (m.y < e->heigth / 2)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -79,12 +73,9 @@ void			*mandelbrot_hd(void *env)
 		while (m.y < e->heigth / 2)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -100,18 +91,15 @@ void			*mandelbrot_hd1(void *env)
 	e = env;
 	init_mandel(e, &m);
 	m.x = e->width / 4 * 3;
-	while (m.x < e->width)
+	while (m.x <= e->width)
 	{
 		m.y = 0;
 		while (m.y < e->heigth / 2)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -133,12 +121,9 @@ void			*mandelbrot_bg(void *env)
 		while (m.y < e->heigth)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -157,15 +142,12 @@ void			*mandelbrot_bg1(void *env)
 	while (m.x < e->width / 2)
 	{
 		m.y = e->heigth / 2;
-		while (m.y < e->heigth)
+		while (m.y <= e->heigth)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -184,15 +166,12 @@ void			*mandelbrot_bd(void *env)
 	while (m.x < e->width / 4 * 3)
 	{
 		m.y = e->heigth / 2;
-		while (m.y < e->heigth)
+		while (m.y <= e->heigth)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -208,18 +187,15 @@ void			*mandelbrot_bd1(void *env)
 	e = env;
 	init_mandel(e, &m);
 	m.x = e->width / 4 * 3;
-	while (m.x < e->width)
+	while (m.x <= e->width)
 	{
 		m.y = e->heigth / 2;
-		while (m.y < e->heigth)
+		while (m.y <= e->heigth)
 		{
 			do_mandel(e, &m);
-			if (m.i == e->imax)
-				mlx_pixel_put_img(0x000000, e, e->dx + m.x,
-					e->dy + m.y);
-			else
-				mlx_pixel_put_img((m.i * 255 / e->imax) * 6, e, e->dx + m.x,
-					e->dy + m.y);
+			if (m.i != e->imax)
+				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
+					, e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;

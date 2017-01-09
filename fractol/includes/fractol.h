@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 15:51:42 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 13:34:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <mlx.h>
 # include <pthread.h>
 # include <limits.h>
+# include <time.h>
 # include "../libft/includes/libft.h"
 
 typedef struct	s_img
@@ -63,8 +64,11 @@ typedef struct	s_env
 	int			t_zoom;
 	int			t_imax;
 	int			reload;
+	int			init;
 
 	int			color;
+	int			m_x;
+	int			m_y;
 
 	float		dx;
 	float		dy;
@@ -169,6 +173,7 @@ void			*mandelbrot_bd1(void *env);
 ** Event func :
 */
 
+int				mouse_button(int button, int x, int y, t_env *e);
 int				key_press(int keycode, t_env *mlx);
 int				key_release(int keycode, t_env *mlx);
 int				loop(t_env *mlx);
