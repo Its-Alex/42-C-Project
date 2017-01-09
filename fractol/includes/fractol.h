@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 13:34:21 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 17:58:15 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,78 +16,85 @@
 # include <pthread.h>
 # include <limits.h>
 # include <time.h>
+# include <math.h>
 # include "../libft/includes/libft.h"
 
 typedef struct	s_img
 {
-	void		*img;
-	char		*addr;
+	void			*img;
+	char			*addr;
 
-	int			bpp;
-	int			size_l;
-	int			endian;
+	int				bpp;
+	int				size_l;
+	int				endian;
 }				t_img;
 
 typedef struct	s_point
 {
-	int			x;
-	int			y;
+	int				x;
+	int				y;
 }				t_point;
 
 typedef struct	s_frac
 {
-	float		x;
-	float		y;
-	float		x1;
-	float		x2;
-	float		y1;
-	float		y2;
-	float		c_r;
-	float		c_i;
-	float		z_r;
-	float		z_i;
-	float		tmp;
+	long double		x;
+	long double		y;
+	long double		x1;
+	long double		x2;
+	long double		y1;
+	long double		y2;
+	long double		c_r;
+	long double		c_i;
+	long double		z_r;
+	long double		z_i;
+	long double		tmp;
 
-	float		i;
+	long double		i;
 }				t_frac;
 
 typedef struct	s_env
 {
-	void		*mlx;
-	void		*win;
-	t_img		*img;
+	void			*mlx;
+	void			*win;
+	t_img			*img;
 
-	int			heigth;
-	int			width;
-	int			t_dx;
-	int			t_dy;
-	int			t_zoom;
-	int			t_imax;
-	int			reload;
-	int			init;
+	char			**av;
 
-	int			color;
-	int			m_x;
-	int			m_y;
+	int				heigth;
+	int				width;
+	int				t_dx;
+	int				t_dy;
+	int				t_zoom;
+	int				t_imax;
+	int				reload;
+	int				init;
 
-	float		dx;
-	float		dy;
-	float		zoomx;
-	float		zoomy;
-	float		zoom;
-	float		imax;
+	int				color;
+	int				m_x;
+	int				m_y;
+
+	long double		dx;
+	long double		dy;
+	long double		x1;
+	long double		x2;
+	long double		y1;
+	long double		y2;
+	long double		zoomx;
+	long double		zoomy;
+	long double		zoom;
+	long double		imax;
 }				t_env;
 
 typedef struct	s_thread
 {
-	pthread_t	thread1;
-	pthread_t	thread2;
-	pthread_t	thread3;
-	pthread_t	thread4;
-	pthread_t	thread5;
-	pthread_t	thread6;
-	pthread_t	thread7;
-	pthread_t	thread8;
+	pthread_t		thread1;
+	pthread_t		thread2;
+	pthread_t		thread3;
+	pthread_t		thread4;
+	pthread_t		thread5;
+	pthread_t		thread6;
+	pthread_t		thread7;
+	pthread_t		thread8;
 }				t_thread;
 
 /*
@@ -155,19 +162,16 @@ typedef enum	e_mlx_key
 ** Fractal :
 */
 
-void			init_mandel(t_env *e, t_frac *m);
-void			init_julia(t_env *e, t_frac *m);
-void			do_mandel(t_env *e, t_frac *m);
-void			do_julia(t_env *e, t_frac *m);
-void			julia(t_env *e);
-void			*mandelbrot_hd(void *env);
-void			*mandelbrot_hg(void *env);
-void			*mandelbrot_bg(void *env);
-void			*mandelbrot_bd(void *env);
-void			*mandelbrot_hd1(void *env);
-void			*mandelbrot_hg1(void *env);
-void			*mandelbrot_bg1(void *env);
-void			*mandelbrot_bd1(void *env);
+void			do_fract(t_env *e, t_frac *m);
+void			init_fract(t_env *e, t_frac *m);
+void			*hd(void *env);
+void			*hg(void *env);
+void			*bg(void *env);
+void			*bd(void *env);
+void			*hd1(void *env);
+void			*hg1(void *env);
+void			*bg1(void *env);
+void			*bd1(void *env);
 
 /*
 ** Event func :
@@ -178,6 +182,8 @@ int				key_press(int keycode, t_env *mlx);
 int				key_release(int keycode, t_env *mlx);
 int				loop(t_env *mlx);
 int				press_destroy(t_env *env);
+void			zoom_in(t_env *e, int x, int y);
+void			zoom_out(t_env *e, int x, int y);
 
 /*
 ** Put mlx func :
@@ -193,6 +199,6 @@ void			mlx_put_line(t_env *env, t_point *p1, t_point *p2);
 
 t_point			*new_point(int x, int y, char *z, int color);
 t_img			*init_img(t_env *env);
-t_env			*init_env(int width, int heigth);
+t_env			*init_env(int width, int heigth, char **av);
 
 #endif

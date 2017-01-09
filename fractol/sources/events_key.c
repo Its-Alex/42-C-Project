@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 14:02:03 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 16:56:25 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int				mouse_button(int button, int x, int y, t_env *e)
 {
-	if (button == 1 || button == 4)
-	{
-		e->m_x = x;
-		e->m_y = y;
-	}
+	if (button == 1 || button == 5)
+		zoom_in(e, x, y);
+	if (button == 2 || button == 4)
+		zoom_out(e, x, y);
 	return (0);
 }
 

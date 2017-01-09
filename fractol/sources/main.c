@@ -6,17 +6,17 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 13:24:18 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 17:44:03 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static	int		env_main(void)
+static	int		env_main(char **av)
 {
 	t_env	*e;
 
-	e = init_env(0, 0);
+	e = init_env(0, 0, av);
 	put_img(e);
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);
@@ -32,15 +32,16 @@ int				main(int argc, char **argv)
 	if (argc != 2)
 	{
 		error(1, 0, "Wrong number of args!\n\tYou can use the following\
-			arguments:\n\t\tMandelbrot\n\t\tJulia");
+			arguments:\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
 	}
 	else
 	{
 		if (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
-				ft_strcmp(argv[1], "Julia") != 0)
+				ft_strcmp(argv[1], "Julia") != 0 &&
+				ft_strcmp(argv[1], "BurningShip") != 0)
 			error(1, 0, "Bad args!\n\tYou can use the following arguments: \
-				\n\t\tMandelbrot\n\t\tJulia\n\t\tJe sais pas encore");
-		env_main();
+				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
+		env_main(argv);
 	}
 	return (0);
 }

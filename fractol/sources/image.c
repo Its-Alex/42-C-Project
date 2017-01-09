@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/03 15:51:16 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/09 16:56:34 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y)
 
 static	void	thread_work(t_thread *t, t_env *e)
 {
-	if (pthread_create(&t->thread1, NULL, mandelbrot_hg, e) == -1)
+	if (pthread_create(&t->thread1, NULL, hg, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread2, NULL, mandelbrot_hd, e) == -1)
+	if (pthread_create(&t->thread2, NULL, hd, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread3, NULL, mandelbrot_bg, e) == -1)
+	if (pthread_create(&t->thread3, NULL, bg, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread4, NULL, mandelbrot_bd, e) == -1)
+	if (pthread_create(&t->thread4, NULL, bd, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread5, NULL, mandelbrot_hg1, e) == -1)
+	if (pthread_create(&t->thread5, NULL, hg1, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread6, NULL, mandelbrot_hd1, e) == -1)
+	if (pthread_create(&t->thread6, NULL, hd1, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread7, NULL, mandelbrot_bg1, e) == -1)
+	if (pthread_create(&t->thread7, NULL, bg1, e) == -1)
 		error(1, 1, "");
-	if (pthread_create(&t->thread8, NULL, mandelbrot_bd1, e) == -1)
+	if (pthread_create(&t->thread8, NULL, bd1, e) == -1)
 		error(1, 1, "");
 }
 
