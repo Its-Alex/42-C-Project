@@ -45,8 +45,8 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_memccpy.c libc/ft_memset.c libc/ft_putnbr_fd.c \
 					libc/ft_strclr.c libc/ft_striter.c libc/ft_strmap.c \
 					libc/ft_strnew.c libc/ft_strsub.c \
-					libc/get_next_line.c libc/ft_strjoin_free_endl.c \
-					libc/parse_array_3d.c libc/putarray_3d.c libc/error.c\
+					libc/ft_get_next_line.c libc/ft_strjoin_free_endl.c \
+					libc/ft_error.c\
 					
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
@@ -76,6 +76,7 @@ endif
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
+	@echo "\x1B[32m\t+ Compile:\x1B[0m $(notdir $@)"
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR) $(OUT_LIBC_DIR)
 
