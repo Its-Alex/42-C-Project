@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/12/06 15:41:04 by malexand         ###   ########.fr       */
+/*   Updated: 2016/11/24 15:36:55 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define _LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
-# include <errno.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"
@@ -37,13 +35,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct		s_tab2d
-{
-	int				line;
-	int				column;
-	int				**tab;
-}					t_tab2d;
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -64,7 +55,7 @@ void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_freetab(char **tab);
-void				error(int error, int send_perror, char *str);
+void				putarray_3d(char ***array);
 
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp (const char *s1, const char *s2, size_t num);
@@ -74,8 +65,8 @@ char				*ft_strstr(const char *big, const char *little);
 char				*ft_strnstr(const char *big, const char *little, size_t n);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t n);
-char				*ft_strcpy(char *dest, const char *src);
-char				*ft_strncpy(char *dest, const char *src, size_t n);
+char				*ft_strcpy (char *dest, const char *src);
+char				*ft_strncpy (char *dest, const char *src, size_t n);
 char				*ft_strchr(const char *str, int c);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_strnew(size_t size);
