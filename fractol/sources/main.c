@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 17:02:42 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:19:51 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				main(int argc, char **argv)
 				ft_strcmp(argv[1], "BurningShip") != 0 &&
 				ft_strcmp(argv[1], "Douady") != 0)
 			error(1, 0, "Bad args!\n\tYou can use the following arguments: \
-				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
+				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship\n\t\tDouady");
 		env_main(argv);
 	}
 	return (0);
