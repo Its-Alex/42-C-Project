@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 16:56:34 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/12 18:19:02 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static	void	thread_wait(t_thread *t)
 
 static	void	create_img(t_env *e)
 {
-	t_thread	t;
+	static t_thread		t;
 
 	thread_work(&t, e);
 	thread_wait(&t);
@@ -90,8 +90,6 @@ int				put_img(t_env *e)
 {
 	ft_bzero(e->img->addr, e->img->size_l * e->heigth);
 	create_img(e);
-	if (e->reload++ == 0)
-		e->win = mlx_new_window(e->mlx, e->width, e->heigth, "fractol");
 	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 	return (0);
 }

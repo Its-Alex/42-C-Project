@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:34:52 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 18:17:50 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 15:48:31 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ void			*bg(void *env)
 		while (m.y < e->heigth)
 		{
 			do_fract(e, &m);
-			if (m.i != e->imax)
-				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
-					, e, e->dx + m.x, e->dy + m.y);
+			if (e->color_mod == 1)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+					e, e->dx + m.x, e->dy + m.y);
+			else if (m.i != e->imax && e->color_mod == 0)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+				e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -50,9 +53,12 @@ void			*bg1(void *env)
 		while (m.y <= e->heigth)
 		{
 			do_fract(e, &m);
-			if (m.i != e->imax)
-				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
-					, e, e->dx + m.x, e->dy + m.y);
+			if (e->color_mod == 1)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+					e, e->dx + m.x, e->dy + m.y);
+			else if (m.i != e->imax && e->color_mod == 0)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+				e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -74,9 +80,12 @@ void			*bd(void *env)
 		while (m.y <= e->heigth)
 		{
 			do_fract(e, &m);
-			if (m.i != e->imax)
-				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
-					, e, e->dx + m.x, e->dy + m.y);
+			if (e->color_mod == 1)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+					e, e->dx + m.x, e->dy + m.y);
+			else if (m.i != e->imax && e->color_mod == 0)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+				e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;
@@ -98,9 +107,12 @@ void			*bd1(void *env)
 		while (m.y <= e->heigth)
 		{
 			do_fract(e, &m);
-			if (m.i != e->imax)
-				mlx_pixel_put_img((int)((m.i * 255 / e->imax)) << 16
-					, e, e->dx + m.x, e->dy + m.y);
+			if (e->color_mod == 1)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+					e, e->dx + m.x, e->dy + m.y);
+			else if (m.i != e->imax && e->color_mod == 0)
+				mlx_pixel_put_img((int)((m.i * e->color / e->imax)),
+				e, e->dx + m.x, e->dy + m.y);
 			m.y = m.y + 1;
 		}
 		m.x = m.x + 1;

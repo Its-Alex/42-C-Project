@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+EXEC = libft.a
 
 CC 				= clang
 OS 				= $(shell uname -s)
@@ -45,8 +45,8 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_memccpy.c libc/ft_memset.c libc/ft_putnbr_fd.c \
 					libc/ft_strclr.c libc/ft_striter.c libc/ft_strmap.c \
 					libc/ft_strnew.c libc/ft_strsub.c \
-					libc/get_next_line.c libc/ft_strjoin_free_endl.c \
-					libc/parse_array_3d.c libc/putarray_3d.c libc/error.c\
+					libc/ft_get_next_line.c libc/ft_strjoin_free_endl.c \
+					libc/ft_error.c\
 					
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
@@ -54,14 +54,12 @@ INCDIR = 			includes/
 
 ODIR =				objets/
 ODIR_LIBC =			objets/libc
-ODIR_MLX =			objets/libmlx
 OBJS =				$(SRCS:.c=.o)
 OBCC =				$(addprefix $(ODIR),$(OBJS))
 
+all: directories $(EXEC)
 
-all: directories $(NAME)
-
-$(NAME): $(OBCC)
+$(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
@@ -72,10 +70,11 @@ else
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 endif
-	@echo "Build $(NAME) ✅"
+	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
+	@echo "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR) $(OUT_LIBC_DIR)
 
@@ -92,13 +91,17 @@ $(INC_DIR):
 	@$(MKDIR_P) $(INC_DIR)
 
 clean:
-	@echo "Deleting compilation files libft ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m libft/objects"
 	@rm -rf objets
 
 fclean: clean
-	@echo "Deleting $(NAME) ✅"
-	@rm -f $(NAME)
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@rm -f $(EXEC)
+
+delete:
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@rm -f $(EXEC)
 
 re: fclean all
 
-.PHONY: all clean fclean re run directories cleanlib
+.PHONY: all clean fclean re run directories cleanlib delete

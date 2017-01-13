@@ -18,7 +18,7 @@ int		ft_atoi(char *str)
 	int nbr;
 	int i;
 
-	if (str[0] == '\0')
+	if (!str)
 		return (0);
 	negative = 0;
 	nbr = 0;

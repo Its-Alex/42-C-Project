@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 17:58:15 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 16:40:43 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ typedef struct	s_img
 	int				size_l;
 	int				endian;
 }				t_img;
-
-typedef struct	s_point
-{
-	int				x;
-	int				y;
-}				t_point;
 
 typedef struct	s_frac
 {
@@ -66,15 +60,15 @@ typedef struct	s_env
 	int				t_dy;
 	int				t_zoom;
 	int				t_imax;
-	int				reload;
 	int				init;
+	int				move;
+	int				color_mod;
 
-	int				color;
-	int				m_x;
-	int				m_y;
-
+	long int		color;
 	long double		dx;
 	long double		dy;
+	long double		diff_fractx;
+	long double		diff_fracty;
 	long double		x1;
 	long double		x2;
 	long double		y1;
@@ -177,6 +171,7 @@ void			*bd1(void *env);
 ** Event func :
 */
 
+int				mouse_motion(int x, int y, t_env *e);
 int				mouse_button(int button, int x, int y, t_env *e);
 int				key_press(int keycode, t_env *mlx);
 int				key_release(int keycode, t_env *mlx);
@@ -191,14 +186,17 @@ void			zoom_out(t_env *e, int x, int y);
 
 int				put_img(t_env *env);
 void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y);
-void			mlx_put_line(t_env *env, t_point *p1, t_point *p2);
 
 /*
 ** Mlx func :
 */
 
-t_point			*new_point(int x, int y, char *z, int color);
+int				env_main(char **av);
+void			new_win(t_env *e);
+void			env_fract(t_env *e);
+void			reset(t_env *e);
 t_img			*init_img(t_env *env);
+t_env			*init_mlx(t_env *e);
 t_env			*init_env(int width, int heigth, char **av);
 
 #endif

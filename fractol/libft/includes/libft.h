@@ -64,7 +64,6 @@ void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_freetab(char **tab);
-void				putarray_3d(char ***array);
 void				error(int error, int send_perror, char *str);
 
 int					ft_strcmp(const char *s1, const char *s2);
@@ -75,8 +74,8 @@ char				*ft_strstr(const char *big, const char *little);
 char				*ft_strnstr(const char *big, const char *little, size_t n);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t n);
-char				*ft_strcpy (char *dest, const char *src);
-char				*ft_strncpy (char *dest, const char *src, size_t n);
+char				*ft_strcpy(char *dest, const char *src);
+char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strchr(const char *str, int c);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_strnew(size_t size);
@@ -122,7 +121,5 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					get_line(const int fd, int nb_line, char **line);
 int					get_next_line(const int fd, char **line);
-
-int					tab2d_int_malloc(t_tab2d *tab2d);
 
 #endif

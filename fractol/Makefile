@@ -6,11 +6,12 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/09 13:23:18 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/12 19:09:03 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXEC = fractol
+
 DEBUG = no
 CC = clang
 OS := $(shell uname -s)
@@ -45,20 +46,24 @@ all: directories $(EXEC)
 
 $(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
+	@echo "\x1B[39mLibft:\x1B[0m\n"
 	@make -C ./libft
+	@echo "\x1B[39m$(EXEC):\x1B[0m"
 	clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
-	@echo "Build $(EXEC) ✅"
 else
+	@echo "\x1B[39mLibft:\x1B[0m\n"
 	@make -C ./libft
+	@echo "\x1B[39m$(EXEC):\x1B[0m"
 	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
-	@echo "Build $(EXEC) ✅"
 endif
+	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
+	@echo "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: ${OUT_DIR} ${SRC_DIR} ${INC_DIR}
 
@@ -74,16 +79,16 @@ ${INC_DIR}:
 clean:
 	@make -C ./libft clean
 	@rm -rf $(OUT_DIR)
-	@echo "Deleting compilation files ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m objects"
 
 fclean: clean
-	@make -C ./libft fclean
+	@make -C ./libft delete
 	@rm -f $(EXEC)
-	@echo "Deleting $(EXEC) ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 
 re: fclean all
 
-run: re
+run: all
 	@./$(EXEC) Mandelbrot
 
 cleanlib:

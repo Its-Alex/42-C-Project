@@ -6,25 +6,55 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 16:56:25 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:15:38 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int				mouse_button(int button, int x, int y, t_env *e)
+void			key_params(int keycode, t_env *e)
 {
-	if (button == 1 || button == 5)
-		zoom_in(e, x, y);
-	if (button == 2 || button == 4)
-		zoom_out(e, x, y);
-	return (0);
+	if (keycode == KEY_ESC)
+		press_destroy(e);
+	if (keycode == KEY_W)
+		env_main(e->av);
+	if (keycode == KEY_R)
+		reset(e);
+	if (keycode == KEY_P)
+		e->move = (e->move != 1) ? 1 : 0;
+	if (keycode == KEY_C && e->color < 12000000000)
+		e->color *= 13;
+	if (e->color > 1200000000)
+		e->color = 255;
+	if (keycode == KEY_V)
+		e->color_mod = (e->color_mod != 1) ? 1 : 0;
+	if (keycode == KEY_NUM_1)
+		e->color = 255;
+	if (keycode == KEY_NUM_2)
+		e->color = 255 << 8;
+	if (keycode == KEY_NUM_3)
+		e->color = 255 << 16;
+}
+
+void			key_fract(int keycode, t_env *e)
+{
+	if (keycode == KEY_1)
+		e->av[1] = "Mandelbrot";
+	if (keycode == KEY_2)
+		e->av[1] = "Julia";
+	if (keycode == KEY_3)
+		e->av[1] = "BurningShip";
+	if (keycode == KEY_4)
+		e->av[1] = "Douady";
+	if (keycode == KEY_1 || keycode == KEY_2 || keycode == KEY_3
+			|| keycode == KEY_4)
+		reset(e);
 }
 
 int				key_press(int keycode, t_env *e)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
+	key_fract(keycode, e);
+	key_params(keycode, e);
 	if (keycode == KEY_LEFT)
 		e->t_dx = -1;
 	if (keycode == KEY_RIGTH)

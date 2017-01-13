@@ -19,7 +19,7 @@ OUT_DIR 		= objets
 SRC_DIR 		= sources
 INC_DIR 		= includes
 OUT_LIBC_DIR 	= objets/libc
-CFLAG 			= -Wall -Werror -Wextra
+CFLAG 			= -Wall -Werror -Wextra -ggdb -g
 
 SDIR =				sources/
 SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
@@ -54,10 +54,8 @@ INCDIR = 			includes/
 
 ODIR =				objets/
 ODIR_LIBC =			objets/libc
-ODIR_MLX =			objets/libmlx
 OBJS =				$(SRCS:.c=.o)
 OBCC =				$(addprefix $(ODIR),$(OBJS))
-
 
 all: directories $(EXEC)
 
@@ -72,11 +70,11 @@ else
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 endif
-	@echo "\x1B[32m\t+ Compile:\x1B[0m $@"
+	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
-	@echo "\x1B[32m\t+ Compile:\x1B[0m $(notdir $@)"
+	@echo "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR) $(OUT_LIBC_DIR)
 
@@ -93,11 +91,11 @@ $(INC_DIR):
 	@$(MKDIR_P) $(INC_DIR)
 
 clean:
-	@echo "\x1B[31m\t- Remove:\x1B[0m objects"
+	@echo "\x1B[31m  - Remove:\x1B[0m objects"
 	@rm -rf objets
 
 fclean: clean
-	@echo "\x1B[31m\t- Remove:\x1B[0m $(EXEC)"
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 	@rm -f $(EXEC)
 
 re: fclean all

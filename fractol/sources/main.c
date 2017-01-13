@@ -6,22 +6,22 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 17:44:03 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 17:02:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static	int		env_main(char **av)
+int				env_main(char **av)
 {
 	t_env	*e;
 
-	e = init_env(0, 0, av);
-	put_img(e);
+	e = init_env(ft_atoi(av[2]), ft_atoi(av[3]), av);
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);
 	mlx_hook(e->win, 17, 0L, press_destroy, e);
 	mlx_hook(e->win, 4, 0L, mouse_button, e);
+	mlx_hook(e->win, 6, 0L, mouse_motion, e);
 	mlx_loop_hook(e->mlx, loop, e);
 	mlx_loop(e->mlx);
 	return (0);
@@ -29,7 +29,7 @@ static	int		env_main(char **av)
 
 int				main(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc != 2 && argc != 4)
 	{
 		error(1, 0, "Wrong number of args!\n\tYou can use the following\
 			arguments:\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
@@ -38,7 +38,8 @@ int				main(int argc, char **argv)
 	{
 		if (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 				ft_strcmp(argv[1], "Julia") != 0 &&
-				ft_strcmp(argv[1], "BurningShip") != 0)
+				ft_strcmp(argv[1], "BurningShip") != 0 &&
+				ft_strcmp(argv[1], "Douady") != 0)
 			error(1, 0, "Bad args!\n\tYou can use the following arguments: \
 				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
 		env_main(argv);

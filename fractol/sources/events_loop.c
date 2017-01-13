@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/09 18:02:49 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/13 16:16:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int				press_destroy(t_env *e)
 	return (0);
 }
 
-char			*fps(t_env *e)
+int				fps(t_env *e)
 {
 	static double	last_time;
 	static int		img;
 	static int		save;
 	double			current_time;
+	char			*fps;
 
 	current_time = time(NULL);
 	if (e->init == 0)
@@ -46,25 +47,20 @@ char			*fps(t_env *e)
 		save = img;
 		img = 0;
 	}
-	return (ft_itoa(save));
+	fps = ft_itoa(save);
+	mlx_string_put(e->mlx, e->win, 20, 20, 0xFFFFFF, fps);
+	ft_strdel(&fps);
+	return (0);
 }
 
-int				loop(t_env *e)
+void			loop_params(t_env *e)
 {
-	if (e->t_dx == 1)
-		e->dx += 0.01;
-	if (e->t_dx == -1)
-		e->dx += -0.01;
-	if (e->t_dy == 1)
-		e->dy += 0.01;
-	if (e->t_dy == -1)
-		e->dy += -0.01;
 	if (e->t_zoom == 1)
 	{
 		e->zoomx *= 1.25;
 		e->zoomy *= 1.25;
 	}
-	if (e->t_zoom == -1 && e->zoomx > 400 && e->zoomy > 400)
+	if (e->t_zoom == -1)
 	{
 		e->zoomx /= 1.25;
 		e->zoomy /= 1.25;
@@ -73,7 +69,20 @@ int				loop(t_env *e)
 		e->imax += 1;
 	if (e->t_imax == -1 && e->imax > 0)
 		e->imax += -1;
+}
+
+int				loop(t_env *e)
+{
+	if (e->t_dx == 1 && e->zoomx < 78420 && e->zoomx < 88230)
+		e->dx += 0.01;
+	if (e->t_dx == -1 && e->zoomx < 78420 && e->zoomx < 88230)
+		e->dx += -0.01;
+	if (e->t_dy == 1 && e->zoomx < 78420 && e->zoomx < 88230)
+		e->dy += 0.01;
+	if (e->t_dy == -1 && e->zoomx < 78420 && e->zoomx < 88230)
+		e->dy += -0.01;
+	loop_params(e);
 	put_img(e);
-	mlx_string_put(e->mlx, e->win, 20, 20, 0xFFFFFF, fps(e));
+	fps(e);
 	return (0);
 }
