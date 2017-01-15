@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2016/12/06 15:41:04 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/15 17:36:42 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define CYN   "\x1B[36m"
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1024
 # define SIZE_FD 2147483647
 
 typedef struct		s_list
@@ -37,13 +37,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct		s_tab2d
-{
-	int				line;
-	int				column;
-	int				**tab;
-}					t_tab2d;
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -63,8 +56,9 @@ void				ft_putendl(const char *s);
 void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_putlong(long n);
+void				ft_putlong_fd(long n, int fd);
 void				ft_freetab(char **tab);
-void				putarray_3d(char ***array);
 void				error(int error, int send_perror, char *str);
 
 int					ft_strcmp(const char *s1, const char *s2);
@@ -87,10 +81,8 @@ char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strjoin_free(char *s1, const char *s2);
-char				*ft_strjoin_free_endl(char *s1, const char *s2);
 char				*ft_strtrim(const char *s);
 char				**ft_strsplit(const char *s, char c);
-char				***parse_array_3d(char *str, char carac1, char carac2);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
@@ -122,7 +114,5 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					get_line(const int fd, int nb_line, char **line);
 int					get_next_line(const int fd, char **line);
-
-int					tab2d_int_malloc(t_tab2d *tab2d);
 
 #endif
