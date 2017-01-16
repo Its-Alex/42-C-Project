@@ -6,7 +6,7 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:25:42 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:27:58 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 00:55:27 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_list		*ft_lststr_sort(t_list *lst)
 	tmplst = lst;
 	if (!lst)
 		return (lst);
-	temp = lst->content;
 	while (lst)
 	{
 		while (tmplst)

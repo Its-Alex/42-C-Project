@@ -6,7 +6,7 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:52:31 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 00:57:15 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void			putlst(t_list *lst)
 {
-	ft_putendl(lst->content);
+	ft_putstr(lst->content);
+	if (lst->next)
+		ft_putstr(" ");
 }
 
 static int		ifFlags(char **av, char *flags)
@@ -56,6 +58,6 @@ int 			main(int argc, char **argv)
 		ft_strdel(&flags);
 	}
 	else
-		ft_lstiter(ft_lststr_sort(open_dir(".", 1)), putlst);
+		ft_lstiter(ft_lststr_sort(open_dir(".", 0)), putlst);
 	return (0);
 }
