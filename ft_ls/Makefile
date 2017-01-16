@@ -6,7 +6,7 @@
 #    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/16 23:20:42 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/16 23:35:56 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,13 @@ ifeq ($(DEBUG), yes)
 else
 	CFLAGS = -Wall -Werror -Wextra
 endif
+
+# Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
+
 ifeq ($(OS), Linux)
-	LFLAGS = libft/libft.a
+	LFLAGS = -L./libft -lft
 else
-	LFLAGS = libft/libft.a 
+	LFLAGS = -L./libft -lft
 endif
 
 OUT_DIR = objs

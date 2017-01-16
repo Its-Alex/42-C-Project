@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 22:42:09 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 18:09:44 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 23:35:01 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	putlst(t_list *lst)
 
 t_list		*ft_lstsort(t_list *list)
 {
-	(void)list;
 	return (list);
 }
 
