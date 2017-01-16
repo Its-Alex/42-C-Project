@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2017/01/15 17:36:42 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/16 18:06:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
 
 void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstaddend(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));

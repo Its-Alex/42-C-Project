@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/16 15:30:56 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/16 18:07:13 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCS =				ft_atoi.c ft_isdigit.c ft_lstdelone.c \
 					ft_strstr.c ft_isascii.c ft_lstdel.c \
 					ft_memccpy.c ft_memset.c ft_putnbr_fd.c \
 					ft_strclr.c ft_striter.c ft_strmap.c \
-					ft_strnew.c ft_strsub.c \
+					ft_strnew.c ft_strsub.c ft_lstaddend.c \
 					ft_get_next_line.c ft_error.c \
 
 SRCC =				$(addprefix $(SDIR),$(SRCS))

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 22:42:09 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 15:21:58 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 18:09:44 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		open_dir(char *path, int sneaky)
 				else
 				{
 					tmp = ft_lstnew(ent->d_name, sizeof(char) * (ft_strlen(ent->d_name) + 1));
-					ft_lstadd(&list, tmp);
+					ft_lstaddend(&list, tmp);
 				}
 			}
 		}
