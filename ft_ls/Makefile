@@ -6,7 +6,7 @@
 #    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/16 23:14:15 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/16 23:20:42 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ ${INC_DIR}:
 clean:
 	@make -C ./libft clean
 	@rm -rf $(OUT_DIR)
-	@echo -e "\x1B[31m  - Remove:\x1B[0m objects"
+	@echo -e "\x1B[31m  - Remove:\x1B[0m objs"
 
 fclean: clean
 	@make -C ./libft delete

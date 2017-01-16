@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ls.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 15:21:05 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 23:19:48 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LS_H
 # define LS_H
 
-# include "../libft/includes/libft.h"
+# include "../libft/incs/libft.h"
 # include <stdio.h>
 # include <time.h>
 # include <dirent.h>
