@@ -11,7 +11,7 @@ All of my project at 42born2code
 	* Multiple file descriptor
 	* 1 static variables
 	* Fail one medium test
-* fdf : ?/100
+* fdf : 125/100
 	* Take size of win as arg
 	* Multi Thread
 	* Zoom / Move on x & y
