@@ -6,7 +6,7 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 15:31:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:23 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/16 23:25:16 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	ft_putlong_fd(long n, int fd)
 		ft_putchar_fd('0', fd);
 	if (n / 10)
 		ft_putlong_fd(n / 10, fd);
-	ft_putchar_fd(n d% 10 + '0', fd);
+	ft_putchar_fd(n % 10 + '0', fd);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putlong_fd.c                                    :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/15 15:31:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 23:25:16 by skyzie           ###   ########.fr       */
+/*   Created: 2017/01/16 23:22:07 by skyzie            #+#    #+#             */
+/*   Updated: 2017/01/16 23:22:26 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libft.h"
 
-void	ft_putlong_fd(long n, int fd)
+
+void	ft_sort_int_tab(int *tab, unsigned int size)
 {
-	if (n < 0)
+	unsigned int	i;
+	int				swap;
+
+	i = 0;
+	while (i < size - 1)
 	{
-		ft_putchar_fd('-', fd);
-		n = -n;
+		if (tab[i] <= tab[i + 1])
+			i++;
+		else
+		{
+			swap = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = swap;
+			i = 0;
+		}
 	}
-	if (n == 0)
-		ft_putchar_fd('0', fd);
-	if (n / 10)
-		ft_putlong_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
 }
