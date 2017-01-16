@@ -6,7 +6,7 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 23:31:37 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 00:48:57 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct stat 	t_stat;
 typedef struct passwd 	t_pwd;
 typedef struct group 	t_grp;
 
-int		read_dir(char *path);
-int		open_dir(char *path, int sneaky);
-void	print_access(t_stat *elem);
+int			core(char *flags, char **path);
+void		print_access(t_stat *elem);
+t_list		*open_dir(char *path, int sneaky);
 
 #endif

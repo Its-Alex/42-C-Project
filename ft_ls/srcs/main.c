@@ -6,11 +6,16 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/15 17:40:01 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 00:52:31 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ls.h"
+
+void			putlst(t_list *lst)
+{
+	ft_putendl(lst->content);
+}
 
 static int		ifFlags(char **av, char *flags)
 {
@@ -47,9 +52,10 @@ int 			main(int argc, char **argv)
 	{
 		flags = ft_strnew(6);
 		ifFlags(argv, flags);
+		core(flags, argv);
 		ft_strdel(&flags);
 	}
 	else
-		open_dir(".", 0);
+		ft_lstiter(ft_lststr_sort(open_dir(".", 1)), putlst);
 	return (0);
 }
