@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 17:15:38 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:48:27 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ void			key_fract(int keycode, t_env *e)
 		e->av[1] = "BurningShip";
 	if (keycode == KEY_4)
 		e->av[1] = "Douady";
+	if (keycode == KEY_5)
+		e->av[1] = "Tricorn";
+	if (keycode == KEY_6)
+		e->av[1] = "Chameleon";
 	if (keycode == KEY_1 || keycode == KEY_2 || keycode == KEY_3
-			|| keycode == KEY_4)
+			|| keycode == KEY_4 || keycode == KEY_5 || keycode == KEY_6)
 		reset(e);
 }
 

@@ -6,11 +6,22 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:20:05 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 16:56:00 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:47:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void			env_fract2(t_env *e)
+{
+	if (ft_strcmp(e->av[1], "Tricorn") == 0)
+	{
+		e->x1 = -1.55;
+		e->x2 = 1.15;
+		e->y1 = -1.21;
+		e->y2 = 1.19;
+	}
+}
 
 void			env_fract(t_env *e)
 {
@@ -22,7 +33,8 @@ void			env_fract(t_env *e)
 		e->y2 = 1.2;
 	}
 	else if (ft_strcmp(e->av[1], "Julia") == 0 ||
-		ft_strcmp(e->av[1], "Douady") == 0)
+		ft_strcmp(e->av[1], "Douady") == 0 ||
+		ft_strcmp(e->av[1], "Chameleon") == 0)
 	{
 		e->x1 = -1.0;
 		e->x2 = 1.0;
@@ -36,6 +48,7 @@ void			env_fract(t_env *e)
 		e->y1 = -0.2;
 		e->y2 = 0.19;
 	}
+	env_fract2(e);
 }
 
 void			reset(t_env *e)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/15 17:33:26 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/16 15:21:05 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <dirent.h>
 # include <pwd.h>
 # include <grp.h>
-# include <attr/xattr.h>
+# include <sys/xattr.h>
 # include <sys/stat.h> 
 
 # ifndef WIN32

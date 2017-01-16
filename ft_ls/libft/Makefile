@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/15 18:02:20 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/16 15:30:56 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+EXEC = libft.a
 
 CC 				= clang
 OS 				= $(shell uname -s)
@@ -44,9 +44,8 @@ SRCS =				ft_atoi.c ft_isdigit.c ft_lstdelone.c \
 					ft_memccpy.c ft_memset.c ft_putnbr_fd.c \
 					ft_strclr.c ft_striter.c ft_strmap.c \
 					ft_strnew.c ft_strsub.c \
-					get_next_line.c error.c\
-					ft_putlong.c ft_putlong_fd.c
-					
+					ft_get_next_line.c ft_error.c \
+
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
 INCDIR = 			includes/
@@ -55,10 +54,9 @@ ODIR =				objets/
 OBJS =				$(SRCS:.c=.o)
 OBCC =				$(addprefix $(ODIR),$(OBJS))
 
+all: directories $(EXEC)
 
-all: directories $(NAME)
-
-$(NAME): $(OBCC)
+$(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
@@ -69,10 +67,11 @@ else
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 endif
-	@echo "Build $(NAME) ✅"
+	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
+	@echo "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR)
 
@@ -86,13 +85,17 @@ $(INC_DIR):
 	@$(MKDIR_P) $(INC_DIR)
 
 clean:
-	@echo "Deleting compilation files libft ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m libft/objects"
 	@rm -rf objets
 
 fclean: clean
-	@echo "Deleting $(NAME) ✅"
-	@rm -f $(NAME)
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@rm -f $(EXEC)
+
+delete:
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@rm -f $(EXEC)
 
 re: fclean all
 
-.PHONY: all clean fclean re run directories cleanlib
+.PHONY: all clean fclean re run directories cleanlib delete

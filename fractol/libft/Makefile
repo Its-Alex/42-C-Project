@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/14 15:10:22 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/13 17:25:46 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCS =				libc/ft_atoi.c libc/ft_isdigit.c libc/ft_lstdelone.c \
 					libc/ft_strnew.c libc/ft_strsub.c \
 					libc/ft_get_next_line.c libc/ft_strjoin_free_endl.c \
 					libc/ft_error.c\
-					
+
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
 INCDIR = 			includes/

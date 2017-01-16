@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/12 19:09:03 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/13 17:42:41 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC_DIR = sources
 INC_DIR = includes
 
 SDIR =		./sources/
-SRCS =		$(shell ls sources)
+SRCS =		do_frac.c events_key.c events_loop.c events_mouse.c image.c init.c \
+			main.c thread_end.c thread_start.c zoom.c
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 INCLUDE = -I includes

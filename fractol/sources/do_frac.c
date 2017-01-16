@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 14:23:21 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 16:02:59 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:51:46 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	do_douady(t_env *e, t_frac *m)
 		m->tmp = m->z_r;
 		m->z_r = m->z_r * m->z_r - m->z_i * m->z_i + m->c_r;
 		m->z_i = 2 * m->z_i * m->tmp + m->c_i;
-		m->i = m->i + 1;
+		m->i++;
 	}
 }
 
@@ -85,8 +85,12 @@ void	do_fract(t_env *e, t_frac *m)
 		do_mandel(e, m);
 	else if (ft_strcmp(e->av[1], "Julia") == 0)
 		do_julia(e, m);
+	else if (ft_strcmp(e->av[1], "Chameleon") == 0)
+		do_chameleon(e, m);
 	else if (ft_strcmp(e->av[1], "BurningShip") == 0)
 		do_burningship(e, m);
 	else if (ft_strcmp(e->av[1], "Douady") == 0)
 		do_douady(e, m);
+	else if (ft_strcmp(e->av[1], "Tricorn") == 0)
+		do_tricorn(e, m);
 }

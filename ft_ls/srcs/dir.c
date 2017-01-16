@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 22:42:09 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/15 18:18:19 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/16 15:21:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void	putlst(t_list *lst)
 {
 	ft_putendl(lst->content);
+}
+
+t_list		*ft_lstsort(t_list *list)
+{
+	return (list);
 }
 
 int		open_dir(char *path, int sneaky)
@@ -48,7 +53,7 @@ int		open_dir(char *path, int sneaky)
 		ft_putendl(path);
 		return (1);
 	}
-	list = sort(list);
+	list = ft_lstsort(list);
 	ft_lstiter(list, putlst);
 	return (0);
 }

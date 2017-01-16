@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:22:52 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 16:40:43 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:52:13 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,8 @@ typedef enum	e_mlx_key
 */
 
 void			do_fract(t_env *e, t_frac *m);
+void			do_tricorn(t_env *e, t_frac *m);
+void			do_chameleon(t_env *e, t_frac *m);
 void			init_fract(t_env *e, t_frac *m);
 void			*hd(void *env);
 void			*hg(void *env);

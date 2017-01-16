@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putlong_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 15:31:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/15 15:34:52 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/16 15:32:24 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	ft_putlong_fd(long n, int fd)
 		ft_putchar_fd('0', fd);
 	if (n / 10)
 		ft_putlong_fd(n / 10, fd);
-	ft_putchar_fd(n%10 + '0', fd);
+	ft_putchar_fd(n d% 10 + '0', fd);
 }

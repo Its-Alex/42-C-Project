@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 13:23:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/13 17:19:51 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:49:07 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,21 @@ int				main(int argc, char **argv)
 {
 	if (argc != 2 && argc != 4)
 	{
-		error(1, 0, "Wrong number of args!\n\tYou can use the following\
-			arguments:\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship");
+		error(1, 0, "Wrong number of args!\n\tYou can use the following \
+			arguments:\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship \
+			\n\t\tDouady\n\t\tTricorn\n\t\tChameleon");
 	}
 	else
 	{
 		if (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 				ft_strcmp(argv[1], "Julia") != 0 &&
 				ft_strcmp(argv[1], "BurningShip") != 0 &&
-				ft_strcmp(argv[1], "Douady") != 0)
+				ft_strcmp(argv[1], "Douady") != 0 &&
+				ft_strcmp(argv[1], "Tricorn") != 0 &&
+				ft_strcmp(argv[1], "Chameleon") != 0)
 			error(1, 0, "Bad args!\n\tYou can use the following arguments: \
-				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship\n\t\tDouady");
+				\n\t\tMandelbrot\n\t\tJulia\n\t\tBurningship\n\t\tDouady \
+				\n\t\tTricorn\n\t\tChameleon");
 		env_main(argv);
 	}
 	return (0);

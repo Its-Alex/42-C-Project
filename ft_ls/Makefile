@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/15 17:40:10 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/16 15:22:31 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXEC = ft_ls
+
 DEBUG = no
 CC = clang
 OS := $(shell uname -s)
@@ -24,7 +25,7 @@ endif
 ifeq ($(OS), Linux)
 	LFLAGS = libft/libft.a
 else
-	LFLAGS = libft/libft.a
+	LFLAGS = libft/libft.a 
 endif
 
 OUT_DIR = objs
@@ -32,7 +33,7 @@ SRC_DIR = srcs
 INC_DIR = incs
 
 SDIR =		./srcs/
-SRCS =		$(shell ls srcs)
+SRCS =		$(shell ls $(SRC_DIR))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 INCLUDE = -I $(INC_DIR)
@@ -45,20 +46,24 @@ all: directories $(EXEC)
 
 $(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
+	@echo "\x1B[39mLibft:\x1B[0m\n"
 	@make -C ./libft
-	@clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
-	@echo "Build $(EXEC) ✅"
+	@echo "\x1B[36m$(EXEC):\x1B[0m"
+	clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 else
+	@echo "\x1B[36mLibft:\x1B[0m\n"
 	@make -C ./libft
+	@echo "\x1B[36m$(EXEC):\x1B[0m"
 	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
-	@echo "Build $(EXEC) ✅"
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
 endif
+	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
+	@echo "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: ${OUT_DIR} ${SRC_DIR} ${INC_DIR}
 
@@ -74,16 +79,16 @@ ${INC_DIR}:
 clean:
 	@make -C ./libft clean
 	@rm -rf $(OUT_DIR)
-	@echo "Deleting compilation files ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m objects"
 
 fclean: clean
-	@make -C ./libft fclean
+	@make -C ./libft delete
 	@rm -f $(EXEC)
-	@echo "Deleting $(EXEC) ✅"
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 
 re: fclean all
 
-run: re
+run: all
 	@./$(EXEC) Mandelbrot
 
 cleanlib:
