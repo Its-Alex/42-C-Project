@@ -19,6 +19,7 @@ void	putlst(t_list *lst)
 
 t_list		*ft_lstsort(t_list *list)
 {
+	(void)list;
 	return (list);
 }
 

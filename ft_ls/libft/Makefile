@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/16 18:07:13 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/16 23:17:42 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,17 @@ EXEC = libft.a
 CC 				= clang
 OS 				= $(shell uname -s)
 MKDIR_P 		= mkdir -p
-OUT_DIR 		= objets
-SRC_DIR 		= sources
-INC_DIR 		= includes
-CFLAG 			= -Wall -Werror -Wextra
+OUT_DIR 		= objs
+SRC_DIR 		= srcs
+INC_DIR 		= incs
 
-SDIR =				sources/
+ifeq ($(DEBUG), yes)
+	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
+else
+	CFLAGS = -Wall -Werror -Wextra
+endif
+
+SDIR =				srcs/
 SRCS =				ft_atoi.c ft_isdigit.c ft_lstdelone.c \
 					ft_memchr.c ft_putchar.c ft_putstr.c \
 					ft_strcmp.c ft_striteri.c ft_strmapi.c \
@@ -48,9 +53,9 @@ SRCS =				ft_atoi.c ft_isdigit.c ft_lstdelone.c \
 
 SRCC =				$(addprefix $(SDIR),$(SRCS))
 
-INCDIR = 			includes/
+INCDIR = 			incs/
 
-ODIR =				objets/
+ODIR =				objs/
 OBJS =				$(SRCS:.c=.o)
 OBCC =				$(addprefix $(ODIR),$(OBJS))
 
@@ -61,17 +66,17 @@ ifeq ($(OS), Linux)
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 else
-	@echo "\x1B[31m\c"
+	@echo -e "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
-	@echo "\x1B[0m\c"
+	@echo -e "\x1B[0m\c"
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 endif
-	@echo "\x1B[32m  + Compile:\x1B[0m $@"
+	@echo -e "\x1b[34m  + Compile program:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
-	@echo "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+	@echo -e "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR)
 
@@ -85,15 +90,15 @@ $(INC_DIR):
 	@$(MKDIR_P) $(INC_DIR)
 
 clean:
-	@echo "\x1B[31m  - Remove:\x1B[0m libft/objects"
-	@rm -rf objets
+	@echo -e "\x1B[31m  - Remove:\x1B[0m libft/objs"
+	@rm -rf $(OUT_DIR)
 
 fclean: clean
-	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 	@rm -f $(EXEC)
 
 delete:
-	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 	@rm -f $(EXEC)
 
 re: fclean all
