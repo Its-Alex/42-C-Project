@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/16 23:35:56 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/17 12:19:26 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,24 +49,29 @@ all: directories $(EXEC)
 
 $(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
-	@echo -e "\x1B[36mLibft:\x1B[0m\n"
+	@echo -e "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
-	@echo -e "\x1B[36m$(EXEC):\x1B[0m"
+	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
 	@clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
-	@echo -e "\x1B[36mLibft:\x1B[0m\n"
+	@echo "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
-	@echo -e "\x1B[36m$(EXEC):\x1B[0m"
-	@echo -e "\x1B[31m\c"
+	@echo "\x1B[34m$(EXEC):\x1B[0m"
+	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
-	@echo -e "\x1B[0m\c"
+	@echo "\x1B[0m\c"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
+	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
 endif
-	@echo -e "\x1b[34m  + Compile program:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
+ifeq ($(OS), Linux)
 	@echo -e "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+else
+	@echo "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+endif
 
 directories: ${OUT_DIR} ${SRC_DIR} ${INC_DIR}
 
@@ -82,12 +87,20 @@ ${INC_DIR}:
 clean:
 	@make -C ./libft clean
 	@rm -rf $(OUT_DIR)
+ifeq ($(OS), Linux)
 	@echo -e "\x1B[31m  - Remove:\x1B[0m objs"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m objs"
+endif
 
 fclean: clean
 	@make -C ./libft delete
 	@rm -f $(EXEC)
+ifeq ($(OS), Linux)
 	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+endif
 
 re: fclean all
 

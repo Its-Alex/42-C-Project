@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/17 00:31:07 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/17 12:15:44 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,18 +61,23 @@ $(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
+	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
-	@echo -e "\x1B[31m\c"
+	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
-	@echo -e "\x1B[0m\c"
+	@echo "\x1B[0m\c"
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
+	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
 endif
-	@echo -e "\x1b[34m  + Compile program:\x1B[0m $@"
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
+ifeq ($(OS), Linux)
 	@echo -e "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+else
+	@echo "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+endif
 
 directories: $(OUT_DIR) $(SRC_DIR) $(INC_DIR)
 
@@ -86,16 +91,28 @@ $(INC_DIR):
 	@$(MKDIR_P) $(INC_DIR)
 
 clean:
-	@echo -e "\x1B[31m  - Remove:\x1B[0m libft/objs"
 	@rm -rf $(OUT_DIR)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[31m  - Remove:\x1B[0m objs"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m objs"
+endif
 
 fclean: clean
-	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 	@rm -f $(EXEC)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+endif
 
 delete:
-	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 	@rm -f $(EXEC)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+endif
 
 re: fclean all
 
