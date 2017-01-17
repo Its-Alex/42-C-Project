@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/17 12:19:26 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/17 13:34:00 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,11 +58,11 @@ else
 	@echo "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
 	@echo "\x1B[34m$(EXEC):\x1B[0m"
-	@echo "\x1B[31m\c"
-	@norminette sources/* includes/* | grep -B 1 "Error" || true
-	@echo "\x1B[0m\c"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
+	@echo "\x1B[31m\c"
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@echo "\x1B[0m\c"
 endif
 
 $(ODIR)%.o: $(SDIR)%.c

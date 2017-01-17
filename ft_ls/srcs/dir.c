@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:39:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:46:35 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:35:30 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ static t_list	*read_dir(DIR *dir, int sneaky)
 		if (ent->d_name[0] != '.' || sneaky == 1)
 		{
 			if (list == NULL)
-				list = ft_lstnew(ent->d_name, sizeof(char) * (ft_strlen(ent->d_name) + 1));
+				list = ft_lstnew(ent->d_name, sizeof(char) *
+					(ft_strlen(ent->d_name) + 1));
 			else
 			{
-				tmp = ft_lstnew(ent->d_name, sizeof(char) * (ft_strlen(ent->d_name) + 1));
+				tmp = ft_lstnew(ent->d_name, sizeof(char) *
+					(ft_strlen(ent->d_name) + 1));
 				ft_lstadd(&list, tmp);
 			}
 		}

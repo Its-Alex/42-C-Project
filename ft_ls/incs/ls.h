@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:48:57 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:38:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include <pwd.h>
 # include <grp.h>
 # include <sys/xattr.h>
-# include <sys/stat.h> 
+# include <sys/stat.h>
 
 # ifndef WIN32
-    #include <sys/types.h>
+#  include <sys/types.h>
 # endif
 
 typedef struct dirent	t_dir;
-typedef struct stat 	t_stat;
-typedef struct passwd 	t_pwd;
-typedef struct group 	t_grp;
+typedef struct stat		t_stat;
+typedef struct passwd	t_pwd;
+typedef struct group	t_grp;
 
 int			core(char *flags, char **path);
 void		print_access(t_stat *elem);

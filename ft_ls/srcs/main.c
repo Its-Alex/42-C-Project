@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 13:22:28 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/17 13:37:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			putlst(t_list *lst)
 		ft_putchar(' ');
 }
 
-static int		ifFlags(char **av, char *flags)
+static int		if_flags(char **av, char *flags)
 {
 	int		line;
 	int		column;
@@ -37,24 +37,24 @@ static int		ifFlags(char **av, char *flags)
 					av[line][column] == 't' || av[line][column] == 'R' ||
 					av[line][column] == 'a' || av[line][column] == 's' ||
 					av[line][column] == 'f')
-					if(ft_strchr(flags, av[line][column]) == NULL)
+					if (ft_strchr(flags, av[line][column]) == NULL)
 						flags[count++] = av[line][column];
 		}
 		else
-			break;
+			break ;
 		line++;
 	}
 	return (0);
 }
 
-int 			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	char	*flags;
 
 	if (argc > 1)
 	{
 		flags = ft_strnew(6);
-		ifFlags(argv, flags);
+		if_flags(argv, flags);
 		core(flags, argv);
 		ft_strdel(&flags);
 	}

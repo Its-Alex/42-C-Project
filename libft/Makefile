@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/17 13:27:46 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/17 13:33:56 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,12 +64,12 @@ ifeq ($(OS), Linux)
 	@ranlib $@
 	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
-	@echo "\x1B[31m\c"
-	@norminette sources/* includes/* | grep -B 1 "Error" || true
-	@echo "\x1B[0m\c"
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
+	@echo "\x1B[31m\c"
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@echo "\x1B[0m\c"
 endif
 
 $(ODIR)%.o: $(SDIR)%.c
