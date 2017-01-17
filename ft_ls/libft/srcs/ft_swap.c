@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/10 11:04:42 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:30 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:26:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libft.h"
 
-void	ft_swap(int *a, int *b)
+void	ft_swap(size_t *a, size_t *b)
 {
 	int		nbr;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2017/01/17 00:26:56 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:26:54 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ size_t				ft_strlcat(char *dst, const char *src, size_t size);
 int					ft_atoi(char *str);
 char				*ft_itoa(int value);
 char				*ft_itoa_base(int value, int base);
-void				ft_swap(int *a, int *b);
+void				ft_swap(size_t *a, size_t *b);
 void				ft_bzero(void *s, size_t n);
 
 int					ft_memcmp(const void *s1, const void *s2, size_t n);

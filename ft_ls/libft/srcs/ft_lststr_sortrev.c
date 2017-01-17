@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lststr_sortrev.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:27:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:55:25 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:25:31 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_list		*ft_lststr_sortrev(t_list *lst)
 				temp = lst->content;
 				lst->content = tmplst->content;
 				tmplst->content = temp;
+				ft_swap(&lst->content_size, &tmplst->content_size);
 			}
 			tmplst = tmplst->next;
 		}

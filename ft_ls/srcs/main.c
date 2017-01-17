@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 00:57:15 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/17 13:22:28 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			putlst(t_list *lst)
 {
 	ft_putstr(lst->content);
 	if (lst->next)
-		ft_putstr(" ");
+		ft_putchar(' ');
 }
 
 static int		ifFlags(char **av, char *flags)
@@ -35,7 +35,8 @@ static int		ifFlags(char **av, char *flags)
 			while (av[line][column++])
 				if (av[line][column] == 'l' || av[line][column] == 'r' ||
 					av[line][column] == 't' || av[line][column] == 'R' ||
-					av[line][column] == 'a' || av[line][column] == 's')
+					av[line][column] == 'a' || av[line][column] == 's' ||
+					av[line][column] == 'f')
 					if(ft_strchr(flags, av[line][column]) == NULL)
 						flags[count++] = av[line][column];
 		}
@@ -58,6 +59,9 @@ int 			main(int argc, char **argv)
 		ft_strdel(&flags);
 	}
 	else
+	{
 		ft_lstiter(ft_lststr_sort(open_dir(".", 0)), putlst);
+		ft_putchar('\n');
+	}
 	return (0);
 }

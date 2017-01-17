@@ -6,13 +6,14 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/17 12:15:44 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/17 13:27:46 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXEC = libft.a
 
 CC 				= clang
+DEBUG			= no
 OS 				= $(shell uname -s)
 MKDIR_P 		= mkdir -p
 OUT_DIR 		= objs
