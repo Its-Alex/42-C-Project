@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 13:37:00 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/18 18:06:31 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int				main(int argc, char **argv)
 	{
 		flags = ft_strnew(6);
 		if_flags(argv, flags);
-		core(flags, argv);
+		core(flags, argv[1]);
 		ft_strdel(&flags);
 	}
 	else
 	{
-		ft_lstiter(ft_lststr_sort(open_dir(".", 0)), putlst);
+		ft_lstiter(open_dir(".", 0, 1), putlst);
 		ft_putchar('\n');
 	}
 	return (0);

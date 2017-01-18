@@ -6,13 +6,13 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:39:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 13:35:30 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/18 18:34:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ls.h"
 
-static t_list	*read_dir(DIR *dir, int sneaky)
+static t_list	*read_dir(DIR *dir, int sneaky, int sort)
 {
 	t_dir			*ent;
 	t_list			*list;
@@ -35,10 +35,12 @@ static t_list	*read_dir(DIR *dir, int sneaky)
 			}
 		}
 	}
+	list = (sort == 1) ? ft_lststr_sort(list) : list;
+	list = (sort == -1) ? ft_lststr_sortrev(list) : list;
 	return (list);
 }
 
-t_list			*open_dir(char *path, int sneaky)
+t_list			*open_dir(char *path, int sneaky, int sort)
 {
 	DIR				*dir;
 	t_list			*lst;
@@ -46,7 +48,7 @@ t_list			*open_dir(char *path, int sneaky)
 	lst = NULL;
 	if ((dir = opendir(path)) != NULL)
 	{
-		lst = read_dir(dir, sneaky);
+		lst = read_dir(dir, sneaky, sort);
 		closedir(dir);
 	}
 	return (lst);
