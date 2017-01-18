@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 18:19:11 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/18 18:40:24 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		core(char *flags, char *path)
 		current_lst = open_dir(path, 1, 1);
 		if (current_lst != NULL)
 		{
+			ft_putendl("");
 			ft_putendl(ft_strjoin("Path : ", path));
 			ft_lstiter(current_lst, putlst);
-			ft_putendl("");
 			ft_putendl("");
 		}
 	}
