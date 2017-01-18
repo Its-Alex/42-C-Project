@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 18:40:24 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/18 19:01:36 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		core(char *flags, char *path)
 	{
 		if (ft_strcmp(current_lst->content, ".") != 0 &&
 				ft_strcmp(current_lst->content, "..") != 0)
-			core(flags, ft_strjoin(ft_strjoin(path, "/"),
+			core(flags, ft_strjoin_free(ft_strjoin(path, "/"),
 				current_lst->content));
 		current_lst = current_lst->next;
 	}
