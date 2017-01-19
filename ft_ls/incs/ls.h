@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 18:04:19 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/19 17:53:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct passwd	t_pwd;
 typedef struct group	t_grp;
 
 int			core(char *flags, char *path);
-void		print_access(t_stat *elem);
 void		putlst(t_list *lst);
 t_list		*open_dir(char *path, int sneaky, int sort);
+void		print(char *flags, char *name);
 
 #endif

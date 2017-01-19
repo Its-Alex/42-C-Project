@@ -6,37 +6,51 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 19:01:36 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/19 17:55:16 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ls.h"
 
+void	del(void *content, size_t size)
+{
+	char	*str;
+
+	str = content;
+	ft_strdel(&str);
+	size = 0;
+}
+
+char	*get_path(char *path, char *str)
+{
+	char	*slash;
+	char	*tmp;
+
+	slash = ft_strjoin(path, "/");
+	tmp = ft_strjoin_free(slash, str);
+	return (tmp);
+}
+
 int		core(char *flags, char *path)
 {
-	t_list		*current_lst;
+	t_list		*lst;
+	t_list		*start;
 
-	current_lst = NULL;
+	lst = NULL;
 	if (path != NULL)
 	{
-		current_lst = open_dir(path, 1, 1);
-		if (current_lst != NULL)
-		{
-			ft_putendl("");
-			ft_putendl(ft_strjoin("Path : ", path));
-			ft_lstiter(current_lst, putlst);
-			ft_putendl("");
-		}
+		lst = open_dir(path, 1, 1);
+		print(flags, path);
 	}
-	if (flags == NULL)
-		ft_putendl("Flags == NULL");
-	while (current_lst != NULL)
+	start = lst;
+	while (lst != NULL)
 	{
-		if (ft_strcmp(current_lst->content, ".") != 0 &&
-				ft_strcmp(current_lst->content, "..") != 0)
-			core(flags, ft_strjoin_free(ft_strjoin(path, "/"),
-				current_lst->content));
-		current_lst = current_lst->next;
+		if (ft_strcmp(lst->content, ".") != 0 &&
+				ft_strcmp(lst->content, "..") != 0)
+			core(flags, get_path(path, lst->content));
+		lst = lst->next;
 	}
+	ft_lstdel(&start, del);
+	ft_strdel(&path);
 	return (0);
 }

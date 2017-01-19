@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:39:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 18:34:42 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/19 15:53:05 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_list	*read_dir(DIR *dir, int sneaky, int sort)
 	}
 	list = (sort == 1) ? ft_lststr_sort(list) : list;
 	list = (sort == -1) ? ft_lststr_sortrev(list) : list;
+	free(ent);
 	return (list);
 }
 

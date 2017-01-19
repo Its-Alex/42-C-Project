@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/18 18:06:31 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/19 18:23:43 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,41 @@ static int		if_flags(char **av, char *flags)
 	return (0);
 }
 
+static void		sort(char *flags, char **argv)
+{
+	// int		count;
+	char	*path;
+
+	// count = 1;
+	// path == NULL;
+	// while (argv[count])
+	// {
+	// 	while (argv[count][0] == '-')
+	// 		count++;
+	// 	if (path == NULL)
+	// 	{
+	// 		path = ft_strnew(ft_strlen(argv[1]));
+	// 		path = ft_strcpy(path, argv[1]);
+	// 	}
+	// 	else
+	// 	{
+
+	// 	}
+	// }
+	path = ft_strnew(ft_strlen(argv[1]));
+	path = ft_strcpy(path, argv[1]);
+	core(flags, path);
+}
+
 int				main(int argc, char **argv)
 {
 	char	*flags;
 
 	if (argc > 1)
 	{
-		flags = ft_strnew(6);
+		flags = ft_strnew(7);
 		if_flags(argv, flags);
-		core(flags, argv[1]);
+		sort(flags, argv);
 		ft_strdel(&flags);
 	}
 	else
