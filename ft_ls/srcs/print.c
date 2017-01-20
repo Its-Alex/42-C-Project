@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 17:28:29 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/19 18:30:21 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:33:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	print_size(long elem)
 	ft_putlong(elem);
 }
 
-void		print(char *flags, char *name)
+void		print_dir(char *flags, char *name)
 {
 	t_stat		file_stat;
 	t_pwd		*pwd;
@@ -64,5 +64,4 @@ void		print(char *flags, char *name)
 	}
 	ft_putstr(name);
 	ft_putendl("");
-	// ft_putlong(file_stat.st_blocks);
 }

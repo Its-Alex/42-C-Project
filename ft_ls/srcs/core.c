@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/19 17:55:16 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/20 15:42:02 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		core(char *flags, char *path)
 	if (path != NULL)
 	{
 		lst = open_dir(path, 1, 1);
-		print(flags, path);
+		//print(flags, path);
 	}
 	start = lst;
 	while (lst != NULL)
