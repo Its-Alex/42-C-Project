@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/20 15:32:02 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/20 21:48:31 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		del(void *content, size_t size);
 void		putlst(t_list *lst);
 void		print_dir(char *flags, char *name);
 
-t_list		*get_dir(char *flags, char **argv);
+t_list		*getdir(char *flags, char **argv);
 t_list		*open_dir(char *path, int sneaky, int sort);
 
 #endif

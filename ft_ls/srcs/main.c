@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/20 15:32:39 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/20 21:48:26 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int				main(int argc, char **argv)
 	{
 		flags = ft_strnew(7);
 		if_flags(argv, flags);
-		lst = get_dir(flags, argv);
-		ft_lstiter(lst, putlst);
+		ft_putendl(flags);
+		lst = getdir(flags, argv);
+		// ft_lstiter(lst, putlst);
 		ft_strdel(&flags);
 	}
 	else

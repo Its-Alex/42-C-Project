@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 18:18:44 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/20 16:06:01 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/20 23:27:32 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 static int	is_valid(char *flags, char *path)
 {
-	t_stat   buffer;
+	t_stat   stats;
 
-	if (stat(path, &buffer) == 0)
+	if (stat(path, &stats) == -1)
 	{
-		ft_putstr_color("Error", RED);
-		ft_putstr(" : ");
 		ft_putstr("ft_ls: ");
 		ft_putstr(path);
 		ft_putendl(": No such file or directory");
@@ -27,7 +25,7 @@ static int	is_valid(char *flags, char *path)
 	}
 	else
 	{
-		if (S_ISDIR(buffer.st_mode) == 0)
+		if (S_ISDIR(stats.st_mode) == 0)
 		{
 			ft_putstr("Is not dir : ");
 			ft_putendl(path);
@@ -39,26 +37,24 @@ static int	is_valid(char *flags, char *path)
   	return (0);
 }
 
-static t_list		*sort(char **argv)
+static t_list		*getlst(char **argv)
 {
 	int		count;
 	t_list	*args;
 	t_list	*tmp;
-	t_list	*start;
 
 	count = 1;
 	args = NULL;
 	while (argv[count])
-	{
-		ft_putendl(argv[count]);
-		while (argv[count][0] == '-')
+		if (argv[count][0] == '-')
 			count++;
+		else
+			break ;
+	while (argv[count] != NULL)
+	{
 		if (args == NULL)
-		{
-				args = ft_lstnew(argv[count], sizeof(char) *
-					(ft_strlen(argv[count]) + 1));
-				start = args;
-		}
+			args = ft_lstnew(argv[count], sizeof(char) *
+				(ft_strlen(argv[count]) + 1));
 		else
 		{
 			tmp = ft_lstnew(argv[count], sizeof(char) *
@@ -67,45 +63,40 @@ static t_list		*sort(char **argv)
 		}
 		count++;
 	}
-	start = ft_lststr_sort(start);
-	ft_lstiter(start, putlst);
-	return (start);
+	return (args);
 }
 
-t_list 			*get_dir(char *flags, char **argv)
+t_list 			*getdir(char *flags, char **argv)
 {
 	t_list	*lst;
 	t_list	*start;
 	t_list	*prev;
 	t_list	*tmp;
 
-	lst = sort(argv);
+	lst = getlst(argv);
+	lst = ft_lststr_sort(lst);
 	start = lst;
-	ft_putendl("START");
 	prev = NULL;
 	tmp = NULL;
 	while (lst)
 	{
 		if (is_valid(flags, lst->content) == 1)
 		{
+			tmp = lst;
+			lst = lst->next;
 			if (prev == NULL)
-			{
-				tmp = lst;
-				lst = lst->next;
 				start = lst;
-				ft_lstdelone(&tmp, del);
-			}
 			else
-			{
-				tmp = lst;
-				lst = lst->next;
 				prev->next = lst;
-				ft_lstdelone(&tmp, del);
-			}
+			ft_lstdelone(&tmp, del);
 
 		}
-		prev = lst;
-		lst = lst->next;
+		else
+		{
+			prev = lst;
+			lst = lst->next;
+		}
 	}
+	ft_lstiter(start, putlst);
 	return (start);
 }
