@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 17:28:29 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/20 21:46:03 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/23 13:02:26 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	print_size(long elem)
 	ft_putlong(elem);
 }
 
-void		print_dir(char *flags, char *name)
+void		print(char *flags, char *name)
 {
 	t_stat		file_stat;
 	t_pwd		*pwd;
@@ -46,7 +46,6 @@ void		print_dir(char *flags, char *name)
 	stat(name, &file_stat);
 	grp = getgrgid(file_stat.st_gid);
 	pwd = getpwuid(file_stat.st_uid);
-
 	if (ft_strchr(flags, 'l') != NULL)
 	{
 		print_access(file_stat);
@@ -61,7 +60,8 @@ void		print_dir(char *flags, char *name)
 		ft_putstr("  ");
 		ft_putlong(file_stat.st_atime);
 		ft_putstr("  ");
+		ft_putendl(name);	
 	}
-	ft_putstr(name);
-	ft_putendl("");
+	else
+		ft_putstr(name);
 }
