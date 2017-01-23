@@ -6,11 +6,29 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 17:28:29 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 13:02:26 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/23 17:07:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ls.h"
+
+char			*get_filename(char *path)
+{
+	int		count;
+	char	**tab;
+	char	*filename;
+
+	if (ft_strchr(path, '/') == 0)
+		return (path);
+	count = 0;
+	tab = ft_strsplit(path, '/');
+	while (tab[count])
+		count++;
+	filename = ft_strnew(ft_strlen(tab[count - 1]) - 1);
+	filename = ft_strcpy(filename, tab[count - 1]);
+	ft_freetab(tab);
+	return (filename);
+}
 
 static void	print_access(t_stat elem)
 {
@@ -42,10 +60,12 @@ void		print(char *flags, char *name)
 	t_stat		file_stat;
 	t_pwd		*pwd;
 	t_grp		*grp;
+	char		*filename;
 
 	stat(name, &file_stat);
 	grp = getgrgid(file_stat.st_gid);
 	pwd = getpwuid(file_stat.st_uid);
+	filename = get_filename(name);
 	if (ft_strchr(flags, 'l') != NULL)
 	{
 		print_access(file_stat);
@@ -60,8 +80,9 @@ void		print(char *flags, char *name)
 		ft_putstr("  ");
 		ft_putlong(file_stat.st_atime);
 		ft_putstr("  ");
-		ft_putendl(name);	
+		ft_putendl(filename);	
 	}
 	else
-		ft_putstr(name);
+		ft_putstr(filename);
+	//ft_strdel(&filename);
 }

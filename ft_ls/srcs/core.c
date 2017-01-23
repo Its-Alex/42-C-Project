@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/20 15:42:02 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/23 16:45:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	del(void *content, size_t size)
 	char	*str;
 
 	str = content;
+	ft_putstr(str);
 	ft_strdel(&str);
 	size = 0;
 }

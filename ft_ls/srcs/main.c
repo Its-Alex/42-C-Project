@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 12:00:47 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/23 17:01:38 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void			putlst(t_list *lst)
 {
-	ft_putstr(lst->content);
 	if (lst->next)
 		ft_putchar(' ');
 }

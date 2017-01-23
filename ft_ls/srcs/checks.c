@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 18:18:44 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/23 13:25:37 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/23 17:03:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	is_valid(char *flags, char *path)
 	{
 		tmp = ft_strnew(0);
 		tmp = ft_strjoin_free(tmp, "ft_ls: ");
-		tmp = ft_strjoin_free(tmp, path);
+		tmp = ft_strjoin_free(tmp, get_filename(path));
 		tmp = ft_strjoin_free(tmp, ": No such file or directory\n");
 		ft_putstr(tmp);
 		return (-1);
@@ -43,7 +43,6 @@ static t_list		*getlst(char **argv)
 {
 	int		count;
 	t_list	*args;
-	t_list	*tmp;
 
 	count = 1;
 	args = NULL;
@@ -58,11 +57,8 @@ static t_list		*getlst(char **argv)
 			args = ft_lstnew(argv[count], sizeof(char) *
 				(ft_strlen(argv[count]) + 1));
 		else
-		{
-			tmp = ft_lstnew(argv[count], sizeof(char) *
-				(ft_strlen(argv[count]) + 1));
-			ft_lstadd(&args, tmp);
-		}
+			ft_lstadd(&args, ft_lstnew(argv[count], sizeof(char) *
+				(ft_strlen(argv[count]) + 1)));
 		count++;
 	}
 	return (args);

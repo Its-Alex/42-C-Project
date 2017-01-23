@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:47:17 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 13:02:31 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/23 16:18:46 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct passwd	t_pwd;
 typedef struct group	t_grp;
 
 int			core(char *flags, char *path);
+
+char		*get_filename(char *path);
 
 void		del(void *content, size_t size);
 void		putlst(t_list *lst);
