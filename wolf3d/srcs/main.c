@@ -6,11 +6,18 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/25 17:27:16 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/25 18:51:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/wolf.h"
+
+int		resize(t_env *e)
+{
+	(void)e;
+	ft_putstr("Test");
+	return (0);
+}
 
 int		main(int argc, char **av)
 {
