@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:46:46 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 17:01:38 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/24 15:13:17 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,32 @@
 
 void			putlst(t_list *lst)
 {
+	ft_putstr(lst->content);
 	if (lst->next)
 		ft_putchar(' ');
+}
+
+static void	put_err(char **argv)
+{
+	t_stat	stats;
+	int		count;
+
+	count = 1;
+	while (argv[count])
+		if (argv[count][0] == '-')
+			count++;
+		else
+			break ;
+	while (argv[count])
+	{
+		if (stat(argv[count], &stats) == -1)
+		{
+			ft_putstr("ft_ls: ");
+			ft_putstr(get_filename(argv[count]));
+			ft_putstr(": No such file or directory\n");
+		}
+		count++;
+	}
 }
 
 static int		if_flags(char **av, char *flags)
@@ -55,9 +79,20 @@ int				main(int argc, char **argv)
 	{
 		flags = ft_strnew(7);
 		if_flags(argv, flags);
+		put_err(argv);
 		lst = getdir(flags, argv);
-		ft_putendl("");
-		ft_lstiter(lst, putlst);
+		if (lst != NULL)
+		{
+			ft_putendl("");
+			while (lst)
+			{
+				core(flags, lst->content);
+				if (lst->next)
+					lst = lst->next;
+				else
+					break ;
+			}
+		}
 		ft_strdel(&flags);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:40:48 by root              #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:24 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/24 14:16:27 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_putstr_fd(const char *s, int fd)
 {
 	int i;
 
-	i = 0;
-	while (s[i] != '\0')
+	if (s == NULL)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		write(1, "(null)", 6);
+		return ;
 	}
+	i = ft_strlen(s);
+	write(1, s, i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 17:28:29 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 17:07:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/24 17:10:34 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	print_size(long elem)
 	ft_putlong(elem);
 }
 
-void		print(char *flags, char *name)
+void		print(char *flags, char *name, int path)
 {
 	t_stat		file_stat;
 	t_pwd		*pwd;
@@ -65,22 +65,25 @@ void		print(char *flags, char *name)
 	stat(name, &file_stat);
 	grp = getgrgid(file_stat.st_gid);
 	pwd = getpwuid(file_stat.st_uid);
-	filename = get_filename(name);
+	if (path == 0)
+		filename = get_filename(name);
+	else
+		filename = name;
 	if (ft_strchr(flags, 'l') != NULL)
 	{
 		print_access(file_stat);
-		ft_putstr("  ");
+		ft_putstr(" ");
 		ft_putlong(file_stat.st_nlink);
-		ft_putstr("  ");
+		ft_putstr(" ");
 		ft_putstr(pwd->pw_name);
-		ft_putstr("  ");
+		ft_putstr(" ");
 		ft_putstr(grp->gr_name);
-		ft_putstr("  ");
+		ft_putstr(" ");
 		print_size(file_stat.st_size);
-		ft_putstr("  ");
+		ft_putstr(" ");
 		ft_putlong(file_stat.st_atime);
-		ft_putstr("  ");
-		ft_putendl(filename);	
+		ft_putstr(" ");
+		ft_putstr(filename);	
 	}
 	else
 		ft_putstr(filename);

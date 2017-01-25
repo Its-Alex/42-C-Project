@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:41:35 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/23 16:45:59 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/24 14:48:11 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	del(void *content, size_t size)
 	char	*str;
 
 	str = content;
-	ft_putstr(str);
 	ft_strdel(&str);
 	size = 0;
 }
@@ -41,7 +40,8 @@ int		core(char *flags, char *path)
 	if (path != NULL)
 	{
 		lst = open_dir(path, 1, 1);
-		//print(flags, path);
+		print(flags, path, 0);
+		ft_putendl("");
 	}
 	start = lst;
 	while (lst != NULL)

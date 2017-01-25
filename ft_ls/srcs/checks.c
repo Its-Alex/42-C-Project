@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 18:18:44 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/23 17:03:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/24 17:21:10 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ static int	is_valid(char *flags, char *path)
 
 	tmp = NULL;
 	if (stat(path, &stats) == -1)
-	{
-		tmp = ft_strnew(0);
-		tmp = ft_strjoin_free(tmp, "ft_ls: ");
-		tmp = ft_strjoin_free(tmp, get_filename(path));
-		tmp = ft_strjoin_free(tmp, ": No such file or directory\n");
-		ft_putstr(tmp);
 		return (-1);
-	}
 	else
 	{
 		if (S_ISDIR(stats.st_mode) == 0)
 		{
-			print(flags, path);
+			print(flags, path, 1);
+			if (ft_strchr(flags, 'l') != 0)
+				ft_putendl("");
 			return (1);
 		}
   	}
@@ -64,19 +59,11 @@ static t_list		*getlst(char **argv)
 	return (args);
 }
 
-t_list 			*getdir(char *flags, char **argv)
+static t_list		*get_lstdir(t_list *lst, t_list *start, t_list *prev,
+	t_list *tmp, char *flags)
 {
-	t_list	*lst;
-	t_list	*start;
-	t_list	*prev;
-	t_list	*tmp;
 	int		val;
 
-	lst = getlst(argv);
-	lst = ft_lststr_sort(lst);
-	start = lst;
-	prev = NULL;
-	tmp = NULL;
 	while (lst)
 	{
 		val = is_valid(flags, lst->content);
@@ -100,8 +87,18 @@ t_list 			*getdir(char *flags, char **argv)
 			lst = lst->next;
 		}
 	}
-	if (start != NULL)
-		if (ft_strlen(start->content) > 0)
-			ft_putendl("");
 	return (start);
+}
+
+t_list 			*getdir(char *flags, char **argv)
+{
+	t_list	*lst;
+
+	lst = getlst(argv);
+	lst = ft_lststr_sort(lst);
+	lst = get_lstdir(lst, lst, NULL, NULL, flags); 
+	if (lst != NULL)
+		if (ft_strlen(lst->content) > 0 && ft_strchr(flags, 'l') == 0)
+			ft_putendl("");
+	return (lst);
 }
