@@ -6,11 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/25 17:21:34 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/25 17:25:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../incs/wolf.h"
 
 void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y)
 {
@@ -21,7 +21,7 @@ void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y)
 	r = ((color & 0xFF0000) >> 16);
 	g = ((color & 0x00FF00) >> 8);
 	b = (color & 0x0000FF);
-	if (x >= 0 && x < e->width && y >= 0 && y < e->heigth)
+	if (x >= 0 && x < e->w && y >= 0 && y < e->h)
 	{
 		if (e->img->endian == 0)
 		{
@@ -38,58 +38,9 @@ void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y)
 	}
 }
 
-static	void	thread_work(t_thread *t, t_env *e)
-{
-	if (pthread_create(&t->thread1, NULL, hg, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread2, NULL, hd, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread3, NULL, bg, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread4, NULL, bd, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread5, NULL, hg1, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread6, NULL, hd1, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread7, NULL, bg1, e) == -1)
-		error(1, 1, "");
-	if (pthread_create(&t->thread8, NULL, bd1, e) == -1)
-		error(1, 1, "");
-}
-
-static	void	thread_wait(t_thread *t)
-{
-	if (pthread_join(t->thread1, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread2, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread3, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread4, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread5, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread6, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread7, NULL))
-		error(1, 1, "");
-	if (pthread_join(t->thread8, NULL))
-		error(1, 1, "");
-}
-
-static	void	create_img(t_env *e)
-{
-	static t_thread		t;
-
-	thread_work(&t, e);
-	thread_wait(&t);
-}
-
 int				put_img(t_env *e)
 {
-	ft_bzero(e->img->addr, e->img->size_l * e->heigth);
-	create_img(e);
+	ft_bzero(e->img->addr, e->img->size_l * e->h);
 	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 	return (0);
 }
