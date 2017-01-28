@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/13 17:42:41 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/28 18:54:53 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,9 @@ else
 	CFLAGS = -Wall -Werror -Wextra
 endif
 ifeq ($(OS), Linux)
-	LFLAGS = libft/libft.a mlx/libmlx_Linux.a -lXext -lX11 -DLinux
+	LFLAGS = libft/libft.a -lmlx -lXext -lX11 -DLinux -lpthread -D_REENTRANT
 else
-	LFLAGS = libft/libft.a -lmlx -framework OpenGL -framework AppKit
+	LFLAGS = libft/libft.a -lmlx -framework OpenGL -framework AppKit -lpthread -D_REENTRANT
 endif
 
 OUT_DIR = objets
@@ -37,7 +37,7 @@ SRCS =		do_frac.c events_key.c events_loop.c events_mouse.c image.c init.c \
 			main.c thread_end.c thread_start.c zoom.c
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
-INCLUDE = -I includes
+INCLUDE = -I./includes -I/usr/include/mlx
 
 ODIR =		./objets/
 OBJS =		$(SRCS:.c=.o)
@@ -58,7 +58,7 @@ else
 	@echo "\x1B[31m\c"
 	@norminette sources/* includes/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 endif
 	@echo "\x1B[32m  + Compile:\x1B[0m $@"
 
