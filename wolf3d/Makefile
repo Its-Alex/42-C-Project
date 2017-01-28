@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/25 17:27:32 by malexand         ###   ########.fr        #
+#    Updated: 2017/01/28 18:59:41 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft mlx/libmlx_Linux.a -lXext -lX11 -DLinux
+	LFLAGS = -L./libft -lft -lmlx -lXext -lX11 -DLinux
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
 endif
@@ -39,7 +39,7 @@ SDIR =		./srcs/
 SRCS =		$(shell ls $(SRC_DIR))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
-INCLUDE = -I $(INC_DIR)
+INCLUDE = -I./$(INC_DIR) -I/usr/include/mlx
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
