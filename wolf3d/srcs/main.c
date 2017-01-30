@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 14:45:44 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 15:54:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ int				main(int argc, char **av)
 {
 	t_env	*e;
 
-	if (argc != 2)
+	if (argc != 2 && argc != 4)
 		error(1, 0, "Wrong number of arguments!");
-	e = init_env(0, 0, av);
+	if (argc == 4)
+		e = init_env(ft_atoi(av[2]), ft_atoi(av[3]), av);
+	else
+		e = init_env(0, 0, av);
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);
 	mlx_hook(e->win, 17, 0L, press_destroy, e);

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 14:46:39 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 15:50:19 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int				press_destroy(t_env *e)
 	free(e->mlx);
 	free_tab(e->map);
 	free(e);
-	while(1);
 	exit(0);
 	return (0);
 }

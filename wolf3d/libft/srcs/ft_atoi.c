@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 15:40:28 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:13 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/30 15:53:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_atoi(char *str)
 	int nbr;
 	int i;
 
-	if (str[0] == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (0);
 	negative = 0;
 	nbr = 0;
