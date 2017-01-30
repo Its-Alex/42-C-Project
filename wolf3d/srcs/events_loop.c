@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 15:50:19 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:24:41 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ static void		free_tab(char ***str)
 
 int				press_destroy(t_env *e)
 {
+	free_tab(e->map);
 	mlx_destroy_image(e->mlx, e->img->img);
 	mlx_clear_window(e->mlx, e->win);
 	mlx_destroy_window(e->mlx, e->win);
 	free(e->img);
 	free(e->mlx);
-	free_tab(e->map);
 	free(e);
-	exit(0);
 	return (0);
 }
 

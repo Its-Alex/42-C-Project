@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 14:45:52 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 16:52:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_env
 	void			*win;
 	t_img			*img;
 
-	char			**av;
 	char			***map;
 
 	int				h;
