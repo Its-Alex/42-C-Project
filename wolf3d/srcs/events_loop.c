@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   events_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 17:24:41 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:38:47 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/wolf.h"
+#include "wolf.h"
 
 static void		free_tab(char ***str)
 {

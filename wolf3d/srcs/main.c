@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 16:53:36 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:39:03 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/wolf.h"
+#include "wolf.h"
 
 /*
 **	static	void	put_str_array(char ***array)

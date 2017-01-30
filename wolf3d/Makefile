@@ -6,7 +6,7 @@
 #    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/28 18:59:41 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/30 19:54:58 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft -lmlx -lXext -lX11 -DLinux
+	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -lbsd
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
 endif
@@ -52,13 +52,13 @@ ifeq ($(OS), Linux)
 	@echo -e "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
 	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
-	@clang $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
 	@echo "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
 	@echo "\x1B[34m$(EXEC):\x1B[0m"
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
 	@echo "\x1B[31m\c"
 	@norminette srcs/* incs/* | grep -B 1 "Error" || true
@@ -105,7 +105,7 @@ endif
 re: fclean all
 
 run: all
-	@./$(EXEC) Mandelbrot
+	@./$(EXEC) maps/base
 
 cleanlib:
 	@make -C ./libft fclean

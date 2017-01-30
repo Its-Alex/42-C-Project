@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 17:21:07 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:38:55 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/wolf.h"
+#include "wolf.h"
 
 void			mlx_pixel_put_img(unsigned int color, t_env *e, int x, int y)
 {

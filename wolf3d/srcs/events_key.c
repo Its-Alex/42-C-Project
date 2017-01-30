@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   events_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 13:31:35 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:38:44 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/wolf.h"
+#include "wolf.h"
 
 static void		key_params(int keycode, t_env *e)
 {
