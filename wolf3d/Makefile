@@ -6,7 +6,7 @@
 #    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/30 19:54:58 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/30 22:33:38 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -lbsd
+	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux -lpthread -D_REENTRANT
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
 endif
@@ -39,7 +39,7 @@ SDIR =		./srcs/
 SRCS =		$(shell ls $(SRC_DIR))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
-INCLUDE = -I./$(INC_DIR) -I/usr/include/mlx
+INCLUDE = -I./incs -I/usr/include/mlx
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
