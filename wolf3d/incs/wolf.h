@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/28 19:23:04 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/30 14:45:52 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,42 @@ typedef struct	s_env
 	t_img			*img;
 
 	char			**av;
+	char			***map;
 
 	int				h;
 	int				w;
 	int				init;
 }				t_env;
 
+/*
+** Func parsing:
+*/
+
+char			*take_str(char *av, char *str);
+char			***parse_array_3d(char *str, char carac1, char carac2);
+
+/*
+** Func events:
+*/
+
+int				loop(t_env *e);
+int				press_destroy(t_env *e);
+int				key_press(int keycode, t_env *e);
+int				key_release(int keycode, t_env *e);
 int				mouse_button(int button, int x, int y, t_env *e);
 int				mouse_motion(int x, int y, t_env *e);
-int				key_release(int keycode, t_env *e);
-int				key_press(int keycode, t_env *e);
+
+/*
+** Func img:
+*/
+
 int				put_img(t_env *e);
-int				press_destroy(t_env *e);
-int				loop(t_env *e);
+
+/*
+** Func env:
+*/
+
+char			***get_map(t_env *e, char *file);
 t_env			*init_env(int width, int heigth, char **av);
 
 #endif

@@ -6,11 +6,34 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/25 17:26:50 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/30 14:46:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/wolf.h"
+
+static void		free_tab(char ***str)
+{
+	int		line;
+	int		column;
+
+	line = 0;
+	column = 0;
+	if (str == NULL)
+		return ;
+	while (str[line])
+	{
+		column = 0;
+		while (str[line][column])
+		{
+			ft_strdel(&str[line][column]);
+			column++;
+		}
+		free(str[line]);
+		line++;
+	}
+	free(str);
+}
 
 int				press_destroy(t_env *e)
 {
@@ -19,7 +42,9 @@ int				press_destroy(t_env *e)
 	mlx_destroy_window(e->mlx, e->win);
 	free(e->img);
 	free(e->mlx);
+	free_tab(e->map);
 	free(e);
+	while(1);
 	exit(0);
 	return (0);
 }
