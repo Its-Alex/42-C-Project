@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 16:52:58 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/31 15:08:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int				put_img(t_env *e);
 */
 
 char			***get_map(t_env *e, char *file);
-t_env			*init_env(int width, int heigth, char **av);
+t_env			*init_env(int width, int heigth);
 
 #endif

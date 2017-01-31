@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 19:39:07 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/31 15:23:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,19 @@ char			***parse_array_3d(char *str, char carac1, char carac2)
 	parse[count] = NULL;
 	free(split);
 	return (parse);
+}
+
+char			***get_map(t_env *e, char *file)
+{
+	char	*str;
+
+	str = NULL;
+	str = take_str(file, str);
+	if (str == NULL)
+		error(1, 0, "Bad map format!");
+	e->map = parse_array_3d(str, '\n', ' ');
+	ft_strdel(&str);
+	if (e->map == NULL)
+		error(1, 0, "Bad parsing!");
+	return (e->map);
 }

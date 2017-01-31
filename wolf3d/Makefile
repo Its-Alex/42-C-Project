@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/30 22:33:38 by skyzie           ###   ########.fr        #
+#    Updated: 2017/01/31 15:25:24 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OS := $(shell uname -s)
 MAKEFLAGS += --silent
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
+	CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g -ggdb
 else
 	CFLAGS = -Wall -Werror -Wextra 
 endif
@@ -26,7 +26,7 @@ endif
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux -lpthread -D_REENTRANT
+	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
 endif

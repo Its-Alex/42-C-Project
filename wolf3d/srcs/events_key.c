@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 19:38:44 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/01/31 15:12:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int				key_press(int keycode, t_env *e)
 
 int				key_release(int keycode, t_env *e)
 {
-	(void)keycode;
-	(void)e;
+	key_params(keycode, e);
 	return (0);
 }
