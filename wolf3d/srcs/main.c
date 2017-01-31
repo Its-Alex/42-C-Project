@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 15:22:45 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/31 17:16:43 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,9 @@ int				main(int argc, char **argv)
 {
 	t_env	*e;
 
-	if (argc != 1)
+	if (argc != 2)
 		error(1, 0, "Wrong number of arguments!");
-	(void)argv;
-	e = init_env(0, 0);
+	e = init_env(0, 0, argv[1]);
 	put_str_array(e->map);
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 15:08:42 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/31 17:25:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ typedef struct	s_env
 }				t_env;
 
 /*
-** Func parsing:
-*/
-
-char			*take_str(char *av, char *str);
-char			***parse_array_3d(char *str, char carac1, char carac2);
-
-/*
 ** Func events:
 */
 
@@ -72,6 +65,6 @@ int				put_img(t_env *e);
 */
 
 char			***get_map(t_env *e, char *file);
-t_env			*init_env(int width, int heigth);
+t_env			*init_env(int w, int h, char *filename);
 
 #endif

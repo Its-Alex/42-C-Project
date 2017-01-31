@@ -6,45 +6,44 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 15:22:01 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/31 15:54:02 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-// static void		free_tab(char ***str)
-// {
-// 	int		line;
-// 	int		column;
+static void		free_tab(char ***str)
+{
+	int		line;
+	int		column;
 
-// 	line = 0;
-// 	column = 0;
-// 	if (str == NULL)
-// 	{
-// 		ft_putendl("TEST");
-// 		return ;
-// 	}
-// 	while (str[line])
-// 	{
-// 		column = 0;
-// 		while (str[line][column])
-// 		{
-// 			ft_strdel(&str[line][column]);
-// 			column++;
-// 		}
-// 		free(str[line]);
-// 		line++;
-// 	}
-// 	free(str);
-// }
+	line = 0;
+	column = 0;
+	if (str == NULL)
+	{
+		ft_putendl("TEST");
+		return ;
+	}
+	while (str[line])
+	{
+		column = 0;
+		while (str[line][column])
+		{
+			ft_strdel(&str[line][column]);
+			column++;
+		}
+		free(str[line]);
+		line++;
+	}
+	free(str);
+}
 
 int				press_destroy(t_env *e)
 {
 	mlx_destroy_image(e->mlx, e->img->img);
 	mlx_clear_window(e->mlx, e->win);
 	mlx_destroy_window(e->mlx, e->win);
-	//free_tab(e->map);
-	free(e->map);
+	free_tab(e->map);
 	free(e->img);
 	free(e->mlx);
 	free(e);
