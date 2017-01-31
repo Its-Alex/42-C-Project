@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 15:54:02 by malexand         ###   ########.fr       */
+/*   Updated: 2017/01/31 17:50:07 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static void		free_tab(char ***str)
 	line = 0;
 	column = 0;
 	if (str == NULL)
-	{
-		ft_putendl("TEST");
 		return ;
-	}
 	while (str[line])
 	{
 		column = 0;
