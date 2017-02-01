@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 17:45:26 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/01 13:30:28 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # include <math.h>
 # include "../libft/incs/libft.h"
 # include "keys.h"
+
+typedef struct	s_persp
+{
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			alpha;
+	double			beta;
+
+}				t_persp;
 
 typedef struct	s_img
 {
@@ -37,6 +48,7 @@ typedef struct	s_env
 	t_img			*img;
 
 	char			***map;
+	t_persp			*persp;
 
 	int				h;
 	int				w;
