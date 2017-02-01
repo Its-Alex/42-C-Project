@@ -25,6 +25,6 @@ All of my project at 42born2code
 	* Multi windows
 	* 6 fractals
 	* Quit with arrow
-- [] printf : 0/100
-- [] ft_ls : 0/100
-- [] wolf3d : 0/100
+- [ ] printf : 0/100
+- [ ] ft_ls : 0/100
+- [ ] wolf3d : 0/100
