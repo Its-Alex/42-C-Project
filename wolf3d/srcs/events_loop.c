@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/01 11:01:49 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/01 16:30:12 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int				press_destroy(t_env *e)
 	mlx_destroy_image(e->mlx, e->img->img);
 	mlx_clear_window(e->mlx, e->win);
 	mlx_destroy_window(e->mlx, e->win);
-	free_tab(e->map);
+	free_tab(e->map->mapget);
+	free(e->persp);
+	free(e->map);
 	free(e->img);
 	free(e->mlx);
 	free(e);
@@ -72,7 +74,7 @@ int				fps(t_env *e)
 		img = 0;
 	}
 	fps = ft_itoa(save);
-	mlx_string_put(e->mlx, e->win, 20, 20, 0xFFFFFF, fps);
+	mlx_string_put(e->mlx, e->win, 15, 9, 0xFFFFFF, fps);
 	ft_strdel(&fps);
 	return (0);
 }

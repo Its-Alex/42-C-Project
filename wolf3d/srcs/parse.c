@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 17:41:05 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/01 15:50:15 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int			check_line(char *str)
 		}
 		count++;
 	}
-	if (save / 2 != square)
+	if (save / 2 != square || square != 50)
 		return (-1);
 	return (0);
 }
@@ -111,7 +111,7 @@ static char			*take_str(char *av, char *str)
 	return (str);
 }
 
-char				***get_map(t_env *e, char *file)
+char				***get_map(t_map **map, char *file)
 {
 	char	*str;
 
@@ -119,9 +119,9 @@ char				***get_map(t_env *e, char *file)
 	str = take_str(file, str);
 	if (str == NULL || check_line(str) == -1)
 		error(1, 0, "Bad map format!");
-	e->map = parse_array_3d(str, '\n', ' ');
+	(*map)->mapget = parse_array_3d(str, '\n', ' ');
 	ft_strdel(&str);
-	if (e->map == NULL)
+	if ((*map)->mapget == NULL)
 		error(1, 0, "Bad parsing!");
-	return (e->map);
+	return ((*map)->mapget);
 }

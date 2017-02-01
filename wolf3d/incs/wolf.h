@@ -6,14 +6,14 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/01 13:30:28 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/01 16:34:48 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF_H
 # define WOLF_H
 # include <mlx.h>
-# include <pthread.h>
+# include <stdlib.h>
 # include <limits.h>
 # include <time.h>
 # include <math.h>
@@ -22,14 +22,24 @@
 
 typedef struct	s_persp
 {
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
+	double			fov;
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
 	double			alpha;
 	double			beta;
 
 }				t_persp;
+
+typedef struct	s_map
+{
+	char			***mapget;
+	int				mapgen[50][50];
+
+	int				x;
+	int				y;
+}				t_map;
 
 typedef struct	s_img
 {
@@ -47,13 +57,20 @@ typedef struct	s_env
 	void			*win;
 	t_img			*img;
 
-	char			***map;
 	t_persp			*persp;
+	t_map			*map;
 
 	int				h;
 	int				w;
 	int				init;
 }				t_env;
+
+/*
+** Func gen maps:
+*/
+
+void			get_randmap(t_map **map, int x, int y);
+void			atoi_map(t_map **map, int x, int y);
 
 /*
 ** Func events:
@@ -76,7 +93,7 @@ int				put_img(t_env *e);
 ** Func env:
 */
 
-char			***get_map(t_env *e, char *file);
+char			***get_map(t_map **map, char *file);
 t_env			*init_env(int w, int h, char *filename);
 
 #endif

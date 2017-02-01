@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/31 17:49:41 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/01 16:25:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,35 @@
 **			line++;
 **		}
 **	}
+**
+**	static void		put_int_array(t_map *map)
+**	{
+**		int		line;
+**		int		column;
+**
+**		line = 0;
+**		column = 0;
+**		while (line < map->y)
+**		{
+**			column = 0;
+**			while (column < map->x)
+**			{
+**				printf("%d ", map->mapgen[line][column]);
+**				column++;
+**			}
+**			printf("\n");
+**			line++;
+**		}
+**	}
 */
-
-static	void	put_str_array(char ***array)
-{
-	int		line;
-	int		column;
-
-	line = 0;
-	column = 0;
-	while (array[line])
-	{
-		column = 0;
-		while (array[line][column])
-		{
-			printf("%s ", array[line][column]);
-			column++;
-		}
-		printf("\n%d, %d\n", line, column);
-		line++;
-	}
-}
 
 int				main(int argc, char **argv)
 {
 	t_env	*e;
 
-	if (argc != 2)
+	if (argc != 2 && argc != 1)
 		error(1, 0, "Wrong number of arguments!");
 	e = init_env(0, 0, argv[1]);
-	put_str_array(e->map);
 	mlx_hook(e->win, 2, 1L << 0, key_press, e);
 	mlx_hook(e->win, 3, 1L << 1, key_release, e);
 	mlx_hook(e->win, 17, 0L, press_destroy, e);
