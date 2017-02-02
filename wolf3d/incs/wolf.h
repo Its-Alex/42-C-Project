@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/01 16:34:48 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/02 17:47:40 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,46 @@
 # include "../libft/incs/libft.h"
 # include "keys.h"
 
+# define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
+# define WIDTH 1080
+# define HEIGTH 600
+
 typedef struct	s_persp
 {
-	double			fov;
 	double			posx;
 	double			posy;
 	double			dirx;
 	double			diry;
-	double			alpha;
-	double			beta;
+	double			planex;
+	double			planey;
 
+	double			camerax;
+	double			rayposx;
+	double			rayposy;
+	double			raydirx;
+	double			raydiry;
+
+	double			sidedistx;
+	double			sidedisty;
+
+	double			deltadistx;
+	double			deltadisty;
+
+	double			perpwalldist;
+
+	int				stepx;
+	int				stepy;
+	int				side;
+
+	int				lineheight;
+
+	int				drawstart;
+	int				drawend;
+
+	int				hit;
+
+	int				mapx;
+	int				mapy;
 }				t_persp;
 
 typedef struct	s_map
@@ -49,21 +79,26 @@ typedef struct	s_img
 	int				bpp;
 	int				size_l;
 	int				endian;
+	
+	int				x;
+	int				y;
 }				t_img;
 
 typedef struct	s_env
 {
 	void			*mlx;
 	void			*win;
-	t_img			*img;
+	t_img			*view;
+	t_img			*mmap;
 
 	t_persp			*persp;
 	t_map			*map;
 
-	int				h;
-	int				w;
 	int				init;
 }				t_env;
+
+void			ray_casting(t_env *e);
+void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
 
 /*
 ** Func gen maps:
@@ -94,6 +129,6 @@ int				put_img(t_env *e);
 */
 
 char			***get_map(t_map **map, char *file);
-t_env			*init_env(int w, int h, char *filename);
+t_env			*init_env(char *filename);
 
 #endif

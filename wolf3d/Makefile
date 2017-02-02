@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/31 15:25:24 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/02 14:33:32 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,10 @@ endif
 
 ifeq ($(OS), Linux)
 	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux
+	INCLUDE = -I./incs -I/usr/include/mlx
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
+	INCLUDE = -I./incs
 endif
 
 OUT_DIR = objs
@@ -38,8 +40,6 @@ INC_DIR = incs
 SDIR =		./srcs/
 SRCS =		$(shell ls $(SRC_DIR))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
-
-INCLUDE = -I./incs -I/usr/include/mlx
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
