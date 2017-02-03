@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/01 15:50:15 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 18:00:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int			check_str(char *str)
 	while (str[count])
 	{
 		if (str[count] != '0' && str[count] != '1' && str[count] != '2'
-				&& str[count] != ' ' && str[count] != '\n')
+				&& str[count] != '4' && str[count] != ' '
+				&& str[count] != '\n')
 			return (-1);
 		count++;
 	}
@@ -53,7 +54,7 @@ static int			check_line(char *str)
 		}
 		count++;
 	}
-	if (save / 2 != square || square != 50)
+	if (save / 2 != square || square > 50)
 		return (-1);
 	return (0);
 }
@@ -113,15 +114,28 @@ static char			*take_str(char *av, char *str)
 
 char				***get_map(t_map **map, char *file)
 {
+	int		x;
+	int		y;
 	char	*str;
 
 	str = NULL;
+	x = 0;
 	str = take_str(file, str);
 	if (str == NULL || check_line(str) == -1)
 		error(1, 0, "Bad map format!");
 	(*map)->mapget = parse_array_3d(str, '\n', ' ');
 	ft_strdel(&str);
+	while ((*map)->mapget[x])
+	{
+		y = 0;
+		while ((*map)->mapget[x][y])
+			y++;
+		x++;
+	}
+	(*map)->x = x;
+	(*map)->y = y;
 	if ((*map)->mapget == NULL)
 		error(1, 0, "Bad parsing!");
+	(void)file;
 	return ((*map)->mapget);
 }

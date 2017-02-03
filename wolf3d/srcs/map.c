@@ -6,11 +6,16 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:55:08 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 14:32:11 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 17:56:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+
+// static void		spawn(t_env *e)
+// {
+// 	(void)e;
+// }
 
 static void		fill_map(t_map **map, int column, int line)
 {

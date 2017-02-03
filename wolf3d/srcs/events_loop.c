@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 17:45:19 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 15:22:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				fps(t_env *e)
 		img = 0;
 	}
 	fps = ft_itoa(save);
-	mlx_string_put(e->mlx, e->win, 15, 9, 0xFFFFFF, fps);
+	mlx_string_put(e->mlx, e->win, WIDTH - 35, 9, 0xFFFFFF, fps);
 	ft_strdel(&fps);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 17:47:40 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 17:49:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "keys.h"
 
 # define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
-# define WIDTH 1080
-# define HEIGTH 600
+# define WIDTH 1800
+# define HEIGTH 1000
 
 typedef struct	s_persp
 {
@@ -79,9 +79,10 @@ typedef struct	s_img
 	int				bpp;
 	int				size_l;
 	int				endian;
-	
+
 	int				x;
 	int				y;
+	char			trans;
 }				t_img;
 
 typedef struct	s_env
@@ -99,6 +100,7 @@ typedef struct	s_env
 
 void			ray_casting(t_env *e);
 void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
+void			minimap(t_env *e);
 
 /*
 ** Func gen maps:

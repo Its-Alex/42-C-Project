@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/23 16:33:14 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/03 17:17:37 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC_DIR 		= incs
 ifeq ($(DEBUG), yes)
 	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
 else
-	CFLAGS = -Wall -Werror -Wextra
+	CFLAGS = -Wall -Werror -Wextra -O3
 endif
 
 SDIR =				srcs/

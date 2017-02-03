@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/02 14:33:32 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/03 17:17:23 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MAKEFLAGS += --silent
 ifeq ($(DEBUG), yes)
 	CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g -ggdb
 else
-	CFLAGS = -Wall -Werror -Wextra 
+	CFLAGS = -Wall -Werror -Wextra -O3
 endif
 
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a

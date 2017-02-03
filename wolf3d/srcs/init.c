@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 17:48:51 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 17:57:36 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static t_persp		*init_persp(void)
 
 	if ((p = (t_persp *)malloc(sizeof(t_persp))) == NULL)
 		error(1, 0, "Malloc struct pective!");
-	p->posx = 3.0;
-	p->posy = 3.0;
-	p->dirx = -1.0;
-	p->planex = 0.0;
-	p->planey = 0.66;
+	p->posx = 2.5;
+	p->posy = 2.5;
+	p->dirx = 1.0;
 	p->diry = 0.0;
+	p->planex = 0.0;
+	p->planey = 0.60;
 	p->camerax = 0.0;
 	p->rayposx = 0.0;
 	p->rayposy = 0.0;
@@ -63,17 +63,17 @@ static t_map		*init_map(char *filename)
 
 	if ((map = (t_map *)malloc(sizeof(t_map))) == NULL)
 		error(1, 0, "Malloc map!");
-	map->x = 50;
-	map->y = 50;
+	map->x = 25;
+	map->y = 25;
 	if (filename == NULL)
 	{
 		map->mapget = NULL;
-		get_randmap(&map, 50, 50);
+		get_randmap(&map, 25, 25);
 	}
 	else
 	{
 		map->mapget = get_map(&map, filename);
-		atoi_map(&map, 50, 50);
+		atoi_map(&map, map->x, map->y);
 	}
 	return (map);
 }
@@ -89,6 +89,7 @@ static t_img		*init_img(t_env *e, int width, int heigth)
 		&(img->endian));
 	img->x = width;
 	img->y = heigth;
+	img->trans = 0;
 	return (img);
 }
 
@@ -103,7 +104,8 @@ t_env				*init_env(char *filename)
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, WIDTH, HEIGTH, "Wolf3D");
 	e->view = init_img(e, WIDTH, HEIGTH);
-	e->mmap = init_img(e, e->map->x * 3, e->map->y * 3);
+	e->mmap = init_img(e, e->map->x * 6, e->map->y * 6);
+	e->mmap->trans = 65;
 	e->init = 0;
 	return (e);
 }

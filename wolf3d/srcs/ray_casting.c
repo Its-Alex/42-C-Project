@@ -6,13 +6,13 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 17:44:23 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/03 15:06:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void		draw_line(t_env *e, int x, int start, int stop)
+static void		draw_line(t_env *e, int x, int start, int stop, unsigned int color)
 {
 	int		y;
 
@@ -22,27 +22,29 @@ static void		draw_line(t_env *e, int x, int start, int stop)
 		if (y >= stop)
 			mlx_pixel_put_img(RGB(96, 96, 96), e->view, x, y);
 		else if (y >= start)
-			mlx_pixel_put_img(0xFFFFFF, e->view, x, y);
+			mlx_pixel_put_img(color, e->view, x, y);
 		else
 			mlx_pixel_put_img(RGB(58, 142, 186), e->view, x, y);
-		y++;
+		y += 1;
 	}
 }
 
 void		ray_casting(t_env *e)
 {
 	int		x;
+	int		color;
 
 	x = 0;
+	color = 0;
 	while (x < WIDTH)
 	{
-		e->persp->camerax = 2 * x / (double)WIDTH - 1;
+		e->persp->camerax = 2 * x / (double)(WIDTH - 1);
 		e->persp->rayposx = e->persp->posx;
 		e->persp->rayposy = e->persp->posy;
 		e->persp->raydirx = e->persp->dirx + e->persp->planex * e->persp->camerax;
-		e->persp->raydiry = e->persp->dirx + e->persp->planex * e->persp->camerax;
-		e->persp->mapx = (int)e->persp->rayposx;
-		e->persp->mapy = (int)e->persp->rayposy;
+		e->persp->raydiry = e->persp->diry + e->persp->planey * e->persp->camerax;
+		e->persp->mapx = (int)(e->persp->rayposx);
+		e->persp->mapy = (int)(e->persp->rayposy);
 
 		e->persp->deltadistx = sqrt(1 + (e->persp->raydiry * e->persp->raydiry) / (e->persp->raydirx * e->persp->raydirx));
 		e->persp->deltadisty = sqrt(1 + (e->persp->raydirx * e->persp->raydirx) / (e->persp->raydiry * e->persp->raydiry));
@@ -63,11 +65,19 @@ void		ray_casting(t_env *e)
 		{
 			e->persp->stepy = -1;
 			e->persp->sidedisty = (e->persp->rayposy - e->persp->mapy) * e->persp->deltadisty;
+			if (e->persp->stepx == 1)
+				color = 0xFF0000;
+			else
+				color = 0x0000FF;
 		}
 		else
 		{
 			e->persp->stepy = 1;
 			e->persp->sidedisty = (e->persp->mapy + 1.0 - e->persp->rayposy) * e->persp->deltadisty;
+			if (e->persp->stepx == 1)
+				color = 0xFFFFFF;
+			else
+				color = 0x00FF00;
 		}
 
 		while (e->persp->hit == 0)
@@ -103,7 +113,7 @@ void		ray_casting(t_env *e)
 		if (e->persp->drawend < 0)
 			e->persp->drawend = HEIGTH - 1;
 
-		draw_line(e, x, e->persp->drawstart, e->persp->drawend);
-		x++;
+		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color);
+		x += 1;
 	}
 }
