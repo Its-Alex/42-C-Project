@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/03 17:57:36 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/05 15:55:20 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static t_map		*init_map(char *filename)
 	return (map);
 }
 
-static t_img		*init_img(t_env *e, int width, int heigth)
+static t_img		*init_img(t_env *e, int width, int heigth, int opacity)
 {
 	t_img		*img;
 
@@ -89,7 +89,7 @@ static t_img		*init_img(t_env *e, int width, int heigth)
 		&(img->endian));
 	img->x = width;
 	img->y = heigth;
-	img->trans = 0;
+	img->opacity = opacity;
 	return (img);
 }
 
@@ -103,9 +103,8 @@ t_env				*init_env(char *filename)
 	e->map = init_map(filename);
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, WIDTH, HEIGTH, "Wolf3D");
-	e->view = init_img(e, WIDTH, HEIGTH);
-	e->mmap = init_img(e, e->map->x * 6, e->map->y * 6);
-	e->mmap->trans = 65;
+	e->view = init_img(e, WIDTH, HEIGTH, 0);
+	e->mmap = init_img(e, e->map->x * 6, e->map->y * 6, 65);
 	e->init = 0;
 	return (e);
 }

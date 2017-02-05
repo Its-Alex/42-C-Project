@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/03 17:49:56 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/05 15:54:27 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_img
 
 	int				x;
 	int				y;
-	char			trans;
+	char			opacity;
 }				t_img;
 
 typedef struct	s_env
