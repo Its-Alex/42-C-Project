@@ -6,73 +6,71 @@
 /*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:16 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/05 16:00:27 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libft.h"
 
-static	char		*read_file(const int fd, char *str)
+static char		*gnl_join(char *dst, char *src)
+{
+	char	*tmp;
+
+	tmp = dst;
+	if ((dst = ft_strjoin(tmp, src)) == NULL)
+		return (NULL);
+	free(tmp);
+	return (dst);
+}
+
+static int		gnl_read(int const fd, char *save[fd])
 {
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
-	char	*tmp;
 
-	ret = 0;
-	while (!(ft_strchr(str, '\n')) && (ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while (!(ft_strchr(save[fd], '\n')) && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		tmp = str;
-		if (!(str = ft_strjoin(tmp, buf)))
-			return (NULL);
-		free(tmp);
+		save[fd] = gnl_join(save[fd], buf);
 	}
-	if (ret == -1)
-	{
-		free(str);
-		str = NULL;
-		return (NULL);
-	}
-	return (str);
+	return (ret);
 }
 
-static	int			fill_save_line(char *save, char **line)
+static int		gnl_copy(int const fd, char *save[fd], char **line)
 {
-	int		count;
+	int		i;
 	char	*tmp;
 
-	count = 0;
-	while (save[count] != '\n' && save[count] != '\0')
-		count++;
-	*line = ft_strsub(save, 0, count);
-	tmp = ft_strnew(ft_strlen(save));
+	i = 0;
+	while (save[fd][i] != '\n' && save[fd][i] != '\0')
+		i++;
+	*line = ft_strsub(save[fd], 0, i);
+	tmp = (char *)malloc(sizeof(tmp) * (ft_strlen(save[fd]) + 1));
 	if (tmp == NULL)
 		return (-1);
-	tmp = ft_strcpy(tmp, &save[count + 1]);
-	ft_strclr(save);
-	save = ft_strcpy(save, tmp);
+	ft_strcpy(tmp, &save[fd][i + 1]);
+	ft_strclr(save[fd]);
+	save[fd] = ft_strcpy(save[fd], tmp);
 	free(tmp);
 	return (1);
 }
 
-int					get_next_line(const int fd, char **line)
+int				get_next_line(int const fd, char **line)
 {
-	static	char	*save[SIZE_FD];
+	static	char	*save[20000000];
 
-	if (BUFF_SIZE <= 0 || fd < 0 || fd > 2147483647 || line == NULL
-		|| BUFF_SIZE >= 10000000)
+	if (fd < 0 || line == NULL || fd > 256 || BUFF_SIZE <= 0)
 		return (-1);
-	if (!save[fd] && (save[fd] = ft_strnew(2))
-			== NULL)
+	if (!save[fd] && (!(save[fd] = (char *)malloc(sizeof(save[fd]) * 2))))
 		return (-1);
-	if ((save[fd] = read_file(fd, save[fd])) == NULL)
+	if (gnl_read(fd, &(*save)) < 0)
 		return (-1);
 	if (save[fd][0] == '\0')
 	{
 		*line = NULL;
 		return (0);
 	}
-	if (fill_save_line(save[fd], line) < 0)
+	if (gnl_copy(fd, &(*save), line) < 0)
 		return (-1);
 	return (1);
 }

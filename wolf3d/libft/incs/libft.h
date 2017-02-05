@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2017/01/17 13:26:54 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/05 16:00:04 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"

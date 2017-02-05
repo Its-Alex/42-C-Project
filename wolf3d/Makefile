@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/03 17:17:23 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/05 15:56:24 by skyzie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux
+	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux -lm
 	INCLUDE = -I./incs -I/usr/include/mlx
 else
 	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
