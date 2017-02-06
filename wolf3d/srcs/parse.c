@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 15:44:08 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:04:34 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ static char			***parse_array_3d(char *str, char carac1, char carac2)
 	return (parse);
 }
 
+static void 		get_length(t_map **map)
+{
+	int 	line;
+	int 	column;
+	int 	save;
+
+	line = 0;
+	save  = 0;
+	column = 0;
+	while ((*map)->mapget[line])
+	{
+		if (column >= save)
+			save = column;
+		column = 0;
+		while ((*map)->mapget[line][column])
+		{
+			column++;
+		}
+		line++;
+	}
+	if (save > 50 || line > 50)
+		error(1, 0, "Map reach limits!");
+	(*map)->column = save;
+	(*map)->line = line;
+}
+
 static char			*take_str(char *av, char *str)
 {
 	int		fd;
@@ -67,11 +93,11 @@ static char			*take_str(char *av, char *str)
 		error(1, 1, "");
 	while ((ret = get_next_line(fd, &tmp)) == 1)
 	{
+		if (check_str(tmp) == -1)
+			return (NULL);
 		str = ft_strjoin_free(str, tmp);
 		str = ft_strjoin_free(str, "\n");
 		ft_strdel(&tmp);
-		if (check_str(str) == -1)
-			return (NULL);
 	}
 	if (str[0] == '\0')
 		error(1, 0, "Map empty!");
@@ -84,27 +110,16 @@ static char			*take_str(char *av, char *str)
 
 char				***get_map(t_map **map, char *file)
 {
-	int		x;
-	int		y;
 	char	*str;
 
 	str = NULL;
-	y = 0;
 	str = take_str(file, str);
 	if (str == NULL)
 		error(1, 0, "Bad map format!");
 	(*map)->mapget = parse_array_3d(str, '\n', ' ');
 	ft_strdel(&str);
-	while ((*map)->mapget[y])
-	{
-		x = 0;
-		while ((*map)->mapget[y][x])
-			x++;
-		y++;
-	}
-	(*map)->column = x;
-	(*map)->line = y;
 	if ((*map)->mapget == NULL)
 		error(1, 0, "Bad parsing!");
+	get_length(map);
 	return ((*map)->mapget);
 }
