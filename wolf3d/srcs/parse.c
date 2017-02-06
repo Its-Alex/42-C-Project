@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 15:21:54 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:44:08 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,39 +24,10 @@ static int			check_str(char *str)
 			return (-1);
 		count++;
 	}
-	if (count <= 8)
+	if (count <= 10)
 		return (-1);
 	return (0);
 }
-
-// static int			check_line(char *str)
-// {
-// 	int		count;
-// 	int		save;
-// 	int		square;
-//
-// 	count = 0;
-// 	save = 0;
-// 	square = 0;
-// 	while (str[count])
-// 	{
-// 		if (str[count] == '\n')
-// 		{
-// 			if (save == 0)
-// 				save = count + 1;
-// 			else
-// 			{
-// 				if ((count + 1) % save != 0)
-// 					return (-1);
-// 			}
-// 			square++;
-// 		}
-// 		count++;
-// 	}
-// 	if (save / 2 != square || square > 50)
-// 		return (-1);
-// 	return (0);
-// }
 
 static char			***parse_array_3d(char *str, char carac1, char carac2)
 {
@@ -120,7 +91,7 @@ char				***get_map(t_map **map, char *file)
 	str = NULL;
 	y = 0;
 	str = take_str(file, str);
-	if (str == NULL /*|| check_line(str) == -1*/)
+	if (str == NULL)
 		error(1, 0, "Bad map format!");
 	(*map)->mapget = parse_array_3d(str, '\n', ' ');
 	ft_strdel(&str);
