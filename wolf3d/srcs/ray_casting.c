@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/03 15:06:20 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/06 11:31:25 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		draw_line(t_env *e, int x, int start, int stop, unsigned int color)
 	int		y;
 
 	y = 0;
-	while (y < HEIGTH)
+	while (y < e->heigth)
 	{
 		if (y >= stop)
 			mlx_pixel_put_img(RGB(96, 96, 96), e->view, x, y);
@@ -36,9 +36,9 @@ void		ray_casting(t_env *e)
 
 	x = 0;
 	color = 0;
-	while (x < WIDTH)
+	while (x < e->width)
 	{
-		e->persp->camerax = 2 * x / (double)(WIDTH - 1);
+		e->persp->camerax = 2 * x / (double)(e->width - 1);
 		e->persp->rayposx = e->persp->posx;
 		e->persp->rayposy = e->persp->posy;
 		e->persp->raydirx = e->persp->dirx + e->persp->planex * e->persp->camerax;
@@ -104,14 +104,14 @@ void		ray_casting(t_env *e)
 		else
 			e->persp->perpwalldist = (e->persp->mapy - e->persp->rayposy + (1 - e->persp->stepy) / 2) / e->persp->raydiry;
 
-		e->persp->lineheight = (int)(HEIGTH / e->persp->perpwalldist);
+		e->persp->lineheight = (int)(e->heigth / e->persp->perpwalldist);
 
-		e->persp->drawstart = -e->persp->lineheight / 2 + HEIGTH / 2;
+		e->persp->drawstart = -e->persp->lineheight / 2 + e->heigth / 2;
 		if (e->persp->drawstart < 0)
 			e->persp->drawstart = 0;
-		e->persp->drawend = e->persp->lineheight / 2 + HEIGTH / 2;
+		e->persp->drawend = e->persp->lineheight / 2 + e->heigth / 2;
 		if (e->persp->drawend < 0)
-			e->persp->drawend = HEIGTH - 1;
+			e->persp->drawend = e->heigth - 1;
 
 		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color);
 		x += 1;

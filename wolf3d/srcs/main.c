@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:51:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/02 17:43:12 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:55:49 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@
 **
 **		line = 0;
 **		column = 0;
-**		while (line < map->y)
+**		while (line < map->line)
 **		{
 **			column = 0;
-**			while (column < map->x)
+**			while (column < map->column)
 **			{
 **				printf("%d ", map->mapgen[line][column]);
 **				column++;
@@ -61,10 +61,10 @@ static void		put_int_array(t_map *map)
 
 	line = 0;
 	column = 0;
-	while (line < map->y)
+	while (line < map->line)
 	{
 		column = 0;
-		while (column < map->x)
+		while (column < map->column)
 		{
 			printf("%d ", map->mapgen[line][column]);
 			column++;

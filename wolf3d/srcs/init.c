@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/05 15:55:20 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/06 15:01:30 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ static t_map		*init_map(char *filename)
 
 	if ((map = (t_map *)malloc(sizeof(t_map))) == NULL)
 		error(1, 0, "Malloc map!");
-	map->x = 25;
-	map->y = 25;
 	if (filename == NULL)
 	{
+		map->column = 25;
+		map->line = 25;
 		map->mapget = NULL;
-		get_randmap(&map, 25, 25);
+		get_randmap(&map);
 	}
 	else
 	{
 		map->mapget = get_map(&map, filename);
-		atoi_map(&map, map->x, map->y);
+		atoi_map(&map);
 	}
 	return (map);
 }
@@ -102,9 +102,11 @@ t_env				*init_env(char *filename)
 	e->persp = init_persp();
 	e->map = init_map(filename);
 	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, WIDTH, HEIGTH, "Wolf3D");
-	e->view = init_img(e, WIDTH, HEIGTH, 0);
-	e->mmap = init_img(e, e->map->x * 6, e->map->y * 6, 65);
+	e->width = 1800;
+	e->heigth = 1000;
+	e->win = mlx_new_window(e->mlx, e->width, e->heigth, "Wolf3D");
+	e->view = init_img(e, e->width, e->heigth, 0);
+	e->mmap = init_img(e, e->map->column * 6, e->map->line * 6, 65);
 	e->init = 0;
 	return (e);
 }

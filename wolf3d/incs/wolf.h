@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/05 15:54:27 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/06 14:56:43 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include "keys.h"
 
 # define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
-# define WIDTH 1800
-# define HEIGTH 1000
 
 typedef struct	s_persp
 {
@@ -67,8 +65,8 @@ typedef struct	s_map
 	char			***mapget;
 	int				mapgen[50][50];
 
-	int				x;
-	int				y;
+	int				line;
+	int				column;
 }				t_map;
 
 typedef struct	s_img
@@ -96,18 +94,19 @@ typedef struct	s_env
 	t_map			*map;
 
 	int				init;
+	int				width;
+	int				heigth;
 }				t_env;
 
 void			ray_casting(t_env *e);
-void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
 void			minimap(t_env *e);
 
 /*
 ** Func gen maps:
 */
 
-void			get_randmap(t_map **map, int x, int y);
-void			atoi_map(t_map **map, int x, int y);
+void			get_randmap(t_map **map);
+void			atoi_map(t_map **map);
 
 /*
 ** Func events:
@@ -125,6 +124,7 @@ int				mouse_motion(int x, int y, t_env *e);
 */
 
 int				put_img(t_env *e);
+void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
 
 /*
 ** Func env:

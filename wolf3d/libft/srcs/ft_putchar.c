@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/13 08:46:01 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:22 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/06 13:18:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ft_putchar(char c)
 {
-	if (write(1, &c, 1) < 0)
-		return ;
+	ft_putchar_fd(c, 1);
 }
