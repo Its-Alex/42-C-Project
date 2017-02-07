@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 17:04:34 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/07 11:34:29 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ static char			***parse_array_3d(char *str, char carac1, char carac2)
 	return (parse);
 }
 
-static void 		get_length(t_map **map)
+static void			get_length(t_map **map)
 {
-	int 	line;
-	int 	column;
-	int 	save;
+	int		line;
+	int		column;
+	int		save;
 
 	line = 0;
-	save  = 0;
+	save = 0;
 	column = 0;
 	while ((*map)->mapget[line])
 	{
