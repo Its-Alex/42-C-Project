@@ -3,7 +3,6 @@
 *.ko
 *.obj
 *.elf
-*objs/*
 
 # Precompiled Headers
 *.gch
@@ -32,5 +31,3 @@
 # Debug files
 *.dSYM/
 *.su
-
-wolf3d
