@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 15:40:28 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/30 15:53:20 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/08 11:53:41 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_atoi(char *str)
 	int nbr;
 	int i;
 
-	if (str == NULL || str[0] == '\0')
+	if (str == NULL || str[0] == '\0' || !str)
 		return (0);
 	negative = 0;
 	nbr = 0;

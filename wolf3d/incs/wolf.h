@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/07 11:34:45 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:08:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void			minimap(t_env *e);
 
 void			get_randmap(t_map **map);
 void			atoi_map(t_map **map);
+int				check_format(char *str, int count, int nb_elem);
 void			get_spawn(t_env *e, t_map *map);
 void			gen_spawn(t_env *e, t_map *map);
 

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:55:08 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 17:20:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:08:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,35 @@ static void		fill_map(t_map **map, int column, int line)
 		(*map)->mapgen[line][column] = 1;
 	if (nbr > 95 && nbr <= 100)
 		(*map)->mapgen[line][column] = 2;
+}
+
+int				check_format(char *str, int count, int nb_elem)
+{
+	int		save;
+
+	save = 0;
+	while (str[count] != '\0')
+	{
+		if (str[count] != ' ' && str[count] != '\n')
+		{
+			while (str[count] != ' ' && str[count] != '\n')
+				count++;
+			nb_elem++;
+		}
+		if (str[count] == '\n')
+		{
+			if (save == 0)
+				save = nb_elem;
+			else
+			{
+				if (save != nb_elem)
+					return (-1);
+			}
+			nb_elem = 0;
+		}
+		count++;
+	}
+	return (0);
 }
 
 void			atoi_map(t_map **map)
