@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/08 11:52:28 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/09 19:37:16 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static t_persp		*init_persp(void)
 
 	if ((p = (t_persp *)malloc(sizeof(t_persp))) == NULL)
 		error(1, 0, "Malloc struct pective!");
-	p->posx = 2.5;
-	p->posy = 2.5;
+	p->posx = 0.0;
+	p->posy = 0.0;
 	p->dirx = 1.0;
 	p->diry = 0.0;
 	p->planex = 0.0;
-	p->planey = 0.60;
+	p->planey = 0.66;
 	p->camerax = 0.0;
 	p->rayposx = 0.0;
 	p->rayposy = 0.0;
@@ -109,7 +109,7 @@ t_env				*init_env(char *filename)
 	e->heigth = 1000;
 	e->win = mlx_new_window(e->mlx, e->width, e->heigth, "Wolf3D");
 	e->view = init_img(e, e->width, e->heigth, 0);
-	e->mmap = init_img(e, e->map->column * 3, e->map->line * 3, 65);
+	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4, 65);
 	e->init = 0;
 	return (e);
 }

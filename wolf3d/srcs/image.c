@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 15:31:03 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/09 19:39:12 by skyzie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 
 int				put_img(t_env *e)
 {
-	ft_bzero(e->view->addr, e->view->size_l * e->heigth);
-	ft_bzero(e->mmap->addr, e->mmap->size_l * e->mmap->y);
 	ray_casting(e);
 	minimap(e);
 	mlx_clear_window(e->mlx, e->win);
