@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/08 12:08:35 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/09 12:27:13 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char				***get_map(t_map **map, char *file)
 	if (str == NULL)
 		error(1, 0, "Bad map format!");
 	if (check_format(str, 0, 0) == -1)
-		error(1, 0, "Line numbers must be the same!");		
+		error(1, 0, "Line numbers must be the same!");
 	(*map)->mapget = parse_array_3d(str, '\n', ' ');
 	ft_strdel(&str);
 	if ((*map)->mapget == NULL)

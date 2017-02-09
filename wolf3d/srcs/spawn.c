@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 11:10:06 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/07 11:35:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:47:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void		get_pos_spawn(t_env *e, t_map *map)
 		{
 			if (map->mapgen[line][column] == 42)
 			{
-				e->persp->posx = line;
-				e->persp->posy = column;
+				e->persp->posx = line + 0.5;
+				e->persp->posy = column + 0.5;
 			}
 			column++;
 		}
@@ -76,8 +76,8 @@ void			gen_spawn(t_env *e, t_map *map)
 		line = (int)((double)(map->line) * rand() / (RAND_MAX));
 		if (map->mapgen[line][column] == 0)
 		{
-			e->persp->posx = line;
-			e->persp->posy = column;
+			e->persp->posx = line + 0.5;
+			e->persp->posy = column + 0.5;
 			map->mapgen[line][column] = 42;
 			return ;
 		}

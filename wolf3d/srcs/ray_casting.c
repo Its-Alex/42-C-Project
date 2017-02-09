@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 15:50:38 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/09 10:14:04 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		ray_casting(t_env *e)
 	int		color;
 
 	x = 0;
-	color = 0;
+	color = 0xFFFFFF;
 	while (x < e->width)
 	{
 		e->persp->camerax = 2 * x / (double)(e->width - 1);
@@ -65,19 +65,11 @@ void		ray_casting(t_env *e)
 		{
 			e->persp->stepy = -1;
 			e->persp->sidedisty = (e->persp->rayposy - e->persp->mapy) * e->persp->deltadisty;
-			if (e->persp->stepx == 1)
-				color = 0xFF0000;
-			else
-				color = 0x0000FF;
 		}
 		else
 		{
 			e->persp->stepy = 1;
 			e->persp->sidedisty = (e->persp->mapy + 1.0 - e->persp->rayposy) * e->persp->deltadisty;
-			if (e->persp->stepx == 1)
-				color = 0xFFFFFF;
-			else
-				color = 0x00FF00;
 		}
 
 		while (e->persp->hit == 0)
@@ -95,7 +87,7 @@ void		ray_casting(t_env *e)
 	          e->persp->side = 1;
 	        }
 	        //Check if ray has hit a wall
-	        if (e->map->mapgen[e->persp->mapx][e->persp->mapy] > 0)
+	        if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
 	        	e->persp->hit = 1;
 		}
 
@@ -114,6 +106,6 @@ void		ray_casting(t_env *e)
 			e->persp->drawend = e->heigth - 1;
 
 		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color);
-		x += 1;
+		x++;
 	}
 }
