@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   events_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:40 by malexand         ###   ########.fr       */
+/*   Created: 2017/01/13 15:37:18 by malexand          #+#    #+#             */
+/*   Updated: 2017/01/31 15:12:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void		key_params(int keycode, t_env *e)
+int				mouse_button(int button, int x, int y, t_env *e)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
-}
-
-int				key_press(int keycode, t_env *e)
-{
-	key_params(keycode, e);
+	if (e == NULL)
+		printf("%d, %d, %d\n", button, x, y);
+	(void)e;
 	return (0);
 }
 
-int				key_release(int keycode, t_env *e)
+int				mouse_motion(int x, int y, t_env *e)
 {
-	key_params(keycode, e);
+	if (e == NULL)
+		printf("%d, %d\n", x, y);
+	(void)e;
 	return (0);
 }

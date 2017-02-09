@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:40 by malexand         ###   ########.fr       */
+/*   Created: 2017/01/16 23:22:07 by skyzie            #+#    #+#             */
+/*   Updated: 2017/01/17 13:34:40 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "../incs/libft.h"
 
-static void		key_params(int keycode, t_env *e)
+void	ft_sort_int_tab(int *tab, unsigned int size)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
-}
+	unsigned int	i;
+	int				swap;
 
-int				key_press(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
-}
-
-int				key_release(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
+	i = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] <= tab[i + 1])
+			i++;
+		else
+		{
+			swap = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = swap;
+			i = 0;
+		}
+	}
 }

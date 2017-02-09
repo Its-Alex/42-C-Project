@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 14:00:21 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:08:11 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,43 @@
 
 # define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
 
-/*
-** Player params
-*/
-
-typedef struct	s_player
+typedef struct	s_persp
 {
-	int		x;
-	int		y;
-	int		arc;
-	int		dist_proj;
-	int		heigth;
-	int		speed;
-	int		proj_plane_centery;
-}				t_player;
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			planex;
+	double			planey;
 
-/*
-** Wall params
-*/
+	double			camerax;
+	double			rayposx;
+	double			rayposy;
+	double			raydirx;
+	double			raydiry;
 
-typedef struct	s_wall
-{
-	int		heigth;
-}				t_wall;
+	double			sidedistx;
+	double			sidedisty;
+
+	double			deltadistx;
+	double			deltadisty;
+
+	double			perpwalldist;
+
+	int				stepx;
+	int				stepy;
+	int				side;
+
+	int				lineheight;
+
+	int				drawstart;
+	int				drawend;
+
+	int				hit;
+
+	int				mapx;
+	int				mapy;
+}				t_persp;
 
 typedef struct	s_map
 {

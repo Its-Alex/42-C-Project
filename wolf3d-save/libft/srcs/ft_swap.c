@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:40 by malexand         ###   ########.fr       */
+/*   Created: 2015/07/10 11:04:42 by malexand          #+#    #+#             */
+/*   Updated: 2017/01/17 13:26:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "../incs/libft.h"
 
-static void		key_params(int keycode, t_env *e)
+void	ft_swap(size_t *a, size_t *b)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
-}
+	int		nbr;
 
-int				key_press(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
-}
-
-int				key_release(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
+	nbr = *a;
+	*a = *b;
+	*b = nbr;
 }

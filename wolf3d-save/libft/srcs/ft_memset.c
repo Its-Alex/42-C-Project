@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:40 by malexand         ###   ########.fr       */
+/*   Created: 2016/05/01 18:20:21 by alex              #+#    #+#             */
+/*   Updated: 2017/01/31 12:39:29 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "../incs/libft.h"
 
-static void		key_params(int keycode, t_env *e)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
-}
+	size_t			count;
+	unsigned char	*str;
 
-int				key_press(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
-}
-
-int				key_release(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
+	count = 0;
+	str = b;
+	while (count != len)
+	{
+		str[count] = c;
+		count++;
+	}
+	return (b);
 }

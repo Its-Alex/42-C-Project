@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:40 by malexand         ###   ########.fr       */
+/*   Created: 2015/07/13 08:46:01 by malexand          #+#    #+#             */
+/*   Updated: 2017/02/06 13:18:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "../incs/libft.h"
 
-static void		key_params(int keycode, t_env *e)
+void	ft_putchar(char c)
 {
-	if (keycode == KEY_ESC)
-		press_destroy(e);
-}
-
-int				key_press(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
-}
-
-int				key_release(int keycode, t_env *e)
-{
-	key_params(keycode, e);
-	return (0);
+	ft_putchar_fd(c, 1);
 }
