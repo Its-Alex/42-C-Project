@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/08 12:08:11 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/10 16:01:04 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ typedef struct	s_persp
 	int				mapy;
 }				t_persp;
 
+typedef struct	s_key
+{
+	int			run;
+	int			turn;
+}				t_key;
+
 typedef struct	s_map
 {
 	char			***mapget;
@@ -92,17 +98,33 @@ typedef struct	s_env
 
 	t_persp			*persp;
 	t_map			*map;
+	t_key			key;
 
 	int				init;
 	int				width;
 	int				heigth;
 }				t_env;
 
+void			key_move(t_env *e);
+void			free_tab(char ***str);
+int				fps(t_env *e);
+void			mmap_ray(t_env *e, int x, int y);
+
+/*
+** Funcs math:
+*/
+
+void			rotate(double *x, double *y, double coef);
+
+/*
+**   Funcs graph:
+*/
+
 void			ray_casting(t_env *e);
 void			minimap(t_env *e);
 
 /*
-** Func gen maps:
+** Funcs gen maps:
 */
 
 void			get_randmap(t_map **map);
@@ -112,7 +134,7 @@ void			get_spawn(t_env *e, t_map *map);
 void			gen_spawn(t_env *e, t_map *map);
 
 /*
-** Func events:
+** Funcs events:
 */
 
 int				loop(t_env *e);
@@ -123,14 +145,16 @@ int				mouse_button(int button, int x, int y, t_env *e);
 int				mouse_motion(int x, int y, t_env *e);
 
 /*
-** Func img:
+** Funcs imgs:
 */
 
 int				put_img(t_env *e);
 void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
+void			draw_line(t_env *e, int x, int start,
+					int stop, unsigned int color);
 
 /*
-** Func env:
+** Funcs env:
 */
 
 char			***get_map(t_map **map, char *file);

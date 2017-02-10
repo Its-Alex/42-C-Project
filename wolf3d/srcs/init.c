@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 19:37:16 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/10 15:08:57 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static t_persp		*init_persp(void)
 		error(1, 0, "Malloc struct pective!");
 	p->posx = 0.0;
 	p->posy = 0.0;
-	p->dirx = 1.0;
+	p->dirx = -1.0;
 	p->diry = 0.0;
 	p->planex = 0.0;
-	p->planey = 0.66;
+	p->planey = 0.60;
 	p->camerax = 0.0;
 	p->rayposx = 0.0;
 	p->rayposy = 0.0;
@@ -111,5 +111,7 @@ t_env				*init_env(char *filename)
 	e->view = init_img(e, e->width, e->heigth, 0);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4, 65);
 	e->init = 0;
+	e->key.run = 0;
+	e->key.turn = 0;
 	return (e);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 19:39:12 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/10 16:03:53 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
+void		mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 {
 	unsigned char r;
 	unsigned char g;
@@ -40,10 +40,28 @@ void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 	}
 }
 
-int				put_img(t_env *e)
+void		draw_line(t_env *e, int x, int start, int stop,
+	unsigned int color)
 {
-	ray_casting(e);
+	int		y;
+
+	y = 0;
+	while (y < e->heigth)
+	{
+		if (y >= stop)
+			mlx_pixel_put_img(RGB(220, 220, 220), e->view, x, y);
+		else if (y >= start)
+			mlx_pixel_put_img(color, e->view, x, y);
+		else
+			mlx_pixel_put_img(RGB(58, 142, 186), e->view, x, y);
+		y++;
+	}
+}
+
+int			put_img(t_env *e)
+{
 	minimap(e);
+	ray_casting(e);
 	mlx_clear_window(e->mlx, e->win);
 	mlx_put_image_to_window(e->mlx, e->win, e->view->img, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->mmap->img, 15, 15);
