@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2016/12/14 14:43:14 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/13 00:25:24 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,9 @@ clean:
 fclean: clean
 	@echo "Deleting $(NAME) ✅"
 	@rm -f $(NAME)
+
+delete:
+	@rm -f $(EXEC)
 
 re: fclean all
 

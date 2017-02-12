@@ -3,85 +3,112 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/01/03 17:36:01 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/13 00:22:26 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
-DEBUG = no
+EXEC = wolf3d
+
+export DEBUG = no
 CC = clang
 OS := $(shell uname -s)
-MKDIR_P = mkdir -p
+MAKEFLAGS += --silent
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
+	CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g -ggdb
 else
-	CFLAGS = -Wall -Werror -Wextra
+	CFLAGS = -Wall -Werror -Wextra -O3
 endif
+
+# Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
+
 ifeq ($(OS), Linux)
-	LFLAGS = libft/libft.a mlx/libmlx_Linux.a -lXext -lX11 -DLinux
+	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux -lm -lpthread -D_REENTRANT
+	INCLUDE = -I./incs -I/usr/include/mlx
 else
-	LFLAGS = libft/libft.a -lmlx -framework OpenGL -framework AppKit
+	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
+	INCLUDE = -I./incs
 endif
 
-OUT_DIR = objets
-SRC_DIR = sources
-INC_DIR = includes
+OUT_DIR = objs
+SRC_DIR = srcs
+INC_DIR = incs
 
-SDIR =		./sources/
-SRCS =		check.c event.c image.c main.c menu.c parse.c init.c mlx_put.c \
-			thread_func.c
+SDIR =		./srcs/
+SRCS =		$(shell ls $(SRC_DIR))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
-INCLUDE = -I includes
-
-ODIR =		./objets/
+ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
 OBCC =		$(addprefix $(ODIR),$(OBJS))
 
-all: directories $(NAME)
+all: directories $(EXEC)
 
-$(NAME): $(OBCC)
+$(EXEC): $(OBCC)
 ifeq ($(OS), Linux)
+	@echo -e "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
-	@echo "Build $(NAME) ✅"
+	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
+	$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
+	@echo "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
+	@echo "\x1B[34m$(EXEC):\x1B[0m"
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
 	@echo "\x1B[31m\c"
-	@norminette sources/* includes/* | grep -B 1 "Error" || true
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
 	@echo "\x1B[0m\c"
-	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS) -lpthread -D_REENTRANT
-	@echo "Build $(NAME) ✅"
 endif
 
 $(ODIR)%.o: $(SDIR)%.c
 	@$(CC) $^ $(CFLAGS) -c -o $@ $(INCLUDE)
+ifeq ($(OS), Linux)
+	@echo -e "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+else
+	@echo "\r\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
+endif
 
 directories: ${OUT_DIR} ${SRC_DIR} ${INC_DIR}
 
 ${OUT_DIR}:
-	@${MKDIR_P} ${OUT_DIR}
+	@mkdir -p ${OUT_DIR}
 
 ${SRC_DIR}:
-	@${MKDIR_P} ${SRC_DIR}
+	@mkdir -p ${SRC_DIR}
 
 ${INC_DIR}:
-	@${MKDIR_P} ${INC_DIR}
+	@mkdir -p ${INC_DIR}
 
 clean:
 	@make -C ./libft clean
 	@rm -rf $(OUT_DIR)
-	@echo "Deleting compilation files ✅"
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[31m  - Remove:\x1B[0m objs"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m objs"
+endif
 
 fclean: clean
-	@make -C ./libft fclean
-	@rm -f $(NAME)
-	@echo "Deleting $(NAME) ✅"
+	@make -C ./libft delete
+	@rm -f $(EXEC)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+else
+	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
+endif
 
 re: fclean all
+
+run: all
+	@./$(EXEC) maps/base
+
+cleanlib:
+	@make -C ./libft fclean
+
 
 .PHONY: all clean fclean re run directories cleanlib
