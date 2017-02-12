@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:40:48 by root              #+#    #+#             */
-/*   Updated: 2017/01/16 23:17:24 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/06 13:25:46 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_putstr_fd(const char *s, int fd)
 {
 	int i;
 
+	if (!s || s == NULL)
+		return ;
 	i = 0;
 	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
 		i++;
-	}
+	write(fd, s, i);
 }
