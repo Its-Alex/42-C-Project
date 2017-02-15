@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/10 16:01:04 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/14 16:38:07 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ typedef struct	s_env
 
 void			key_move(t_env *e);
 void			free_tab(char ***str);
-int				fps(t_env *e);
-void			mmap_ray(t_env *e, int x, int y);
 
 /*
 ** Funcs math:
@@ -122,6 +120,8 @@ void			rotate(double *x, double *y, double coef);
 
 void			ray_casting(t_env *e);
 void			minimap(t_env *e);
+void			mmap_ray(t_env *e, int x, int y);
+int				fps(t_env *e);
 
 /*
 ** Funcs gen maps:

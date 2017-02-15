@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/10 16:26:27 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/15 11:38:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void		calc_draw(t_env *e)
 	if (e->persp->drawstart < 0)
 		e->persp->drawstart = 0;
 	e->persp->drawend = e->persp->lineheight / 2 + e->heigth / 2;
-	if (e->persp->drawend < 0)
+	if (e->persp->drawend >= e->heigth)
 		e->persp->drawend = e->heigth - 1;
 }
 

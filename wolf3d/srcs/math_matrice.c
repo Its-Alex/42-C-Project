@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:09:56 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/10 15:45:58 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/14 16:33:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void		rotate(double *x, double *y, double coef)
 		return ;
 	tmp = *x;
 	*x = *x * cos(coef) - *y * sin(coef);
-    *y = tmp * sin(coef) + *y * cos(coef);
+	*y = tmp * sin(coef) + *y * cos(coef);
 }
