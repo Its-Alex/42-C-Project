@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/10 10:50:08 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/16 13:26:51 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_DIR = srcs
 INC_DIR = incs
 
 SDIR =		./srcs/
-SRCS =		$(shell ls $(SRC_DIR))
+SRCS =		$(notdir $(shell ls $(SRC_DIR)/*.c))
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 ODIR =		./objs/

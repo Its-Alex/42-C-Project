@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/10 13:46:36 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 14:59:45 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,32 @@ int				press_destroy(t_env *e)
 	free(e);
 	exit(0);
 	return (0);
+}
+
+t_img			*swap_texture(t_img *img)
+{
+	int		x;
+	int 	y;
+	int 	count;
+
+	x = 0;
+	while (x <= img->size_l / 4)
+	{
+		y = 0;
+		while (y <= x)
+		{
+			count = 0;
+			while (count < 4)
+			{
+				ft_swap_char(&img->addr[img->size_l * y + x * 4 + count],
+					&img->addr[img->size_l * x + y * 4 + count]);
+				count ++;
+			}
+			y++;
+		}
+		x++;
+	}
+	return (img);
 }
 
 int				loop(t_env *e)

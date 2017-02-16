@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/14 16:32:41 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 16:19:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,44 @@ void		mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y)
 	}
 }
 
+int			get_color(t_img *img, int x, int y)
+{
+	int		r;
+	int		g;
+	int		b;
+
+	if (img->endian == 0)
+	{
+		b = (int)img->addr[y * img->size_l + x * img->bpp / 8];
+		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
+		r = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
+	}
+	else
+	{
+		r = (int)img->addr[y * img->size_l + x * img->bpp / 8];
+		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
+		b = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
+	}
+	return (RGB(r, g, b));
+}
+
 void		draw_line(t_env *e, int x, int start, int stop,
-	unsigned int color)
+	unsigned int color, int texture_x)
 {
 	int		y;
+	int		scale;
 
+	scale = (stop - start) / 64 + 1;
+	(void)color;
 	y = 0;
 	while (y < e->heigth)
 	{
 		if (y >= stop)
 			mlx_pixel_put_img(RGB(220, 220, 220), e->view, x, y);
-		else if (y >= start)
-			mlx_pixel_put_img(color, e->view, x, y);
+		else if (y >= start && scale != 0)
+			mlx_pixel_put_img(get_color(e->wood, texture_x, (y - start) / (scale)), e->view, x, y);
+		else if (y >= start && scale == 0)
+			mlx_pixel_put_img(get_color(e->wood, texture_x, (y - start)), e->view, x, y);
 		else
 			mlx_pixel_put_img(RGB(58, 142, 186), e->view, x, y);
 		y++;

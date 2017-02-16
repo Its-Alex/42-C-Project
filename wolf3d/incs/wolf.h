@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/14 16:38:07 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 15:32:21 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct	s_env
 	void			*win;
 	t_img			*view;
 	t_img			*mmap;
+	t_img			*wood;
 
 	t_persp			*persp;
 	t_map			*map;
@@ -122,6 +123,7 @@ void			ray_casting(t_env *e);
 void			minimap(t_env *e);
 void			mmap_ray(t_env *e, int x, int y);
 int				fps(t_env *e);
+t_img			*swap_texture(t_img *img);
 
 /*
 ** Funcs gen maps:
@@ -151,7 +153,7 @@ int				mouse_motion(int x, int y, t_env *e);
 int				put_img(t_env *e);
 void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
 void			draw_line(t_env *e, int x, int start,
-					int stop, unsigned int color);
+					int stop, unsigned int color, int texture_x);
 
 /*
 ** Funcs env:

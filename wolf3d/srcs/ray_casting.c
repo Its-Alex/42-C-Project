@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/15 11:40:37 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 15:58:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,19 @@ void			ray_casting(t_env *e)
 		check_dir(e);
 		find_wall(e, &color);
 		calc_draw(e);
-		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color);
+		//calculate value of wallX
+		double wallx; //where exactly the wall was hit
+		if (e->persp->side == 0)
+			wallx = e->persp->rayposy + e->persp->perpwalldist * e->persp->raydiry;
+		else
+			wallx = e->persp->rayposx + e->persp->perpwalldist * e->persp->raydirx;
+		wallx -= floor((wallx));
+
+		//x coordinate on the texture
+		int texX = (int)(wallx * (double)(64));
+		if(e->persp->side == 0 && e->persp->raydirx > 0) texX = 64 - texX - 1;
+		if(e->persp->side == 1 && e->persp->raydiry < 0) texX = 64 - texX - 1;
+		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color, texX);
 		x++;
 	}
 }
