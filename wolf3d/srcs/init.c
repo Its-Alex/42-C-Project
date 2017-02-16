@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 17:31:45 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 18:09:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,13 @@ static t_img		*init_img(t_env *e, int width, int heigth, int opacity)
 	return (img);
 }
 
-static t_img		*init_texture(t_env *e, int width, int heigth)
+static t_img		*init_texture(t_env *e, char *name, int width, int heigth)
 {
 	t_img		*img;
-	int		h;
 
-	h = 500;
 	if ((img = (t_img *)malloc(sizeof(t_img))) == NULL)
 		error(1, 0, "Malloc struct img!");
-	img->img = mlx_xpm_file_to_image(e->mlx, "pics/greystone.xpm", &h, &h);
+	img->img = mlx_xpm_file_to_image(e->mlx, ft_strjoin("pics/", name), &width, &heigth);
 	if (img->img == NULL)
 		error(1, 0, "Init texture!");
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_l),
@@ -130,7 +128,8 @@ t_env				*init_env(char *filename)
 	e->mlx = mlx_init();
 	e->view = init_img(e, e->width, e->heigth, 0);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4, 65);
-	e->wood = init_texture(e, 10, 10);
+	e->wood = init_texture(e, "redbrick.xpm", 64, 64);
+	e->pillar = init_texture(e, "pillar.xpm", 64, 64);
 	e->win = mlx_new_window(e->mlx, e->width, e->heigth, "Wolf3D");
 	e->init = 0;
 	e->key.run = 0;

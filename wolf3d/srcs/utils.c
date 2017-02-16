@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 16:35:41 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 18:05:14 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,27 @@ t_img			*swap_texture(t_img *img)
 	return (img);
 }
 
+t_img		*put_trans(t_img *img)
+{
+	int		count;
 
+	count = 0;
+	mprintf(1, "%d, %d\n", img->size_l, img->y);
+	while (count < img->size_l * img->y)
+	{
+		mprintf(1, "Salut\n");
+		if (img->addr[count] == 0 && img->addr[count + 1] == 0 &&
+			img->addr[count + 1] == 0)
+		{
+			img->addr[count + 0] = 255;
+			img->addr[count + 1] = 255;
+			img->addr[count + 2] = 255;
+			img->addr[count + 3] = 255;
+		}
+		count += 4;
+	}
+	return (img);
+}
 
 int			fps(t_env *e)
 {

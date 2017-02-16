@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 15:32:21 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:53:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct	s_env
 	t_img			*view;
 	t_img			*mmap;
 	t_img			*wood;
+	t_img			*pillar;
 
 	t_persp			*persp;
 	t_map			*map;
@@ -124,6 +125,7 @@ void			minimap(t_env *e);
 void			mmap_ray(t_env *e, int x, int y);
 int				fps(t_env *e);
 t_img			*swap_texture(t_img *img);
+t_img			*put_trans(t_img *img);
 
 /*
 ** Funcs gen maps:
