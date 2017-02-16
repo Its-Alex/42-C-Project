@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putlong_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 15:31:56 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/16 23:25:16 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/16 17:34:26 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/libft.h"
+#include "libft.h"
 
 void	ft_putlong_fd(long n, int fd)
 {

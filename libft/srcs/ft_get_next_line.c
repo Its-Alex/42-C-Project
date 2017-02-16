@@ -6,11 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/06 10:59:13 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:34:17 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/libft.h"
+#include "libft.h"
 
 static char		*gnl_join(char *dst, char *src)
 {

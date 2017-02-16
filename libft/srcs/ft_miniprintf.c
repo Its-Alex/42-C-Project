@@ -6,11 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 11:19:47 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/08 11:28:53 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:34:25 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/libft.h"
+#include "libft.h"
 
 static int	ft_nbrlen(int nbr)
 {

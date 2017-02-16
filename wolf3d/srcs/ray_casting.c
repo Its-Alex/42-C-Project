@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 16:50:13 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:12:29 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ static void		calc_draw(t_env *e)
 			(1 - e->persp->stepy) / 2) / e->persp->raydiry;
 	e->persp->lineheight = (int)(e->heigth / e->persp->perpwalldist);
 	e->persp->drawstart = -e->persp->lineheight / 2 + e->heigth / 2;
-	if (e->persp->drawstart < 0)
-		e->persp->drawstart = 0;
+	// if (e->persp->drawstart < 0)
+	// 	e->persp->drawstart = 0;
 	e->persp->drawend = e->persp->lineheight / 2 + e->heigth / 2;
-	if (e->persp->drawend > e->heigth)
-		e->persp->drawend = e->heigth;
+	// if (e->persp->drawend > e->heigth)
+	// 	e->persp->drawend = e->heigth;
 }
 
 void			ray_casting(t_env *e)

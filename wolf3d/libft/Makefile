@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/10 10:50:17 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/16 17:37:47 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ OS 				= $(shell uname -s)
 MKDIR_P 		= mkdir -p
 OUT_DIR 		= objs
 SRC_DIR 		= srcs
-INC_DIR 		= incs
+INC_DIR			= incs
+
+INC		 		= -I./incs
 
 ifeq ($(DEBUG), yes)
 	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
@@ -41,9 +43,8 @@ SRCS =				ft_atoi.c ft_bzero.c ft_error.c ft_freetab.c ft_get_next_line.c ft_isa
 					ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strsplit.c \
 					ft_strstr.c ft_strsub.c ft_strtrim.c ft_swap.c ft_tolower.c ft_toupper.c \
 
-SRCC =				$(addprefix $(SDIR),$(SRCS))
 
-INCDIR = 			incs/
+SRCC =				$(addprefix $(SDIR),$(SRCS))
 
 ODIR =				objs/
 OBJS =				$(SRCS:.c=.o)
@@ -66,7 +67,7 @@ else
 endif
 
 $(ODIR)%.o: $(SDIR)%.c
-	@$(CC) $^ $(CFLAG) -c -o $@ -I $(INCDIR)
+	@$(CC) $^ $(CFLAG) -c -o $@ $(INC)
 ifeq ($(OS), Linux)
 	@echo -e "\r\033[1A\033[K\x1B[32m  + Compile:\x1B[0m $(notdir $^)"
 else

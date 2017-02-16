@@ -6,11 +6,11 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 00:25:42 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/17 13:34:19 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:34:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/libft.h"
+#include "libft.h"
 
 t_list		*ft_lststr_sort(t_list *lst)
 {
