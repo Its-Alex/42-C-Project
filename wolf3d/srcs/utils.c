@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 18:05:14 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 18:49:09 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ t_img		*put_trans(t_img *img)
 		if (img->addr[count] == 0 && img->addr[count + 1] == 0 &&
 			img->addr[count + 1] == 0)
 		{
-			img->addr[count + 0] = 255;
-			img->addr[count + 1] = 255;
-			img->addr[count + 2] = 255;
-			img->addr[count + 3] = 255;
+			img->addr[count + 0] = (char)255;
+			img->addr[count + 1] = (char)255;
+			img->addr[count + 2] = (char)255;
+			img->addr[count + 3] = (char)255;
 		}
 		count += 4;
 	}
