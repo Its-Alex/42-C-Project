@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 16:19:21 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 16:33:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,17 @@ void		draw_line(t_env *e, int x, int start, int stop,
 	unsigned int color, int texture_x)
 {
 	int		y;
-	int		scale;
+	int		d;
 
-	scale = (stop - start) / 64 + 1;
 	(void)color;
 	y = 0;
 	while (y < e->heigth)
 	{
+		d = y * 256 - e->heigth * 128 + (stop - start) * 128;
 		if (y >= stop)
 			mlx_pixel_put_img(RGB(220, 220, 220), e->view, x, y);
-		else if (y >= start && scale != 0)
-			mlx_pixel_put_img(get_color(e->wood, texture_x, (y - start) / (scale)), e->view, x, y);
-		else if (y >= start && scale == 0)
-			mlx_pixel_put_img(get_color(e->wood, texture_x, (y - start)), e->view, x, y);
+		else if (y >= start)
+			mlx_pixel_put_img(get_color(e->wood, texture_x, ((d * 64) / (stop - start)) / 256), e->view, x, y);
 		else
 			mlx_pixel_put_img(RGB(58, 142, 186), e->view, x, y);
 		y++;

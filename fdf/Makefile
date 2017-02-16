@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/13 00:22:26 by alex             ###   ########.fr        #
+#    Updated: 2017/02/16 17:08:46 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXEC = wolf3d
+EXEC = fdf
 
 export DEBUG = no
 CC = clang

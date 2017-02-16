@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 16:15:00 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 16:54:56 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static t_img		*init_texture(t_env *e, int width, int heigth)
 	h = 500;
 	if ((img = (t_img *)malloc(sizeof(t_img))) == NULL)
 		error(1, 0, "Malloc struct img!");
-	img->img = mlx_xpm_file_to_image(e->mlx, "pics/redbrick.xpm", &h, &h);
+	img->img = mlx_xpm_file_to_image(e->mlx, "pics/mossy.xpm", &h, &h);
 	if (img->img == NULL)
 		error(1, 0, "Init texture!");
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_l),
