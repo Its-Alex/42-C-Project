@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 11:50:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/09 12:27:13 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 11:19:54 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ static char			*take_str(char *av, char *str)
 		str = ft_strjoin_free(str, "\n");
 		ft_strdel(&tmp);
 	}
-	if (str[0] == '\0')
-		error(1, 0, "Map empty!");
 	if (ret == -1)
 		error(1, 1, "");
+	if (str[0] == '\0')
+		error(1, 0, "Map empty!");
 	if (close(fd) < 0)
 		error(1, 1, "");
 	return (str);

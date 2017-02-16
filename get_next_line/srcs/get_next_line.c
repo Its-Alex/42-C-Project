@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/22 23:06:54 by alex             ###   ########.fr       */
+/*   Updated: 2017/02/16 12:50:33 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,49 @@ static	int			fill_save_line(char *save, char **line)
 	return (1);
 }
 
+static t_list		*find_fd(t_list *lst, int fd)
+{
+	t_list	*tmplst;
+	char	**tmp;
+	char	*file;
+
+	tmplst = lst;
+	file = ft_itoa(fd);
+	while (tmplst)
+	{
+		tmp = ft_strsplit(tmplst->content, ' ');
+		if (ft_strcmp(tmp[0], file) == 0)
+			break ;
+		tmplst = tmplst->next;
+	}
+	ft_freetab(tmp);
+	ft_strdel(&file);
+	return (tmplst);
+}
+
 int					get_next_line(const int fd, char **line)
 {
-	static	char	*save[SIZE_FD];
+	static	t_list	*lst;
+	t_list			*elem;
 
-	if (BUFF_SIZE <= 0 || fd < 0 || fd > 2147483647 || line == NULL
-		|| BUFF_SIZE >= 10000000)
+	if (BUFF_SIZE <= 0 || fd < 0 || fd > INT_MAX || line == NULL
+		|| BUFF_SIZE >= 1000000)
 		return (-1);
-	if (!save[fd] && (save[fd] = ft_strnew(sizeof(save[fd]) * 2))
-			== NULL)
+	if (lst == NULL)
+	{
+		lst = ft_lstnew(ft_strnew((size_t)ft_itoa(fd)), ft_strlen(ft_itoa(fd)));
+		elem = lst;
+	}
+	else
+		elem = find_fd(lst, fd);
+	if ((elem->content = read_file(fd, (char*)(elem->content))) == NULL)
 		return (-1);
-	if ((save[fd] = read_file(fd, save[fd])) == NULL)
-		return (-1);
-	if (save[fd][0] == '\0')
+	if (elem->content == '\0')
 	{
 		*line = NULL;
 		return (0);
 	}
-	if (fill_save_line(save[fd], line) < 0)
+	if (fill_save_line(elem->content, line) < 0)
 		return (-1);
 	return (1);
 }

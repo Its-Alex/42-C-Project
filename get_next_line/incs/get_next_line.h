@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:30 by malexand          #+#    #+#             */
-/*   Updated: 2016/11/21 18:06:32 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 11:16:44 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 # define BUFF_SIZE 1024
 # define SIZE_FD 2147483647
-# include "../libft/libft.h"
+# include "../libft/incs/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>

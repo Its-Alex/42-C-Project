@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
+#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by alex              #+#    #+#              #
-#    Updated: 2016/11/21 21:47:57 by alex             ###   ########.fr        #
+#    Updated: 2017/02/16 11:46:58 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = get_next_line
 DEBUG = no
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic -g -ggdb
 MKDIR_P = mkdir -p
 
 OUT_DIR = objs
