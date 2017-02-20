@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 16:32:50 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 17:49:08 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_persp		*init_persp(void)
 	p->planex = 0.0;
 	p->planey = 0.60;
 	p->camerax = 0.0;
-	p->rayposx = 0.0;
-	p->rayposy = 0.0;
-	p->raydirx = 0.0;
-	p->raydiry = 0.0;
+	p->xraypos = 0.0;
+	p->yraypos = 0.0;
+	p->xraydir = 0.0;
+	p->yraydir = 0.0;
 	p->sidedistx = 0.0;
 	p->sidedisty = 0.0;
 	p->deltadistx = 0.0;
@@ -81,23 +81,6 @@ static t_map		*init_map(t_env *e, char *filename)
 	return (map);
 }
 
-static t_img		*init_img(t_env *e, int width, int height, int opacity)
-{
-	t_img		*img;
-
-	if ((img = (t_img *)malloc(sizeof(t_img))) == NULL)
-		error(1, 0, "Malloc struct img!");
-	img->img = mlx_new_image(e->mlx, width, height);
-	if (img->img == NULL)
-		error(1, 0, "Init image!");
-	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_l),
-		&(img->endian));
-	img->x = width;
-	img->y = height;
-	img->opacity = opacity;
-	return (img);
-}
-
 t_env				*init_env(char *filename)
 {
 	t_env		*e;
@@ -106,11 +89,11 @@ t_env				*init_env(char *filename)
 		error(1, 0, "Malloc struct environment!");
 	e->persp = init_persp();
 	e->map = init_map(e, filename);
-	e->width = 1800;
-	e->height = 1000;
+	e->width = 512 * 2;
+	e->height = 384 * 2;
 	e->mlx = mlx_init();
-	e->view = init_img(e, e->width, e->height, 0);
-	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4, 65);
+	e->view = init_img(e, e->width, e->height);
+	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
 	e->wood = init_texture(e, "redbrick.xpm", 64, 64);
 	e->pillar = init_texture(e, "pillar.xpm", 64, 64);
 	e->win = mlx_new_window(e->mlx, e->width, e->height, "Wolf3D");

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 16:35:33 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 16:40:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				press_destroy(t_env *e)
 
 int				loop(t_env *e)
 {
-	key_move(e);
+	key_move(e, 0.05);
 	put_img(e);
 	fps(e);
 	return (0);

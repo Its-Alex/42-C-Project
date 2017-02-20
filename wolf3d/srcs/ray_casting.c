@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 15:54:13 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 17:34:15 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,44 @@
 static void		init(t_env *e, int x)
 {
 	e->persp->camerax = 2 * x / (double)(e->width - 1);
-	e->persp->rayposx = e->persp->posx;
-	e->persp->rayposy = e->persp->posy;
-	e->persp->raydirx = e->persp->dirx + e->persp->planex * e->persp->camerax;
-	e->persp->raydiry = e->persp->diry + e->persp->planey * e->persp->camerax;
-	rotate(&(e->persp->raydirx), &(e->persp->raydiry), 0.5);
-	e->persp->mapx = (int)(e->persp->rayposx);
-	e->persp->mapy = (int)(e->persp->rayposy);
-	e->persp->deltadistx = sqrt(1 + (e->persp->raydiry * e->persp->raydiry) /
-		(e->persp->raydirx * e->persp->raydirx));
-	e->persp->deltadisty = sqrt(1 + (e->persp->raydirx * e->persp->raydirx) /
-		(e->persp->raydiry * e->persp->raydiry));
+	e->persp->xraypos = e->persp->posx;
+	e->persp->yraypos = e->persp->posy;
+	e->persp->xraydir = e->persp->dirx + e->persp->planex * e->persp->camerax;
+	e->persp->yraydir = e->persp->diry + e->persp->planey * e->persp->camerax;
+	rotate(&(e->persp->xraydir), &(e->persp->yraydir), 0.5);
+	e->persp->mapx = (int)(e->persp->xraypos);
+	e->persp->mapy = (int)(e->persp->yraypos);
+	e->persp->deltadistx = sqrt(1 + (e->persp->yraydir * e->persp->yraydir) /
+		(e->persp->xraydir * e->persp->xraydir));
+	e->persp->deltadisty = sqrt(1 + (e->persp->xraydir * e->persp->xraydir) /
+		(e->persp->yraydir * e->persp->yraydir));
 	e->persp->hit = 0;
 }
 
 static void		check_dir(t_env *e)
 {
-	if (e->persp->raydirx < 0)
+	if (e->persp->xraydir < 0)
 	{
 		e->persp->stepx = -1;
-		e->persp->sidedistx = (e->persp->rayposx - e->persp->mapx)
+		e->persp->sidedistx = (e->persp->xraypos - e->persp->mapx)
 		* e->persp->deltadistx;
 	}
 	else
 	{
 		e->persp->stepx = 1;
-		e->persp->sidedistx = (e->persp->mapx + 1.0 - e->persp->rayposx)
+		e->persp->sidedistx = (e->persp->mapx + 1.0 - e->persp->xraypos)
 		* e->persp->deltadistx;
 	}
-	if (e->persp->raydiry < 0)
+	if (e->persp->yraydir < 0)
 	{
 		e->persp->stepy = -1;
-		e->persp->sidedisty = (e->persp->rayposy - e->persp->mapy)
+		e->persp->sidedisty = (e->persp->yraypos - e->persp->mapy)
 		* e->persp->deltadisty;
 	}
 	else
 	{
 		e->persp->stepy = 1;
-		e->persp->sidedisty = (e->persp->mapy + 1.0 - e->persp->rayposy)
+		e->persp->sidedisty = (e->persp->mapy + 1.0 - e->persp->yraypos)
 		* e->persp->deltadisty;
 	}
 }
@@ -88,25 +88,25 @@ static int		calc_draw(t_env *e)
 	int		xtexture;
 
 	if (e->persp->side == 0)
-		e->persp->perpwalldist = (e->persp->mapx - e->persp->rayposx +
-			(1 - e->persp->stepx) / 2) / e->persp->raydirx;
+		e->persp->perpwalldist = (e->persp->mapx - e->persp->xraypos +
+			(1 - e->persp->stepx) / 2) / e->persp->xraydir;
 	else
-		e->persp->perpwalldist = (e->persp->mapy - e->persp->rayposy +
-			(1 - e->persp->stepy) / 2) / e->persp->raydiry;
+		e->persp->perpwalldist = (e->persp->mapy - e->persp->yraypos +
+			(1 - e->persp->stepy) / 2) / e->persp->yraydir;
 	e->persp->lineheight = (int)(e->height / e->persp->perpwalldist);
 	e->persp->drawstart = -e->persp->lineheight / 2 + e->height / 2;
 	e->persp->drawend = e->persp->lineheight / 2 + e->height / 2;
 	if (e->persp->side == 0)
-		wallx = e->persp->rayposy + e->persp->perpwalldist
-			* e->persp->raydiry;
+		wallx = e->persp->yraypos + e->persp->perpwalldist
+			* e->persp->yraydir;
 	else
-		wallx = e->persp->rayposx + e->persp->perpwalldist
-			* e->persp->raydirx;
+		wallx = e->persp->xraypos + e->persp->perpwalldist
+			* e->persp->xraydir;
 	wallx -= floor(wallx);
 	xtexture = (int)(wallx * (double)(64));
-	if (e->persp->side == 0 && e->persp->raydirx > 0)
+	if (e->persp->side == 0 && e->persp->xraydir > 0)
 		xtexture = 64 - xtexture - 1;
-	if (e->persp->side == 1 && e->persp->raydiry < 0)
+	if (e->persp->side == 1 && e->persp->yraydir < 0)
 		xtexture = 64 - xtexture - 1;
 	return (xtexture);
 }
@@ -114,7 +114,7 @@ static int		calc_draw(t_env *e)
 void			ray_casting(t_env *e)
 {
 	int			x;
-	int			xtexture;
+	t_draw		draw;
 
 	x = 0;
 	while (x < e->width)
@@ -122,8 +122,11 @@ void			ray_casting(t_env *e)
 		init(e, x);
 		check_dir(e);
 		find_wall(e);
-		xtexture = calc_draw(e);
-		draw_line(e, x, e->persp->drawstart, e->persp->drawend, xtexture);
+		draw.x = x;
+		draw.x_tex = calc_draw(e);
+		draw.start = e->persp->drawstart;
+		draw.stop = e->persp->drawend;
+		draw_line(e, draw);
 		x++;
 	}
 }

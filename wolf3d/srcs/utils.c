@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 16:16:30 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 17:06:24 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,73 +33,6 @@ void		free_tab(char ***str)
 		line++;
 	}
 	free(str);
-}
-
-t_img		*swap_texture(t_img *img)
-{
-	int		x;
-	int		y;
-	int		count;
-
-	x = 0;
-	while (x <= img->size_l / 4)
-	{
-		y = 0;
-		while (y <= x)
-		{
-			count = 0;
-			while (count < 4)
-			{
-				ft_swap_char(&img->addr[img->size_l * y + x * 4 + count],
-					&img->addr[img->size_l * x + y * 4 + count]);
-				count++;
-			}
-			y++;
-		}
-		x++;
-	}
-	return (img);
-}
-
-t_img		*put_trans(t_img *img)
-{
-	int		count;
-
-	count = 0;
-	while (count < img->size_l * img->y)
-	{
-		if (img->addr[count] == 0 && img->addr[count + 1] == 0 &&
-			img->addr[count + 1] == 0)
-		{
-			img->addr[count + 0] = (char)255;
-			img->addr[count + 1] = (char)255;
-			img->addr[count + 2] = (char)255;
-			img->addr[count + 3] = (char)255;
-		}
-		count += 4;
-	}
-	return (img);
-}
-
-int			get_color(t_img *img, int x, int y)
-{
-	int		r;
-	int		g;
-	int		b;
-
-	if (img->endian == 0)
-	{
-		b = (int)img->addr[y * img->size_l + x * img->bpp / 8];
-		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
-		r = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
-	}
-	else
-	{
-		r = (int)img->addr[y * img->size_l + x * img->bpp / 8];
-		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
-		b = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
-	}
-	return (RGB(r, g, b));
 }
 
 int			fps(t_env *e)
