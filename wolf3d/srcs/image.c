@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 17:59:55 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 15:53:53 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,11 @@ int			get_color(t_img *img, int x, int y)
 }
 
 void		draw_line(t_env *e, int x, int start, int stop,
-	unsigned int color, int texture_x)
+	int texture_x)
 {
 	int		y;
 	int		d;
 
-	(void)color;
 	y = 0;
 	while (y < e->heigth)
 	{

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 17:53:22 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 15:37:14 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ int				mouse_motion(int x, int y, t_env *e);
 int				put_img(t_env *e);
 void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
 void			draw_line(t_env *e, int x, int start,
-					int stop, unsigned int color, int texture_x);
+					int stop, int texture_x);
 
 /*
 ** Funcs env:

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/17 10:31:28 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 15:46:25 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void		free_tab(char ***str)
 	free(str);
 }
 
-t_img			*swap_texture(t_img *img)
+t_img		*swap_texture(t_img *img)
 {
 	int		x;
-	int 	y;
-	int 	count;
+	int		y;
+	int		count;
 
 	x = 0;
 	while (x <= img->size_l / 4)
@@ -52,7 +52,7 @@ t_img			*swap_texture(t_img *img)
 			{
 				ft_swap_char(&img->addr[img->size_l * y + x * 4 + count],
 					&img->addr[img->size_l * x + y * 4 + count]);
-				count ++;
+				count++;
 			}
 			y++;
 		}

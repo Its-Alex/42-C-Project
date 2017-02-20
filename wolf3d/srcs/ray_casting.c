@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 17:12:29 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 15:54:13 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		check_dir(t_env *e)
 	}
 }
 
-static void		find_wall(t_env *e, int *color)
+static void		find_wall(t_env *e)
 {
 	while (e->persp->hit == 0)
 	{
@@ -66,20 +66,12 @@ static void		find_wall(t_env *e, int *color)
 			e->persp->sidedistx += e->persp->deltadistx;
 			e->persp->mapx += e->persp->stepx;
 			e->persp->side = 0;
-			if (e->persp->stepx == 1)
-				*color = RGB(190, 190, 190);
-			else
-				*color = RGB(170, 170, 170);
 		}
 		else
 		{
 			e->persp->sidedisty += e->persp->deltadisty;
 			e->persp->mapy += e->persp->stepy;
 			e->persp->side = 1;
-			if (e->persp->stepy == 1)
-				*color = RGB(150, 150, 150);
-			else
-				*color = RGB(210, 210, 210);
 		}
 		if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
 			e->persp->hit = 1;
@@ -90,8 +82,11 @@ static void		find_wall(t_env *e, int *color)
 	}
 }
 
-static void		calc_draw(t_env *e)
+static int		calc_draw(t_env *e)
 {
+	double	wallx;
+	int		xtexture;
+
 	if (e->persp->side == 0)
 		e->persp->perpwalldist = (e->persp->mapx - e->persp->rayposx +
 			(1 - e->persp->stepx) / 2) / e->persp->raydirx;
@@ -100,39 +95,35 @@ static void		calc_draw(t_env *e)
 			(1 - e->persp->stepy) / 2) / e->persp->raydiry;
 	e->persp->lineheight = (int)(e->heigth / e->persp->perpwalldist);
 	e->persp->drawstart = -e->persp->lineheight / 2 + e->heigth / 2;
-	// if (e->persp->drawstart < 0)
-	// 	e->persp->drawstart = 0;
 	e->persp->drawend = e->persp->lineheight / 2 + e->heigth / 2;
-	// if (e->persp->drawend > e->heigth)
-	// 	e->persp->drawend = e->heigth;
+	if (e->persp->side == 0)
+		wallx = e->persp->rayposy + e->persp->perpwalldist
+			* e->persp->raydiry;
+	else
+		wallx = e->persp->rayposx + e->persp->perpwalldist
+			* e->persp->raydirx;
+	wallx -= floor(wallx);
+	xtexture = (int)(wallx * (double)(64));
+	if (e->persp->side == 0 && e->persp->raydirx > 0)
+		xtexture = 64 - xtexture - 1;
+	if (e->persp->side == 1 && e->persp->raydiry < 0)
+		xtexture = 64 - xtexture - 1;
+	return (xtexture);
 }
 
 void			ray_casting(t_env *e)
 {
-	int		x;
-	int		color;
+	int			x;
+	int			xtexture;
 
 	x = 0;
-	color = 0xFFFFFF;
 	while (x < e->width)
 	{
 		init(e, x);
 		check_dir(e);
-		find_wall(e, &color);
-		calc_draw(e);
-		//calculate value of wallX
-		double wallx; //where exactly the wall was hit
-		if (e->persp->side == 0)
-			wallx = e->persp->rayposy + e->persp->perpwalldist * e->persp->raydiry;
-		else
-			wallx = e->persp->rayposx + e->persp->perpwalldist * e->persp->raydirx;
-		wallx -= floor((wallx));
-
-		//x coordinate on the texture
-		int texX = (int)(wallx * (double)(64));
-		if(e->persp->side == 0 && e->persp->raydirx > 0) texX = 64 - texX - 1;
-		if(e->persp->side == 1 && e->persp->raydiry < 0) texX = 64 - texX - 1;
-		draw_line(e, x, e->persp->drawstart, e->persp->drawend, color, texX);
+		find_wall(e);
+		xtexture = calc_draw(e);
+		draw_line(e, x, e->persp->drawstart, e->persp->drawend, xtexture);
 		x++;
 	}
 }
