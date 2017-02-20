@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 15:37:14 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 16:32:52 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct	s_env
 {
 	void			*mlx;
 	void			*win;
+	
 	t_img			*view;
 	t_img			*mmap;
 	t_img			*wood;
@@ -104,11 +105,12 @@ typedef struct	s_env
 
 	int				init;
 	int				width;
-	int				heigth;
+	int				height;
 }				t_env;
 
 void			key_move(t_env *e);
 void			free_tab(char ***str);
+int				get_color(t_img *img, int x, int y);
 
 /*
 ** Funcs math:
@@ -154,6 +156,7 @@ int				mouse_motion(int x, int y, t_env *e);
 
 int				put_img(t_env *e);
 void			mlx_pixel_put_img(unsigned int color, t_img *img, int x, int y);
+t_img			*init_texture(t_env *e, char *name, int width, int height);
 void			draw_line(t_env *e, int x, int start,
 					int stop, int texture_x);
 

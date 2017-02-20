@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 15:46:25 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/20 16:16:30 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,27 @@ t_img		*put_trans(t_img *img)
 		count += 4;
 	}
 	return (img);
+}
+
+int			get_color(t_img *img, int x, int y)
+{
+	int		r;
+	int		g;
+	int		b;
+
+	if (img->endian == 0)
+	{
+		b = (int)img->addr[y * img->size_l + x * img->bpp / 8];
+		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
+		r = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
+	}
+	else
+	{
+		r = (int)img->addr[y * img->size_l + x * img->bpp / 8];
+		g = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 1];
+		b = (int)img->addr[y * img->size_l + x * img->bpp / 8 + 2];
+	}
+	return (RGB(r, g, b));
 }
 
 int			fps(t_env *e)

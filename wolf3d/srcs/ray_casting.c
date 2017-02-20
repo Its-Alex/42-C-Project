@@ -93,9 +93,9 @@ static int		calc_draw(t_env *e)
 	else
 		e->persp->perpwalldist = (e->persp->mapy - e->persp->rayposy +
 			(1 - e->persp->stepy) / 2) / e->persp->raydiry;
-	e->persp->lineheight = (int)(e->heigth / e->persp->perpwalldist);
-	e->persp->drawstart = -e->persp->lineheight / 2 + e->heigth / 2;
-	e->persp->drawend = e->persp->lineheight / 2 + e->heigth / 2;
+	e->persp->lineheight = (int)(e->height / e->persp->perpwalldist);
+	e->persp->drawstart = -e->persp->lineheight / 2 + e->height / 2;
+	e->persp->drawend = e->persp->lineheight / 2 + e->height / 2;
 	if (e->persp->side == 0)
 		wallx = e->persp->rayposy + e->persp->perpwalldist
 			* e->persp->raydiry;
