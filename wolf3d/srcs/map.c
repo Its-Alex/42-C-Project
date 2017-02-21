@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:55:08 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/08 12:08:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 10:46:33 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,14 @@ void			get_randmap(t_map **map)
 		}
 		line++;
 	}
+}
+
+void			change_map(t_env *e, char *filename)
+{
+	free_tab(e->map->mapget);
+	free(e->map);
+	e->map = init_map(e, filename);
+	mlx_destroy_image(e->mlx, e->mmap->img);
+	free(e->mmap);
+	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
 }

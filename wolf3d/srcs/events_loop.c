@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 13:36:48 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 16:40:58 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 11:27:00 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int				press_destroy(t_env *e)
 	mlx_clear_window(e->mlx, e->win);
 	mlx_destroy_window(e->mlx, e->win);
 	free_tab(e->map->mapget);
+	if (e->filename != NULL)
+		ft_strdel(&e->filename);
 	free(e->persp);
 	free(e->map);
 	free(e->view);

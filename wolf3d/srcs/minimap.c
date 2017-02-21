@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 17:29:43 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 18:02:25 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 11:33:17 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ static void		create_square(t_env *e, int x, int y)
 	}
 }
 
+static void		mmap_opacity(t_env *e)
+{
+	int		count;
+
+	count = 3;
+	while (count < e->mmap->size_l * e->mmap->y)
+	{
+		e->mmap->addr[count] = 64;
+		count += 4;
+	}
+}
+
 void			mmap_ray(t_env *e, int x, int y)
 {
 	int		line;
@@ -84,4 +96,5 @@ void			minimap(t_env *e)
 		}
 		line++;
 	}
+	mmap_opacity(e);
 }

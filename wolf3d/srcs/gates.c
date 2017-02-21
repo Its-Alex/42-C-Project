@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   gates.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/10 23:37:47 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 11:04:39 by malexand         ###   ########.fr       */
+/*   Created: 2017/02/21 12:11:04 by malexand          #+#    #+#             */
+/*   Updated: 2017/02/21 13:16:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "wolf.h"
 
-size_t	ft_strlen(const char *str)
+void	check_gates(t_map *map)
 {
-	size_t	count;
+	int		line;
+	int		column;
 
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
+	line = 0;
+	while (line < map->line)
+	{
+		column = 0;
+		while (column < map->column)
+		{
+			if (map->mapgen[line][column] == 4)
+			column++;
+		}
+		line++;
+	}
 }

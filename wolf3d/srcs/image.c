@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 17:48:47 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 11:33:41 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ int				put_img(t_env *e)
 	mlx_clear_window(e->mlx, e->win);
 	mlx_put_image_to_window(e->mlx, e->win, e->view->img, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->mmap->img, 15, 15);
-	mlx_put_image_to_window(e->mlx, e->win, e->pillar->img, 100, 100);
 	return (0);
 }

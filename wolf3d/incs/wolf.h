@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 18:02:23 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 11:36:53 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 # include <limits.h>
 # include <time.h>
 # include <math.h>
+# include <dirent.h>
 # include "../libft/incs/libft.h"
 # include "keys.h"
 
 # define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
+
+typedef struct dirent	t_dir;
 
 typedef struct	s_persp
 {
@@ -119,6 +122,8 @@ typedef struct	s_env
 	t_map			*map;
 	t_key			key;
 
+	char			*filename;
+
 	int				init;
 	int				width;
 	int				height;
@@ -139,11 +144,15 @@ void			minimap(t_env *e);
 void			mmap_ray(t_env *e, int x, int y);
 int				fps(t_env *e);
 t_img			*swap_texture(t_img *img);
+void			floor_up(t_env *e);
+void			floor_down(t_env *e);
 
 /*
 ** Funcs gen maps:
 */
 
+t_map			*init_map(t_env *e, char *filename);
+void			change_map(t_env *e, char *filename);
 void			get_randmap(t_map **map);
 void			atoi_map(t_map **map);
 int				check_format(char *str, int count, int nb_elem);
