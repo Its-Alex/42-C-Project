@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:55:08 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 10:46:33 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:16:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static void		fill_map(t_map **map, int column, int line)
 	nbr = (int)(100.0 * rand() / (RAND_MAX));
 	if (nbr >= 0 && nbr <= 70)
 		(*map)->mapgen[line][column] = 0;
-	if (nbr > 70 && nbr <= 95)
+	if (nbr > 70 && nbr <= 100)
 		(*map)->mapgen[line][column] = 1;
-	if (nbr > 95 && nbr <= 100)
-		(*map)->mapgen[line][column] = 2;
 }
 
 int				check_format(char *str, int count, int nb_elem)
@@ -70,7 +68,7 @@ void			atoi_map(t_map **map)
 			if (column == 0 || line == (*map)->line - 1 || line == 0
 					|| column == (*map)->column - 1)
 				(*map)->mapgen[line][column] = 1;
-			else if ((tmp >= 0 && tmp <= 2) || tmp == 42)
+			else if ((tmp >= 0 && tmp <= 2) || tmp == 42 || tmp == 4)
 				(*map)->mapgen[line][column] = tmp;
 			else
 				(*map)->mapgen[line][column] = 0;

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 12:11:04 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 13:16:32 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:42:09 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	check_gates(t_map *map)
 		while (column < map->column)
 		{
 			if (map->mapgen[line][column] == 4)
+				column++;
 			column++;
 		}
 		line++;

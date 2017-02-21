@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:28:29 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 16:40:49 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 15:33:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void		run(t_env *e, double speed)
 				[(int)(e->persp->posy - e->persp->diry * speed * 4)] != 1)
 			e->persp->posy -= e->persp->diry * speed;
 	}
+	check_floor(e);
 }
 
 static void		turn(t_env *e, double speed)

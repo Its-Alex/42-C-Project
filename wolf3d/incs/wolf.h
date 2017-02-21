@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 11:36:53 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 15:03:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int				fps(t_env *e);
 t_img			*swap_texture(t_img *img);
 void			floor_up(t_env *e);
 void			floor_down(t_env *e);
+void			check_floor(t_env *e);
 
 /*
 ** Funcs gen maps:

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 17:34:15 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 15:19:14 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ static void		find_wall(t_env *e)
 			e->persp->mapy += e->persp->stepy;
 			e->persp->side = 1;
 		}
-		if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
+		if (e->map->mapgen[e->persp->mapx][e->persp->mapy] != 0 &&
+				e->map->mapgen[e->persp->mapx][e->persp->mapy] != 42)
 			e->persp->hit = 1;
 		else
 		{

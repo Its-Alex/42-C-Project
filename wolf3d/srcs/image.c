@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 11:33:41 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:40:53 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,17 @@ void			draw_line(t_env *e, t_draw draw)
 		if (y >= draw.stop)
 			mlx_ppi(RGB(220, 220, 220), e->view, draw.x, y);
 		else if (y >= draw.start)
-			mlx_ppi(get_color(e->wood, draw.x_tex, ((d * 64) /
-				(draw.stop - draw.start)) / 256), e->view, draw.x, y);
+		{
+			if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
+				mlx_ppi(get_color(e->wood, draw.x_tex, ((d * 64) /
+					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
+			else
+				mlx_ppi(get_color(e->pillar, draw.x_tex, ((d * 64) /
+					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
+		}
 		else
-			mlx_ppi(RGB(58, 142, 186), e->view, draw.x, y);
+			e->view->addr[y * e->view->size_l + draw.x *
+				e->view->bpp / 8 + 3] = 255;
 		y++;
 	}
 }

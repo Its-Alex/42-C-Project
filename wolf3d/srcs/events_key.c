@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:05:55 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 11:45:35 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 14:36:18 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ int				key_press(int keycode, t_env *e)
 	e->key.run = (keycode == KEY_DOWN) ? -1 : e->key.run;
 	e->key.turn = (keycode == KEY_LEFT) ? 1 : e->key.turn;
 	e->key.turn = (keycode == KEY_RIGTH) ? -1 : e->key.turn;
-	if (keycode == KEY_N)
-		floor_up(e);
-	if (keycode == KEY_M)
-		floor_down(e);
 	return (0);
 }
 
