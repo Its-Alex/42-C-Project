@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:40:53 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:53:39 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void			draw_line(t_env *e, t_draw draw)
 		else if (y >= draw.start)
 		{
 			if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
-				mlx_ppi(get_color(e->wood, draw.x_tex, ((d * 64) /
+				mlx_ppi(get_color(e->wall, draw.x_tex, ((d * 64) /
 					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
 			else
-				mlx_ppi(get_color(e->pillar, draw.x_tex, ((d * 64) /
+				mlx_ppi(get_color(e->door, draw.x_tex, ((d * 64) /
 					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
 		}
 		else
@@ -88,6 +88,7 @@ int				put_img(t_env *e)
 	minimap(e);
 	ray_casting(e);
 	mlx_clear_window(e->mlx, e->win);
+	mlx_put_image_to_window(e->mlx, e->win, e->sky->img, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->view->img, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->mmap->img, 15, 15);
 	return (0);

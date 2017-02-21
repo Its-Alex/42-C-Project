@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:41:14 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:59:28 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ t_env				*init_env(char *filename)
 	e->mlx = mlx_init();
 	e->view = init_img(e, e->width, e->height);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
-	e->wood = init_texture(e, "greystone.xpm", 64, 64);
-	e->pillar = init_texture(e, "greystone_door.xpm", 64, 64);
+	e->wall = init_texture(e, "greystone.xpm");
+	e->door = init_texture(e, "greystone_door.xpm");
+	e->sky = init_texture(e, "sky.xpm");
 	e->win = mlx_new_window(e->mlx, e->width, e->height, "Wolf3D");
 	e->init = 0;
 	e->key.run = 0;

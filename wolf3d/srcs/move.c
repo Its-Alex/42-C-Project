@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:28:29 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 15:33:32 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 19:39:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,19 @@ static void		run(t_env *e, double speed)
 	{
 		if (e->map->mapgen[(int)(e->persp->posx + e->persp->dirx * speed * 4)]
 				[(int)(e->persp->posy)] != 1)
-			e->persp->posx += e->persp->dirx * speed;
+			if (e->map->mapgen[(int)(e->persp->posx + e->persp->dirx * speed
+				* 4)][(int)(e->persp->posy)] != 2)
+				if (e->map->mapgen[(int)(e->persp->posx +
+						e->persp->dirx * speed * 4)]
+						[(int)(e->persp->posy)] != 4)
+					e->persp->posx += e->persp->dirx * speed;
 		if (e->map->mapgen[(int)(e->persp->posx)]
 				[(int)(e->persp->posy + e->persp->diry * speed * 4)] != 1)
-			e->persp->posy += e->persp->diry * speed;
+			if (e->map->mapgen[(int)(e->persp->posx)]
+					[(int)(e->persp->posy + e->persp->diry * speed * 4)] != 2)
+				if (e->map->mapgen[(int)(e->persp->posx)
+					][(int)(e->persp->posy + e->persp->diry * speed * 4)] != 4)
+					e->persp->posy += e->persp->diry * speed;
 	}
 	if (e->key.run == -1)
 	{

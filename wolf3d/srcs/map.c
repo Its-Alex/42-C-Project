@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:55:08 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:16:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 17:05:06 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void			atoi_map(t_map **map)
 		while (column < (*map)->column)
 		{
 			tmp = ft_atoi((*map)->mapget[line][column]);
-			if (column == 0 || line == (*map)->line - 1 || line == 0
-					|| column == (*map)->column - 1)
+			if ((column == 0 || line == (*map)->line - 1 || line == 0
+					|| column == (*map)->column - 1) && tmp != 4 && tmp != 2)
 				(*map)->mapgen[line][column] = 1;
 			else if ((tmp >= 0 && tmp <= 2) || tmp == 42 || tmp == 4)
 				(*map)->mapgen[line][column] = tmp;

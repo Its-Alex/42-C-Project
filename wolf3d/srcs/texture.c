@@ -6,26 +6,24 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 16:47:36 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 17:50:43 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:59:16 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-t_img		*init_texture(t_env *e, char *name, int width, int height)
+t_img		*init_texture(t_env *e, char *name)
 {
 	t_img		*img;
 
 	if ((img = (t_img *)malloc(sizeof(t_img))) == NULL)
 		error(1, 0, "Malloc struct img!");
 	img->img = mlx_xpm_file_to_image(e->mlx, ft_strjoin("pics/", name)
-		, &width, &height);
+		, &img->x, &img->y);
 	if (img->img == NULL)
 		error(1, 0, "Init texture!");
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_l),
 		&(img->endian));
-	img->x = width;
-	img->y = height;
 	return (img);
 }
 

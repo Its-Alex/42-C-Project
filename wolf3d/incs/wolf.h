@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 15:03:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:59:38 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,9 @@ typedef struct	s_env
 
 	t_img			*view;
 	t_img			*mmap;
-	t_img			*wood;
-	t_img			*pillar;
+	t_img			*wall;
+	t_img			*door;
+	t_img			*sky;
 
 	t_persp			*persp;
 	t_map			*map;
@@ -178,7 +179,7 @@ void			key_move(t_env *e, double speed);
 
 int				put_img(t_env *e);
 void			mlx_ppi(unsigned int color, t_img *img, int x, int y);
-t_img			*init_texture(t_env *e, char *name, int width, int height);
+t_img			*init_texture(t_env *e, char *name);
 t_img			*init_img(t_env *e, int width, int height);
 void			draw_line(t_env *e, t_draw draw);
 int				get_color(t_img *img, int x, int y);
