@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:59:38 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 11:42:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void			atoi_map(t_map **map);
 int				check_format(char *str, int count, int nb_elem);
 void			get_spawn(t_env *e, t_map *map);
 void			gen_spawn(t_env *e, t_map *map);
+void			check_gates(t_map *map);
 
 /*
 ** Funcs events:

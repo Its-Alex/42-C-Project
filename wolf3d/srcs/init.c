@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:59:28 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 11:42:37 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_env				*init_env(char *filename)
 	else
 		e->filename = NULL;
 	e->map = init_map(e, filename);
+	check_gates(e->map);
 	e->width = 512 * 3;
 	e->height = 384 * 3;
 	e->mlx = mlx_init();

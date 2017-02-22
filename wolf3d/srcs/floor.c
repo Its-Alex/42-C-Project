@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 10:50:21 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 19:39:54 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 11:37:47 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,14 @@ void			check_floor(t_env *e)
 		return ;
 	if (ft_strnequ("floor/", e->filename, 5) == 0)
 		return ;
-	if (e->map->mapgen[(int)floor(e->persp->posx)]
-			[(int)floor(e->persp->posy)] == 2)
+	if (e->map->mapgen[(int)floor(e->persp->posx + e->persp->dirx * 0.05 * 5)]
+			[(int)floor(e->persp->posy)] == 2 || e->map->mapgen
+			[(int)floor(e->persp->posx)][(int)floor(e->persp->posy
+			+ e->persp->diry * 0.05 * 5)] == 2)
 		floor_up(e);
-	if (e->map->mapgen[(int)floor(e->persp->posx)]
-			[(int)floor(e->persp->posy)] == 4)
+	if (e->map->mapgen[(int)floor(e->persp->posx + e->persp->dirx * 0.05 * 5)]
+			[(int)floor(e->persp->posy)] == 4 || e->map->mapgen
+			[(int)floor(e->persp->posx)][(int)floor(e->persp->posy
+			+ e->persp->diry * 0.05 * 5)] == 4)
 		floor_down(e);
 }
