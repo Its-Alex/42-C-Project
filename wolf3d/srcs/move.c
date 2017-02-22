@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:28:29 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/22 11:41:05 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 17:16:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,24 @@ static void		turn(t_env *e, double speed)
 	}
 }
 
-static void		strafe(t_env *e, double speed)
+static	void	strafe(t_env *e, double speed)
 {
-	(void)e;
-	(void)speed;
+	if (e->key.strafe == 1)
+	{
+		rotate(&(e->persp->dirx), &(e->persp->diry), 1.555555);
+		e->key.run = 1;
+		run_forward(e, speed);
+		e->key.run = 0;
+		rotate(&(e->persp->dirx), &(e->persp->diry), -1.555555);
+	}
+	if (e->key.strafe == -1)
+	{
+		rotate(&(e->persp->dirx), &(e->persp->diry), -1.555555);
+		e->key.run = 1;
+		run_forward(e, speed);
+		e->key.run = 0;
+		rotate(&(e->persp->dirx), &(e->persp->diry), 1.555555);
+	}
 }
 
 void			key_move(t_env *e, double speed)
@@ -82,5 +96,5 @@ void			key_move(t_env *e, double speed)
 	run_backward(e, speed);
 	check_floor(e);
 	turn(e, speed);
-	strafe(e, speed);
+	strafe(e, 0.05);
 }

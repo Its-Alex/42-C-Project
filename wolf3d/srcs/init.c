@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/22 14:35:32 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 17:08:59 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_persp		*init_persp(void)
 	p->dirx = -1.0;
 	p->diry = 0.0;
 	p->planex = 0.0;
-	p->planey = 0.6;
+	p->planey = 0.66;
 	p->camerax = 0.0;
 	p->xraypos = 0.0;
 	p->yraypos = 0.0;
@@ -111,13 +111,14 @@ t_env				*init_env(char *filename)
 		e->filename = NULL;
 	e->map = init_map(e, filename);
 	check_gates(e->map);
-	e->width = 512 * 3;
-	e->height = 384 * 3;
+	e->width = (int)512 * 2.5;
+	e->height = (int)384 * 2.5;
 	e->mlx = mlx_init();
 	e->view = init_img(e, e->width, e->height);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
 	load_text(e);
 	e->win = mlx_new_window(e->mlx, e->width, e->height, "Wolf3D");
+	e->key.strafe = 0;
 	e->init = 0;
 	e->key.run = 0;
 	e->key.turn = 0;

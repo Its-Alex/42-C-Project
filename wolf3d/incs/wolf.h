@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:50:59 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/22 11:42:58 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 17:08:51 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_key
 {
 	int			run;
 	int			turn;
+	int			strafe;
 }				t_key;
 
 typedef struct	s_map
@@ -170,8 +171,6 @@ int				loop(t_env *e);
 int				press_destroy(t_env *e);
 int				key_press(int keycode, t_env *e);
 int				key_release(int keycode, t_env *e);
-int				mouse_button(int button, int x, int y, t_env *e);
-int				mouse_motion(int x, int y, t_env *e);
 void			key_move(t_env *e, double speed);
 
 /*
