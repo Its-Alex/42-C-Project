@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/22 11:42:37 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 14:35:32 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_persp		*init_persp(void)
 	p->dirx = -1.0;
 	p->diry = 0.0;
 	p->planex = 0.0;
-	p->planey = 0.60;
+	p->planey = 0.6;
 	p->camerax = 0.0;
 	p->xraypos = 0.0;
 	p->yraypos = 0.0;
@@ -81,6 +81,23 @@ t_map				*init_map(t_env *e, char *filename)
 	return (map);
 }
 
+void				load_text(t_env *e)
+{
+	char	*wall;
+	char	*door;
+	char	*sky;
+
+	wall = ft_strdup("greystone.xpm");
+	door = ft_strdup("greystone_door.xpm");
+	sky = ft_strdup("sky.xpm");
+	e->wall = init_texture(e, wall);
+	e->door = init_texture(e, door);
+	e->sky = init_texture(e, sky);
+	ft_strdel(&wall);
+	ft_strdel(&door);
+	ft_strdel(&sky);
+}
+
 t_env				*init_env(char *filename)
 {
 	t_env		*e;
@@ -99,9 +116,7 @@ t_env				*init_env(char *filename)
 	e->mlx = mlx_init();
 	e->view = init_img(e, e->width, e->height);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
-	e->wall = init_texture(e, "greystone.xpm");
-	e->door = init_texture(e, "greystone_door.xpm");
-	e->sky = init_texture(e, "sky.xpm");
+	load_text(e);
 	e->win = mlx_new_window(e->mlx, e->width, e->height, "Wolf3D");
 	e->init = 0;
 	e->key.run = 0;

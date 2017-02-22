@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 15:19:14 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 14:02:20 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,14 @@ static void		init(t_env *e, int x)
 
 static void		check_dir(t_env *e)
 {
-	if (e->persp->xraydir < 0)
-	{
-		e->persp->stepx = -1;
-		e->persp->sidedistx = (e->persp->xraypos - e->persp->mapx)
-		* e->persp->deltadistx;
-	}
-	else
-	{
-		e->persp->stepx = 1;
-		e->persp->sidedistx = (e->persp->mapx + 1.0 - e->persp->xraypos)
-		* e->persp->deltadistx;
-	}
-	if (e->persp->yraydir < 0)
-	{
-		e->persp->stepy = -1;
-		e->persp->sidedisty = (e->persp->yraypos - e->persp->mapy)
-		* e->persp->deltadisty;
-	}
-	else
-	{
-		e->persp->stepy = 1;
-		e->persp->sidedisty = (e->persp->mapy + 1.0 - e->persp->yraypos)
-		* e->persp->deltadisty;
-	}
+	e->persp->stepx = (e->persp->xraydir < 0) ? -1 : 1;
+	e->persp->stepy = (e->persp->yraydir < 0) ? -1 : 1;
+	e->persp->sidedistx = (e->persp->xraydir < 0) ? (e->persp->xraypos -
+		e->persp->mapx) * e->persp->deltadistx :
+		(e->persp->mapx + 1.0 - e->persp->xraypos) * e->persp->deltadistx;
+	e->persp->sidedisty = (e->persp->yraydir < 0) ? (e->persp->yraypos -
+		e->persp->mapy) * e->persp->deltadisty :
+		(e->persp->mapy + 1.0 - e->persp->yraypos) * e->persp->deltadisty;
 }
 
 static void		find_wall(t_env *e)
@@ -105,9 +89,7 @@ static int		calc_draw(t_env *e)
 			* e->persp->xraydir;
 	wallx -= floor(wallx);
 	xtexture = (int)(wallx * (double)(64));
-	if (e->persp->side == 0 && e->persp->xraydir > 0)
-		xtexture = 64 - xtexture - 1;
-	if (e->persp->side == 1 && e->persp->yraydir < 0)
+	if (e->persp->xraydir != 0)
 		xtexture = 64 - xtexture - 1;
 	return (xtexture);
 }

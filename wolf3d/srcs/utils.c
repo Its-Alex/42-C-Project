@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:24:18 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/20 17:06:24 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/22 13:53:01 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,15 @@ int			fps(t_env *e)
 	mlx_string_put(e->mlx, e->win, e->width - 35, 9, 0xFFFFFF, fps);
 	ft_strdel(&fps);
 	return (0);
+}
+
+void		rotate(double *x, double *y, double coef)
+{
+	double		tmp;
+
+	if (x == NULL || y == NULL)
+		return ;
+	tmp = *x;
+	*x = *x * cos(coef) - *y * sin(coef);
+	*y = tmp * sin(coef) + *y * cos(coef);
 }
