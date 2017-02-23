@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 18:36:27 by alex              #+#    #+#             */
-/*   Updated: 2017/01/17 13:26:54 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 14:14:42 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
+# include <stdarg.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"
@@ -47,6 +49,7 @@ int					ft_isascii(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 
+int					mprintf(int fd, char *str, ...);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr(const char *str);
@@ -94,6 +97,8 @@ int					ft_atoi(char *str);
 char				*ft_itoa(int value);
 char				*ft_itoa_base(int value, int base);
 void				ft_swap(size_t *a, size_t *b);
+void				ft_swap_int(int *a, int *b);
+void				ft_swap_char(char *a, char *b);
 void				ft_bzero(void *s, size_t n);
 
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
