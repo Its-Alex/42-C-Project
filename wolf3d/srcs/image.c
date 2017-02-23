@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/21 16:53:39 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:21:22 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,21 @@ void			mlx_ppi(unsigned int color, t_img *img, int x, int y)
 void			draw_line(t_env *e, t_draw draw)
 {
 	int		y;
-	int		d;
+	int		scale;
 
 	y = 0;
 	while (y < e->height)
 	{
-		d = y * 256 - e->height * 128 + (draw.stop - draw.start) * 128;
+		scale = y * 256 - e->height * 128 + (draw.stop - draw.start) * 128;
 		if (y >= draw.stop)
 			mlx_ppi(RGB(220, 220, 220), e->view, draw.x, y);
 		else if (y >= draw.start)
 		{
 			if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
-				mlx_ppi(get_color(e->wall, draw.x_tex, ((d * 64) /
+				mlx_ppi(get_color(e->wall, draw.x_tex, ((scale * 64) /
 					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
 			else
-				mlx_ppi(get_color(e->door, draw.x_tex, ((d * 64) /
+				mlx_ppi(get_color(e->door, draw.x_tex, ((scale * 64) /
 					(draw.stop - draw.start)) / 256), e->view, draw.x, y);
 		}
 		else
