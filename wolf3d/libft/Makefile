@@ -6,26 +6,26 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/23 16:15:05 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/24 16:51:06 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXEC = libft.a
 
-CC 				= clang
-DEBUG			= yes
-OS 				= $(shell uname -s)
-MKDIR_P 		= mkdir -p
-OUT_DIR 		= objs
-SRC_DIR 		= srcs
-INC_DIR			= incs
+CC 					= clang
+DEBUG				= no
+OS 					= $(shell uname -s)
+MKDIR_P 			= mkdir -p
+OUT_DIR 			= objs
+SRC_DIR 			= srcs
+INC_DIR				= incs
 
-INC		 		= -I./incs
+INC		 			= -I./incs
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
+	CFLAGS = 		-Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
 else
-	CFLAGS = -Wall -Werror -Wextra -O3
+	CFLAGS = 		-Wall -Werror -Wextra -O3
 endif
 
 SDIR =				srcs/
@@ -61,9 +61,9 @@ else
 	@ar rc libft.a $(OBCC)
 	@ranlib $@
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
-	# @echo "\x1B[31m\c"
-	# @norminette srcs/* incs/* | grep -B 1 "Error" || true
-	# @echo "\x1B[0m\c"
+	@echo "\x1B[31m\c"
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@echo "\x1B[0m\c"
 endif
 
 $(ODIR)%.o: $(SDIR)%.c

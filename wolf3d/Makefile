@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/23 16:15:08 by malexand         ###   ########.fr        #
+#    Updated: 2017/02/24 16:49:57 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,9 +60,9 @@ else
 	@echo "\x1B[34m$(EXEC):\x1B[0m"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
-	# @echo "\x1B[31m\c"
-	# @norminette srcs/* incs/* | grep -B 1 "Error" || true
-	# @echo "\x1B[0m\c"
+	@echo "\x1B[31m\c"
+	@norminette srcs/* incs/* | grep -B 1 "Error" || true
+	@echo "\x1B[0m\c"
 endif
 
 $(ODIR)%.o: $(SDIR)%.c
