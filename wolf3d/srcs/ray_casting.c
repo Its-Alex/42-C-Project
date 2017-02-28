@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 16:16:25 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:38:08 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ static void		check_dir(t_env *e)
 	{
 		e->persp->stepx = 1;
 		e->persp->sidedistx = ((int)e->persp->mapx + 1 -
-		e->persp->xraypos) * e->persp->deltadistx;
+			e->persp->xraypos) * e->persp->deltadistx;
 	}
 	if (e->persp->yraydir < 0)
 	{
 		e->persp->stepy = -1;
 		e->persp->sidedisty = (e->persp->yraypos -
-		(int)e->persp->mapy) * e->persp->deltadisty;
+			(int)e->persp->mapy) * e->persp->deltadisty;
 	}
 	else
 	{
 		e->persp->stepy = 1;
 		e->persp->sidedisty = ((int)e->persp->mapy + 1 -
-		e->persp->yraypos) * e->persp->deltadisty;
+			e->persp->yraypos) * e->persp->deltadisty;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 13:28:29 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 11:15:38 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:06:54 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ void			key_move(t_env *e, double speed)
 		run_backward(e, speed);
 	check_floor(e);
 	turn(e, speed);
-	strafe(e, 0.05);
+	strafe(e, 0.065);
 }

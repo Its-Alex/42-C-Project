@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/23 16:21:22 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:42:08 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int				put_img(t_env *e)
 	minimap(e);
 	ray_casting(e);
 	mlx_clear_window(e->mlx, e->win);
-	mlx_put_image_to_window(e->mlx, e->win, e->sky->img, 0, 0);
+	mlx_put_image_to_window(e->mlx, e->win, e->sky->img,
+		e->persp->dirx * 75 - 75, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->view->img, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->mmap->img, 15, 15);
 	return (0);

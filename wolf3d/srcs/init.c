@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 11:57:35 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:10:28 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_persp		*init_persp(void)
 	p->dirx = -1.0;
 	p->diry = 0.0;
 	p->planex = 0.0;
-	p->planey = 0.60;
+	p->planey = 0.66;
 	p->camerax = 0.0;
 	p->xraypos = 0.0;
 	p->yraypos = 0.0;
@@ -89,7 +89,7 @@ void				load_text(t_env *e)
 
 	wall = ft_strdup("greystone.xpm");
 	door = ft_strdup("greystone_door.xpm");
-	sky = ft_strdup("sky.xpm");
+	sky = ft_strdup("sky2.xpm");
 	e->wall = init_texture(e, wall);
 	e->door = init_texture(e, door);
 	e->sky = init_texture(e, sky);
