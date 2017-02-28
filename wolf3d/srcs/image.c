@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 17:42:08 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:47:58 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			draw_line(t_env *e, t_draw draw)
 	{
 		scale = y * 256 - e->height * 128 + (draw.stop - draw.start) * 128;
 		if (y >= draw.stop)
-			mlx_ppi(RGB(220, 220, 220), e->view, draw.x, y);
+			mlx_ppi(RGB(175, 175, 175), e->view, draw.x, y);
 		else if (y >= draw.start)
 		{
 			if (e->map->mapgen[e->persp->mapx][e->persp->mapy] == 1)
