@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:37 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 10:56:04 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 11:57:35 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ t_env				*init_env(char *filename)
 		e->filename = NULL;
 	e->map = init_map(e, filename);
 	check_gates(e->map);
-	e->width = (int)1024;
-	e->height = (int)1024;
+	e->width = (int)512 * 2.2;
+	e->height = (int)512 * 1.7;
 	e->mlx = mlx_init();
 	e->view = init_img(e, e->width, e->height);
 	e->mmap = init_img(e, e->map->column * 4, e->map->line * 4);
