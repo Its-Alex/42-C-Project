@@ -25,6 +25,11 @@ All of my project at 42born2code
 	* Multi windows
 	* 6 fractals
 	* Quit with arrow
+- [ ] wolf3d : 0/100
+	* Skybox
+	* Minimap
+	* Texture
+	* Traverse pas les murs
+	* Systeme d'étage
 - [ ] printf : 0/100
 - [ ] ft_ls : 0/100
-- [ ] wolf3d : 0/100
