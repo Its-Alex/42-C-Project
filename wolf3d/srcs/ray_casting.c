@@ -6,7 +6,7 @@
 /*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:00:19 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/24 13:32:06 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 11:17:19 by malexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 static void		init(t_env *e, int x)
 {
-	e->persp->camerax = 2 * x / (double)(e->width - 1);
 	e->persp->xraypos = e->persp->posx;
 	e->persp->yraypos = e->persp->posy;
+	e->persp->mapx = (int)e->persp->xraypos;
+	e->persp->mapy = (int)e->persp->yraypos;
+	e->persp->camerax = 2 * x / (double)e->width - 1;
 	e->persp->xraydir = e->persp->dirx + e->persp->planex * e->persp->camerax;
 	e->persp->yraydir = e->persp->diry + e->persp->planey * e->persp->camerax;
-	rotate(&(e->persp->xraydir), &(e->persp->yraydir), 0.5);
-	e->persp->mapx = (int)(e->persp->xraypos);
-	e->persp->mapy = (int)(e->persp->yraypos);
 	e->persp->deltadistx = sqrt(1 + (e->persp->yraydir * e->persp->yraydir) /
 		(e->persp->xraydir * e->persp->xraydir));
 	e->persp->deltadisty = sqrt(1 + (e->persp->xraydir * e->persp->xraydir) /
@@ -33,12 +32,18 @@ static void		check_dir(t_env *e)
 {
 	e->persp->stepx = (e->persp->xraydir < 0) ? -1 : 1;
 	e->persp->stepy = (e->persp->yraydir < 0) ? -1 : 1;
-	e->persp->sidedistx = (e->persp->xraydir < 0) ? (e->persp->xraypos -
-		e->persp->mapx) * e->persp->deltadistx :
-		(e->persp->mapx + 1.0 - e->persp->xraypos) * e->persp->deltadistx;
-	e->persp->sidedisty = (e->persp->yraydir < 0) ? (e->persp->yraypos -
-		e->persp->mapy) * e->persp->deltadisty :
-		(e->persp->mapy + 1.0 - e->persp->yraypos) * e->persp->deltadisty;
+	if (e->persp->stepx == -1)
+		e->persp->sidedistx = (e->persp->xraypos -
+		(int)e->persp->xraypos) * e->persp->deltadistx;
+	else
+		e->persp->sidedistx = ((int)e->persp->xraypos + 1 -
+		e->persp->xraypos) * e->persp->deltadistx;
+	if (e->persp->stepy == -1)
+		e->persp->sidedisty = (e->persp->yraypos -
+		(int)e->persp->yraypos) * e->persp->deltadisty;
+	else
+		e->persp->sidedisty = ((int)e->persp->yraypos + 1 -
+		e->persp->yraypos) * e->persp->deltadisty;
 }
 
 static void		find_wall(t_env *e)
