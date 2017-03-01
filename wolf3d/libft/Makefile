@@ -6,7 +6,7 @@
 #    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/28 11:37:27 by malexand         ###   ########.fr        #
+#    Updated: 2017/03/01 14:41:42 by malexand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ MKDIR_P 			= mkdir -p
 OUT_DIR 			= objs
 SRC_DIR 			= srcs
 INC_DIR				= incs
+FIRST				= yes
 
 INC		 			= -I./incs
 
