@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:10:53 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/28 18:04:20 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/28 22:07:35 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			draw_line(t_env *e, t_draw draw)
 		}
 		else
 			e->view->addr[y * e->view->size_l + draw.x *
-				e->view->bpp / 8 + 3] = 255;
+				e->view->bpp / 8 + 3] = (char)255;
 		y++;
 	}
 }

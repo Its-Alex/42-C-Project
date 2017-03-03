@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skyzie <skyzie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 17:28:29 by skyzie            #+#    #+#             */
-/*   Updated: 2017/01/24 17:10:34 by skyzie           ###   ########.fr       */
+/*   Updated: 2017/02/28 22:52:02 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void		print(char *flags, char *name, int path)
 		ft_putstr(" ");
 		ft_putlong(file_stat.st_atime);
 		ft_putstr(" ");
-		ft_putstr(filename);	
+		ft_putendl(filename);	
 	}
 	else
-		ft_putstr(filename);
+		ft_putendl(filename);
 	//ft_strdel(&filename);
 }
