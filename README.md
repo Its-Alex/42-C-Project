@@ -25,7 +25,7 @@ All of my project at 42born2code
 	* Multi windows
 	* 6 fractals
 	* Quit with arrow
-- [ ] wolf3d : 0/100
+- [X] wolf3d : 124/100
 	* Skybox
 	* Minimap
 	* Texture
