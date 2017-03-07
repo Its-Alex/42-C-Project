@@ -7,7 +7,7 @@ All of my project at 42born2code
 - [X] [Libft](https://github.com/Its-Alex/42-C-Project/tree/master/libft) : 116/116
 	* Bonus functions
 - [X] [Fillit](https://github.com/Its-Alex/42-C-Project/tree/master/fillit) : 100/100
-- [X] [GNL](https://github.com/Its-Alex/42-C-Project/tree/master/get_next_line) : 96/100
+- [X] [GNL](https://github.com/Its-Alex/42-C-Project/tree/master/get_next_line) : 120/100
 	* Multiple file descriptor
 	* 1 static variables
 	* Fail one medium test
