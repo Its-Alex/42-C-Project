@@ -4,20 +4,20 @@ All of my project at 42born2code
 --------------------------------
 
 
-- [X] libft : 116/116
+- [X] [Libft](https://github.com/Its-Alex/42-C-Project/tree/master/libft) : 116/116
 	* Bonus functions
-- [X] fillit : 100/100
-- [X] get_next_line : 96/100
+- [X] [Fillit](https://github.com/Its-Alex/42-C-Project/tree/master/fillit) : 100/100
+- [X] [GNL](https://github.com/Its-Alex/42-C-Project/tree/master/get_next_line) : 96/100
 	* Multiple file descriptor
 	* 1 static variables
 	* Fail one medium test
-- [X] fdf : 125/125
+- [X] [Fdf](https://github.com/Its-Alex/42-C-Project/tree/master/fdf) : 125/125
 	* Take size of win as arg
 	* Multi Threads
 	* Zoom / Move on x & y
 	* Take all keyHook at same time
 	* Trace diagonale
-- [X] fractol : 116/118
+- [X] [Fractol](https://github.com/Its-Alex/42-C-Project/tree/master/fractol) : 116/118
 	* Multi threads
 	* Zoom
 	* Move arrow
@@ -25,7 +25,7 @@ All of my project at 42born2code
 	* Multi windows
 	* 6 fractals
 	* Quit with arrow
-- [X] wolf3d : 124/100
+- [X] [Wolf3D](https://github.com/Its-Alex/42-C-Project/tree/master/wolf3d) : 124/100
 	* Skybox
 	* Minimap
 	* Texture
