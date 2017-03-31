@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:49:20 by malexand          #+#    #+#             */
-/*   Updated: 2017/02/16 17:34:17 by malexand         ###   ########.fr       */
+/*   Updated: 2017/02/16 18:50:09 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		gnl_copy(int const fd, char *save[fd], char **line)
 
 int				get_next_line(int const fd, char **line)
 {
-	static	char	*save[20000000];
+	static	char	*save[256];
 
 	if (fd < 0 || line == NULL || fd > 256 || BUFF_SIZE <= 0)
 		return (-1);

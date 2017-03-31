@@ -3,29 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/16 17:37:47 by malexand         ###   ########.fr        #
+#    Updated: 2017/03/31 17:42:54 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXEC = libft.a
 
-CC 				= clang
-DEBUG			= no
-OS 				= $(shell uname -s)
-MKDIR_P 		= mkdir -p
-OUT_DIR 		= objs
-SRC_DIR 		= srcs
-INC_DIR			= incs
+CC 					= clang
+DEBUG				= no
+OS 					= $(shell uname -s)
+MKDIR_P 			= mkdir -p
+OUT_DIR 			= objs
+SRC_DIR 			= srcs
+INC_DIR				= incs
+FIRST				= yes
 
-INC		 		= -I./incs
+INC		 			= -I./incs
 
 ifeq ($(DEBUG), yes)
-	CFLAGS = -Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
+	CFLAGS = 		-Wall -Werror -Wextra -g -ggdb -fsanitize=address -v
 else
-	CFLAGS = -Wall -Werror -Wextra -O3
+	CFLAGS = 		-Wall -Werror -Wextra -O3
 endif
 
 SDIR =				srcs/
@@ -109,6 +110,7 @@ else
 	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 endif
 
-re: fclean all
+re: fclean
+	re
 
 .PHONY: all clean fclean re run directories cleanlib delete
