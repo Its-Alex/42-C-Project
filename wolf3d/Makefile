@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/03/03 21:32:46 by alex             ###   ########.fr        #
+#    Updated: 2017/03/31 17:43:55 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,10 @@ ifeq ($(DEBUG), yes)
 else
 	CFLAGS = -Wall -Werror -Wextra -O3
 endif
+
+LIBFT_PATH = ./libft
+LIBFT_FILE = $(LIBFT_PATH)/libft.a
+LIBFT_DEP = $(LIBFT_PATH)/srcs/* $(LIBFT_PATH)/incs/*
 
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
@@ -47,16 +51,21 @@ OBCC =		$(addprefix $(ODIR),$(OBJS))
 
 all: directories $(EXEC)
 
-$(EXEC): $(OBCC)
+$(LIBFT_FILE): $(LIBFT_DEP)
 ifeq ($(OS), Linux)
 	@echo -e "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
+else
+	@echo "\x1B[34mLibft:\x1B[0m\n"
+	@make -C ./libft
+endif
+
+$(EXEC): $(OBCC) $(LIBFT_FILE)
+ifeq ($(OS), Linux)
 	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
 	$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
-	@echo "\x1B[34mLibft:\x1B[0m\n"
-	@make -C ./libft
 	@echo "\x1B[34m$(EXEC):\x1B[0m"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
@@ -102,7 +111,8 @@ else
 	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 endif
 
-re: fclean all
+re: fclean
+	make
 
 run: all
 	@./$(EXEC) maps/base

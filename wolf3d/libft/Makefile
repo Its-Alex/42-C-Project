@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/03/01 14:41:42 by malexand         ###   ########.fr        #
+#    Updated: 2017/03/31 17:42:54 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,6 +110,7 @@ else
 	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 endif
 
-re: fclean all
+re: fclean
+	re
 
 .PHONY: all clean fclean re run directories cleanlib delete
