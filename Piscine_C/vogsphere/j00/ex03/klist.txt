@@ -1,0 +1,8 @@
+Credentials cache: API:13793
+        Principal: malexand@42.FR
+
+  Issued                Expires               Principal
+Jul  7 08:50:58 2015  Jul  7 18:50:57 2015  krbtgt/42.FR@42.FR
+Jul  7 08:51:06 2015  Jul  7 18:50:57 2015  nfs/zfs-student-1.42.fr@42.FR
+Jul  7 08:51:07 2015  Jul  7 18:50:57 2015  nfs/zfs-student-3.42.fr@42.FR
+Jul  7 10:15:31 2015  Jul  7 18:50:57 2015  host/vogsphere-frontend-normal-1.42.fr@42.FR
