@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malexand <malexand@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/02/16 17:08:46 by malexand         ###   ########.fr        #
+#    Updated: 2017/03/31 17:57:40 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,10 @@ export DEBUG = no
 CC = clang
 OS := $(shell uname -s)
 MAKEFLAGS += --silent
+
+LIBFT_PATH = ./libft
+LIBFT_FILE = $(LIBFT_PATH)/libft.a
+LIBFT_DEP = $(LIBFT_PATH)/srcs/* $(LIBFT_PATH)/incs/*
 
 ifeq ($(DEBUG), yes)
 	CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g -ggdb
@@ -47,16 +51,21 @@ OBCC =		$(addprefix $(ODIR),$(OBJS))
 
 all: directories $(EXEC)
 
-$(EXEC): $(OBCC)
+$(LIBFT_FILE): $(LIBFT_PATH) $(LIBFT_DEP)
 ifeq ($(OS), Linux)
 	@echo -e "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
-	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
-	$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
-	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
 else
 	@echo "\x1B[34mLibft:\x1B[0m\n"
 	@make -C ./libft
+endif
+
+$(EXEC): directories $(OBCC) $(LIBFT_FILE)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
+	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
+	@echo -e "\x1b[36m  + Compile program:\x1B[0m $@"
+else
 	@echo "\x1B[34m$(EXEC):\x1B[0m"
 	@$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
 	@echo "\x1b[36m  + Compile program:\x1B[0m $@"
@@ -102,7 +111,8 @@ else
 	@echo "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
 endif
 
-re: fclean all
+re: fclean
+	make
 
 run: all
 	@./$(EXEC) maps/base

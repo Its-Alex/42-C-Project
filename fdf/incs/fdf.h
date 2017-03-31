@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 15:12:25 by malexand          #+#    #+#             */
-/*   Updated: 2016/12/15 12:05:04 by malexand         ###   ########.fr       */
+/*   Updated: 2017/03/31 17:54:07 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include <mlx.h>
-# include "../libft/includes/libft.h"
+# include "../libft/incs/libft.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
