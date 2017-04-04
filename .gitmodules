@@ -1,3 +1,6 @@
 [submodule "wolf3d/libft"]
 	path = wolf3d/libft
 	url = git@github.com:Its-Alex/Libft.git
+[submodule "libft"]
+	path = libft
+	url = git@github.com:Its-Alex/Libft.git
