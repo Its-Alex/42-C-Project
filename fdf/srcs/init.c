@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malexand <malexand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:01:06 by malexand          #+#    #+#             */
-/*   Updated: 2017/01/05 15:44:57 by malexand         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:49:24 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_mlx		*init_mlx(t_mlx *mlx, int w, int h)
 	if (w < 250 || h < 250 || w > 2550 ||
 		h > 1390)
 	{
-		w = 1000;
-		h = 1000;
+		w = 2000;
+		h = 1500;
 	}
 	mlx->win = mlx_new_window(mlx->mlx, w, h, "fdf");
 	mlx->decaly = 0;
