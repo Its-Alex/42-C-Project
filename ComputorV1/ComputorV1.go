@@ -55,9 +55,15 @@ func main() {
 		valueLeft[index] -= valueRight[index]
 	}
 	if len(valueLeft) > 3 {
-		fmt.Println()
+		os.Exit(0)
 	}
-	delta :=
-		fmt.Println(valueLeft)
-
+	fmt.Println(valueLeft[1])
+	delta := valueLeft[1]*valueLeft[1] - 4*valueLeft[0]*valueLeft[2]
+	if delta > 0 {
+		fmt.Println("delta > 0")
+	} else if delta < 0 {
+		fmt.Println("delta < 0")
+	} else {
+		fmt.Println("delta === 0")
+	}
 }
