@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"regexp"
 	"strconv"
@@ -21,6 +22,23 @@ func getValue(data [][]string) []float64 {
 		tab[pow] += value
 	}
 	return tab
+}
+
+func printData(equa []float64) {
+	fmt.Print("Reduced form:")
+	for count := len(equa) - 1; count >= 0; count-- {
+		if equa[count] < 0 {
+			fmt.Printf(" - %g * X^%d", -equa[count], count)
+		} else {
+			if count == len(equa)-1 {
+				fmt.Printf(" %g * X^%d", equa[count], count)
+			} else {
+				fmt.Printf(" + %g * X^%d", equa[count], count)
+			}
+		}
+	}
+	fmt.Println(" = 0")
+	fmt.Printf("Polynomial degree: %d\n", len(equa)-1)
 }
 
 func main() {
@@ -49,21 +67,35 @@ func main() {
 			valueRight = append(valueRight, 0)
 		}
 	}
-	fmt.Println(valueLeft)
-	fmt.Println(valueRight)
 	for index := 0; index < len(valueLeft); index++ {
 		valueLeft[index] -= valueRight[index]
 	}
+
+	/*
+	** Print reduced and degree
+	 */
+	printData(valueLeft)
 	if len(valueLeft) > 3 {
+		fmt.Println("The polynomial degree is stricly greater than 2, I can't solve.")
 		os.Exit(0)
 	}
-	fmt.Println(valueLeft[1])
+
+	if len(valueLeft) == 2 {
+		fmt.Printf("Need to resolve!")
+	}
+	if len(valueLeft) == 1 {
+		fmt.Printf("The solution is:\n%g", valueLeft[0])
+	}
 	delta := valueLeft[1]*valueLeft[1] - 4*valueLeft[0]*valueLeft[2]
+	// fmt.Println(delta)
 	if delta > 0 {
-		fmt.Println("delta > 0")
+		result := make([]float64, 2)
+		result[0] = (-valueLeft[1] - math.Sqrt(delta)) / (2 * valueLeft[2])
+		result[1] = (-valueLeft[1] + math.Sqrt(delta)) / (2 * valueLeft[2])
+		fmt.Printf("Discriminant is strictly positive, the two solutions are:\n%g\n%g\n", result[0], result[1])
 	} else if delta < 0 {
-		fmt.Println("delta < 0")
+		fmt.Println("Discriminant is strictly negative")
 	} else {
-		fmt.Println("delta === 0")
+		fmt.Printf("Discriminant is null, the solution is:\n%g\n", -valueLeft[1]/(2*valueLeft[2]))
 	}
 }
