@@ -27,7 +27,7 @@
 	* Minimap
 	* Texture
 	* Not cross walls
-	* Systeme d'étage
+	* Floor system
 - [ ] printf : 0/100
 	* In progress
 - [ ] ft_ls : 0/100
