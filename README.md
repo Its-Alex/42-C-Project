@@ -1,7 +1,5 @@
-All of my project at 42born2code
-================================
-
---------------------------------
+#All of my project at 42born2code
+---
 
 
 - [X] [Libft](https://github.com/Its-Alex/Libft) : 116/116
@@ -10,7 +8,6 @@ All of my project at 42born2code
 - [X] [GNL](https://github.com/Its-Alex/42-C-Project/tree/master/get_next_line) : 120/100
 	* Multiple file descriptor
 	* 1 static variables
-	* Fail one medium test
 - [X] [Fdf](https://github.com/Its-Alex/42-C-Project/tree/master/fdf) : 125/125
 	* Take size of win as arg
 	* Multi Threads
@@ -29,7 +26,9 @@ All of my project at 42born2code
 	* Skybox
 	* Minimap
 	* Texture
-	* Traverse pas les murs
+	* Not cross walls
 	* Systeme d'étage
 - [ ] printf : 0/100
+	* In progress
 - [ ] ft_ls : 0/100
+	* In progress
