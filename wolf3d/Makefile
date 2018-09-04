@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
+#    By: itsalex <itsalex@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/21 18:23:32 by malexand          #+#    #+#              #
-#    Updated: 2017/03/31 17:52:10 by alex             ###   ########.fr        #
+#    Updated: 2018/09/04 16:17:20 by itsalex          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,18 @@ LIBFT_PATH = ./libft
 LIBFT_FILE = $(LIBFT_PATH)/libft.a
 LIBFT_DEP = $(LIBFT_PATH)/srcs/* $(LIBFT_PATH)/incs/*
 
+MINILIBX_PATH = ./minilibx
+MINILIBX_FILE = $(MINILIBX_PATH)/libmlx.a
+MINILIBX_DEP = $(MINILIBX_PATH)/*.c $(MINILIBX_PATH)/*.h
+
 # Link lib : "-L FOLDER -lXXX" where XXX = libXXX.a
 
 ifeq ($(OS), Linux)
-	LFLAGS = -L./libft -lft -lmlx -lX11 -lXext -DLinux -lm
-	INCLUDE = -I./incs -I/usr/include/mlx
+	LFLAGS = -L./libft -lft -L./minilibx -lmlx -lX11 -lXext -DLinux -lm
+	INCLUDE = -I./incs -I/usr/include/mlx -I./minilibx
 else
-	LFLAGS = -L./libft -lft -lmlx -framework OpenGL -framework AppKit
-	INCLUDE = -I./incs
+	LFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
+	INCLUDE = -I./incs -I./minilibx
 endif
 
 OUT_DIR = objs
@@ -60,7 +64,16 @@ else
 	@make -C ./libft
 endif
 
-$(EXEC): $(OBCC) $(LIBFT_FILE)
+$(MINILIBX_FILE): $(MINILIBX_DEP)
+ifeq ($(OS), Linux)
+	@echo -e "\x1B[34mMinilibx:\x1B[0m\n"
+	@make -C ./minilibx
+else
+	@echo "\x1B[34mMinilibx:\x1B[0m\n"
+	@make -C ./minilibx
+endif
+
+$(EXEC): $(OBCC) $(LIBFT_FILE) $(MINILIBX_FILE)
 ifeq ($(OS), Linux)
 	@echo -e "\x1B[34m$(EXEC):\x1B[0m"
 	$(CC) $(CFLAGS) -o $@ $(OBCC) $(INCLUDE) $(LFLAGS)
@@ -104,6 +117,7 @@ endif
 
 fclean: clean
 	@make -C ./libft delete
+	@make -C ./minilibx clean
 	@rm -f $(EXEC)
 ifeq ($(OS), Linux)
 	@echo -e "\x1B[31m  - Remove:\x1B[0m $(EXEC)"
